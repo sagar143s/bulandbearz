@@ -18,7 +18,7 @@ email :
 password :
 {
     type : String,
-    required:true
+   
 },
 subscribed :
 {

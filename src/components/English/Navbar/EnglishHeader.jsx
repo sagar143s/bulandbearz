@@ -42,7 +42,7 @@ const EnglishHeader = () => {
   const [logoutpop,setLogoutpop] = useState(false)
   const { toggleLanguage,language } = useLanguage();
   const [subscribed,setSubscribed]=useState(false)
-  const {user,loginuser} = useUser()
+  const {user,loginuser,logout} = useUser()
   const router = useRouter()
   const open = Boolean(anchorEl);
   const open1 = Boolean(anchorEl1);
@@ -95,6 +95,7 @@ const EnglishHeader = () => {
   const handleSignout= async()=>{
     try {
       await logOut()
+      await  logout()
     } catch (error) {
       console.log(error.message);
     }

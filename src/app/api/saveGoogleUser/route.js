@@ -29,23 +29,23 @@ try {
       });
 
       const serializedUser = JSON.stringify(existingUser);
-      return new NextResponse(serializedUser, { status: 200, headers: { "Content-Type": "application/json" } });
+      return new NextResponse(serializedUser, { status: 200 });
     }else{
 
         const newUser = new User({
             name: name,
             email: email,
-            
+            isGoogle:true,
           });
           try {
             await newUser.save();
-            return new NextResponse(JSON.stringify({ message: "User Created" }), {
+            return new NextResponse(JSON.stringify( "User Created"), {
               status: 201,
-              headers: { "Content-Type": "application/json" },
+              
             });
           } catch (err) {
             console.error("Error saving newUser:", err);
-            return new NextResponse(err.message, {
+            return new NextResponse(JSON.stringify(err.message), {
               status: 500,
             });
           }

@@ -13,6 +13,7 @@ import { useLanguage } from '@/context/LanguageContext'
 import BottomBar from '@/components/English/bottombar/bottom'
 import BottomBarArabic from '@/components/Arabic/bottombar/bottom' 
 import { UserAuth } from '@/context/AuthContext'
+import Swal from 'sweetalert2'
 
 const Login = () => {
     const [email,setEmail] = useState('')
@@ -26,7 +27,7 @@ const Login = () => {
     const handleGoogle = async()=>{
       try{
      await googleSignIn()
-   console.log(gsin);
+     
       }catch(error){
         console.log(error.message);
       }
@@ -58,7 +59,13 @@ const res = await fetch('/api/saveGoogleUser',{
 })
 const response = await res.json()
 if(res.ok){
-  alert('sucess')
+  Swal.fire({
+    position: "center",
+    icon: "success",
+    title: "Login Success",
+    showConfirmButton: false,
+    timer: 1500
+  });
   const userId = response._id;
   const subscribed = response.subscribed
 
