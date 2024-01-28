@@ -1,0 +1,246 @@
+"use client"
+import { Box, Container, Typography } from '@mui/material'
+import React, { useEffect, useState } from 'react'
+import Death from '../../../../public/stockImg1.jpeg'
+import Actor from '../../../../public/stockImg3.jpeg'
+import Fire from '../../../../public/stockImg2.jpeg'
+import Grid from '@mui/material/Grid';
+import Image from 'next/image'
+import { useRouter } from 'next/navigation'
+import NewsCard from '../NewsCard/NewsCard'
+import Footer from '../Footer/Footer'
+import FooterArabic from '@/components/Arabic/Footer/Footer'
+import { useLanguage } from '@/context/LanguageContext'
+import BottomBar from '@/components/English/bottombar/bottom'
+import BottomBarArabic from '@/components/Arabic/bottombar/bottom'
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+
+const news = [
+  {
+  id:1,
+  title:'Up in the Bull Market',
+  descrition:'Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla' ,
+  image:Death,
+  date:'12/01/2024'
+  },
+  {
+    id:2,
+    title:'Raise in Common Economy',
+    descrition:'Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla',
+    image:Actor,
+    date:'12/01/2024'
+    },
+    {
+      id:3,
+      title:'Building Stock Careers',
+      descrition:'Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla ',
+      image:Fire,
+      date:'15/01/2024'
+    }
+    ,
+    {
+      id:4,
+      title:'A crash theorem',
+      descrition:'Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla ',
+      image:Fire,
+      date:'23/01/2024'
+    }
+    ,
+    {
+      id:5,
+      title:'Static Economy',
+      descrition:'Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla ',
+      image:Fire,
+      date:'24/01/2024'
+    }
+    ,
+    {
+      id:6,
+      title:'Build a bull',
+      descrition:'Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla ',
+      image:Fire,
+      date:'20/01/2024'
+    },{
+      id:7,
+      title:'Up in the Bull Market',
+      descrition:'Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla' ,
+      image:Death,
+      date:'24/01/2024'
+      },
+      {
+        id:8,
+        title:'Raise in Common Economy',
+        descrition:'Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla',
+        image:Actor,
+        date:'18/01/2024'
+        },{
+          id:9,
+          title:'Up in the Bull Market',
+          descrition:'Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla' ,
+          image:Death
+          ,
+    date:'19/01/2024'
+          },
+          {
+            id:10,
+            title:'Raise in Common Economy',
+            descrition:'Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla',
+            image:Actor,
+            date:'24/01/2024'
+            },{
+              id:11,
+              title:'Up in the Bull Market',
+              descrition:'Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla' ,
+              image:Death,
+              date:'20/01/2024'
+              },
+              {
+                id:12,
+                title:'Raise in Common Economy',
+                descrition:'Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla',
+                image:Actor,
+                date:'12/01/2024'
+                },
+]
+const NewsComponent = () => {
+  const { language } = useLanguage();
+  const [sortby, setSortBy] = React.useState('none');
+const [news,setNews]= useState([])
+  const handleChange = (event) => {
+    setSortBy(event.target.value);
+  };
+
+  useEffect(()=>{
+    const fetchNews = async()=>{
+ 
+      const res= await fetch('/api/fetchNews',{
+        method:"GET",
+        headers:{
+          'Content-Type':'application/json'
+        }
+      })
+
+      if(res.ok){
+        const response = await res.json()
+        console.log(response,'news');
+        setNews(response)
+      }
+
+
+    }
+    fetchNews()
+  },[])
+
+
+
+  const router = useRouter()
+
+
+ const handleView = (id)=>{
+ router.push(`/news/${id}`)
+ }
+
+ const sortedNews = () => {
+  switch (sortby) {
+    case 'today':
+      return news.filter((item) => item.date === getCurrentDate());
+    case 'week':
+      return news.filter((item) => isDateInThisWeek(item.date));
+    case 'month':
+      return news.filter((item) => isDateInThisMonth(item.date));
+    default:
+      return news;
+  }
+};
+
+
+const getCurrentDate = () => {
+  const today = new Date();
+  const dd = String(today.getDate()).padStart(2, '0');
+  const mm = String(today.getMonth() + 1).padStart(2, '0');
+  const yyyy = today.getFullYear();
+  return `${dd}/${mm}/${yyyy}`;
+};
+
+const isDateInThisWeek = (date) => {
+  // Implementation to check if the date is in the current week
+  // You can use a library like date-fns or moment for a more robust solution
+  // For simplicity, I'm leaving the implementation as an exercise
+  return true; // Placeholder, update as needed
+};
+
+const isDateInThisMonth = (date) => {
+  // Implementation to check if the date is in the current month
+  // You can use a library like date-fns or moment for a more robust solution
+  // For simplicity, I'm leaving the implementation as an exercise
+  return true; // Placeholder, update as needed
+};
+
+
+  return (
+    <Box sx={{height:'90dvh',overflow:'auto',display:'flex',flexDirection:'column',justifyContent:'space-between'}}>
+    <Container >
+
+<Typography paddingTop='20px' color='#3b4371' fontWeight='600' fontSize='35px'>News</Typography>
+
+<Box sx={{display:'flex',justifyContent:'flex-end'}}>
+  <Box>
+    <Typography fontSize='13px' fontWeight='500' marginLeft='0.5rem'>SortBy</Typography>
+<FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+     
+      <Select
+        labelId="demo-select-small-label"
+        id="demo-select-small"
+        value={sortby}
+        sx={{fontSize:'13px', fontWeight:'500'}}
+        onChange={handleChange}
+      >
+        <MenuItem sx={{fontSize:'13px', fontWeight:'500'}} value="none">
+          None
+        </MenuItem>
+        <MenuItem sx={{fontSize:'13px', fontWeight:'500'}} value='today'>Today</MenuItem>
+        <MenuItem sx={{fontSize:'13px', fontWeight:'500'}} value='week'>This week</MenuItem>
+        <MenuItem sx={{fontSize:'13px', fontWeight:'500'}} value='month'>This Month</MenuItem>
+      </Select>
+    </FormControl>
+    </Box>
+</Box>
+<Box sx={{marginTop:'.5rem',background:'#f3f6f9',height:'2px',marginBottom:'2rem'}}></Box>
+
+            <Box sx={{background:'#a8a9b3',borderRadius:'15px',margin:'0 0 3rem'}}>
+        <Typography style={{padding:"15px",color:'#fff'}}>
+        *<b>disclaimer</b>: Not financial advice. This newsletter reflects my own personal trading journey, for entertainment purposes only. I am not qualified or licensed to advise anyone on their investments or trades, I am sharing my personal ideas and experiences only. Never make financial decisions based on any information on this site or any associated platforms. Always consult a professional for investment related advice.* 
+        </Typography>
+      </Box>
+
+
+
+
+  <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }} sx={{paddingBottom:'2rem',marginTop:'1rem'}} >
+  {sortedNews().map((item) => (
+            <Grid key={item.id} item xs={2} sm={4} md={4}>
+              {/* <Box onClick={handleView(item.id)}> */}
+              <NewsCard title={item.title} description={item.description} image={item.image} id={item._id} date={item.date} />
+              {/* </Box> */}
+            </Grid>
+          ))}
+  </Grid>
+
+  
+
+          
+
+
+           
+  </Container>
+  <Box>
+  {language === 'english' ? <Footer/> :  <FooterArabic/> }
+  {language === 'english' ? <BottomBar/> :  <BottomBarArabic/> }
+  </Box>
+  </Box>
+  )
+}
+
+export default NewsComponent
