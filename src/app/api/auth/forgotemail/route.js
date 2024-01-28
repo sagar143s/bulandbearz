@@ -36,7 +36,7 @@ const newPassword = generateRandomPassword();
 const hashedPassword = await bcrypt.hash(newPassword, 10);
 try{
     const courier = new CourierClient(
-        { authorizationToken: "pk_test_ZK83J6G8CWM94KKSSCBK1N0YS773"});
+        { authorizationToken: process.env.NEXT_COURIER_TOKEN});
 
       const { requestId } = await  courier.send({
         message: {
