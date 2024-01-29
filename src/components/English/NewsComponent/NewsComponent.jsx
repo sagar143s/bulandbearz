@@ -17,93 +17,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
-const news = [
-  {
-  id:1,
-  title:'Up in the Bull Market',
-  descrition:'Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla' ,
-  image:Death,
-  date:'12/01/2024'
-  },
-  {
-    id:2,
-    title:'Raise in Common Economy',
-    descrition:'Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla',
-    image:Actor,
-    date:'12/01/2024'
-    },
-    {
-      id:3,
-      title:'Building Stock Careers',
-      descrition:'Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla ',
-      image:Fire,
-      date:'15/01/2024'
-    }
-    ,
-    {
-      id:4,
-      title:'A crash theorem',
-      descrition:'Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla ',
-      image:Fire,
-      date:'23/01/2024'
-    }
-    ,
-    {
-      id:5,
-      title:'Static Economy',
-      descrition:'Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla ',
-      image:Fire,
-      date:'24/01/2024'
-    }
-    ,
-    {
-      id:6,
-      title:'Build a bull',
-      descrition:'Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla ',
-      image:Fire,
-      date:'20/01/2024'
-    },{
-      id:7,
-      title:'Up in the Bull Market',
-      descrition:'Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla' ,
-      image:Death,
-      date:'24/01/2024'
-      },
-      {
-        id:8,
-        title:'Raise in Common Economy',
-        descrition:'Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla',
-        image:Actor,
-        date:'18/01/2024'
-        },{
-          id:9,
-          title:'Up in the Bull Market',
-          descrition:'Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla' ,
-          image:Death
-          ,
-    date:'19/01/2024'
-          },
-          {
-            id:10,
-            title:'Raise in Common Economy',
-            descrition:'Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla',
-            image:Actor,
-            date:'24/01/2024'
-            },{
-              id:11,
-              title:'Up in the Bull Market',
-              descrition:'Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla' ,
-              image:Death,
-              date:'20/01/2024'
-              },
-              {
-                id:12,
-                title:'Raise in Common Economy',
-                descrition:'Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla Lorem Ipsum Dolla',
-                image:Actor,
-                date:'12/01/2024'
-                },
-]
+
 const NewsComponent = () => {
   const { language } = useLanguage();
   const [sortby, setSortBy] = React.useState('none');
@@ -181,7 +95,7 @@ const isDateInThisMonth = (date) => {
 
   return (
     <Box sx={{height:'90dvh',overflow:'auto',display:'flex',flexDirection:'column',justifyContent:'space-between'}}>
-    <Container >
+    <Container  >
 
 <Typography paddingTop='20px' color='#3b4371' fontWeight='600' fontSize='35px'>News</Typography>
 
@@ -217,17 +131,17 @@ const isDateInThisMonth = (date) => {
 
 
 
-
-  <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }} sx={{paddingBottom:'2rem',marginTop:'1rem'}} >
+<Container sx={{display:'grid',placeItems:'center'}}>
+  <Grid container spacing={{ xs: 5, md: 3 }} columns={{ xs: 3, sm: 8, md: 12 }} sx={{paddingBottom:'2rem',marginTop:'1rem'}} >
   {sortedNews().map((item) => (
-            <Grid key={item.id} item xs={2} sm={4} md={4}>
+            <Grid key={item.id} item xs={12} sm={12} md={4}>
               {/* <Box onClick={handleView(item.id)}> */}
               <NewsCard title={item.title} description={item.description} image={item.image} id={item._id} date={item.date} />
               {/* </Box> */}
             </Grid>
           ))}
   </Grid>
-
+  </Container>
   
 
           

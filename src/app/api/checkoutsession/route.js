@@ -8,17 +8,20 @@ export const POST = async (request) => {
   try {
     const body = await request.json();
     const { bookingDetails, courseDetails,userId } = body;
+    
+    const price = courseDetails.price*100
+    console.log(price,'price');
     const origin = request.headers.get("origin") || "http://localhost:3002";
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
       
       line_items: [{
         price_data: {
-          currency: "usd",
+          currency: "aed",
           product_data: {
             name: "Sample Product",
           },
-          unit_amount: 1000,
+          unit_amount: price,
         },
         quantity: 1,
       }],

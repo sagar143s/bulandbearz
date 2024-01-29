@@ -2,6 +2,15 @@
 import { Box, Typography, IconButton, Menu, MenuItem } from '@mui/material';
 import React,{useEffect, useState} from 'react'
 import MenuIcon from '@mui/icons-material/Menu';
+import Drawer from '@mui/material/Drawer';
+import Button from '@mui/material/Button';
+import List from '@mui/material/List';
+
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
+
+import InboxIcon from '@mui/icons-material/MoveToInbox';
+import MailIcon from '@mui/icons-material/Mail';
 import VerifiedUserIcon from '@mui/icons-material/VerifiedUser';
 import TranslateIcon from '@mui/icons-material/Translate';
 import ListItemIcon from '@mui/material/ListItemIcon';
@@ -13,6 +22,7 @@ import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 import EventRepeatIcon from '@mui/icons-material/EventRepeat';
 import Image from 'next/image';
+import ListItemText from '@mui/material/ListItemText';
 import Logo from '../../../../public/lOGO.png'
 import Logo1 from '../../../../public/logos/logowhite.png'
 import User from '../../../../public/User.png'
@@ -28,6 +38,8 @@ import { useUser } from '@/context/UserContext';
 import { UserAuth } from '@/context/AuthContext'
 import './englishheader.module.css'
 import LogoutPop from '../Logout/Logout';
+
+
 
 
 
@@ -50,7 +62,93 @@ const EnglishHeader = () => {
   const open3 = Boolean(anchorEl3);
   const [menuOpen, setMenuOpen] = useState(false);
   const {guser,googleSignIn,logOut} = UserAuth()
- 
+  const [state, setState] = React.useState({
+    top: false,
+  });
+
+  const toggleDrawer = (open) => (event) => {
+    if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+      return;
+    }
+
+    setState({ top: open });
+  };
+
+  const list = () => (
+    <Box
+      sx={{ width: 'auto',background:'#32385a',height:'100%' }}
+      role="presentation"
+      onClick={toggleDrawer(false)}
+      onKeyDown={toggleDrawer(false)}
+    >
+
+      <List>
+      <ListItem  disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+              <div style={{ position: 'relative', width: '130px', height: '100px' }}>
+    <Image src={Logo1} fill alt='events' style={{ objectFit: 'contain' }} />
+        </div>
+              </ListItemIcon>
+              <ListItemText  />
+            </ListItemButton>
+          </ListItem>
+          
+         <Link href='/'>
+          <ListItem  disablePadding>
+            <ListItemButton >
+               <Typography sx={{color:'#fff',fontSize:'15px',fontWeight:'500'}} align='right'>Home</Typography>
+              <ListItemText  />
+            </ListItemButton>
+          </ListItem>
+          </Link>
+          <Link href='/about'>
+          <ListItem  disablePadding>
+            <ListItemButton sx={{color:'#fff',fontSize:'15px',fontWeight:'500'}}>
+              About
+              <ListItemText  />
+            </ListItemButton>
+          </ListItem>
+          </Link>
+          <Link href='/bookings'>
+          <ListItem  disablePadding>
+            <ListItemButton sx={{color:'#fff',fontSize:'15px',fontWeight:'500'}}>
+              Bookings
+              <ListItemText  />
+            </ListItemButton>
+          </ListItem>
+          </Link>
+
+          <Link href='/news'>
+          <ListItem  disablePadding>
+            <ListItemButton sx={{color:'#fff',fontSize:'15px',fontWeight:'500'}}>
+             News
+              <ListItemText  />
+            </ListItemButton>
+          </ListItem>
+          </Link>
+
+           <Link href='/subscription'>
+          <ListItem  disablePadding>
+            <ListItemButton sx={{color:'#fff',fontSize:'15px',fontWeight:'500'}}>
+              Subscription
+              <ListItemText  />
+            </ListItemButton>
+          </ListItem>
+          </Link>
+
+          <Link href='/contact'>
+          <ListItem  disablePadding>
+            <ListItemButton sx={{color:'#fff',fontSize:'15px',fontWeight:'500'}}>
+              Contact Us
+              <ListItemText  />
+            </ListItemButton>
+          </ListItem>
+          </Link>
+      </List>
+    </Box>
+  );
+
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -142,19 +240,46 @@ const EnglishHeader = () => {
     setAnchorEl(null);
   };
 
+  const handleNavbarClick = ()=>{
+
+  }
+
 
 
   return (
     <Box sx={{display:'flex',alignItems:'center',justifyContent:'space-between',height:'10dvh',padding:'1rem',background:'#32385a',boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)',position: 'relative', overflow: 'hidden' }}>
     
     
-   {language === 'english' ? <Link href='/' style={{textDecoration:'none'}}>
-   <Box sx={{width:'180px', height:'60px',marginLeft:"1rem" }}  >
+    {language == 'english' ?  <Box sx={{display:{xs:'block',sm:'block',md:'none'}}}>
+ <Box>
+      <IconButton onClick={toggleDrawer(true)}>
+        <MenuIcon style={{color:'#fff'}}/>
+      </IconButton>
+      <Drawer
+       anchor="top"
+       open={state.top}
+       onClose={toggleDrawer(false)}
+      >
+        {list()}
+      </Drawer>
+     
+    </Box>
+
+   </Box>
+  :
+  <></> 
+  }
+   {language === 'english' ?
+   
+   <Link href='/' style={{textDecoration:'none'}}>
+   <Box sx={{display:{xs:'none',sm:'none',md:'block'}, width:'180px', height:'60px',marginLeft:"1rem" }}  >
         <div style={{ position: 'relative', width: '100%', height: '100%' }}>
     <Image src={Logo1} fill alt='events' style={{ objectFit: 'contain' }} />
         </div>
    </Box>
-   </Link> : 
+   </Link>
+   
+   : 
    <Box sx={{display:{xs:'none' ,sm:'none',md:'flex'},alignItems:'center',justifyContent:'center',gap:'1rem',color:'#021b79'}}>
      
    <Link href='/cart'><Avatar sx={{cursor:'pointer',width:'15px' ,height:'15px',padding:"10px",padding:"10px"}}>
@@ -347,7 +472,7 @@ const EnglishHeader = () => {
 
    {language == 'english' ? 
    
-<Box sx={{display:{xs:'none' ,sm:'none',md:'flex'},alignItems:'center',justifyContent:'center',gap:'1rem',color:'#021b79'}}>
+<Box sx={{display:'flex',alignItems:'center',justifyContent:'center',gap:'1rem',color:'#021b79'}}>
      
      <Link href='/cart'>   <Avatar sx={{cursor:'pointer',width:'30px' ,height:'30px',}}>
      <Image src={Cart} alt="User"  fill />
@@ -438,21 +563,9 @@ const EnglishHeader = () => {
   }
 
 
-   
+   {/* login */}
 
- {language == 'english' ?  <Box sx={{display:{xs:'block',sm:'block',md:'none'}}}>
- <Box>
-      <IconButton onClick={handleMenuClick}>
-        <MenuIcon />
-      </IconButton>
-
-     
-    </Box>
-
-   </Box>
-  :
-  <></> 
-  }
+ 
 
            
  

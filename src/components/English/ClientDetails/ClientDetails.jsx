@@ -86,7 +86,7 @@ const Checkout = () => {
     }
   return (
     <Container sx={{marginTop:'5rem',marginBottom:'5rem'}}>
-        <Box sx={{display:'flex',gap:'1rem'}}>
+        <Box sx={{display:'flex',gap:'1rem',flexDirection:{xs:'column',sm:'column',md:'row'}}}>
             <Box sx={{flex:2,display:'flex',background:'#fff',flexDirection:'column',gap:'1rem',width:'100%',border:'solid 1px #dddfe1',boxShadow:'1.5px 2.6px 10px 0 rgba(119, 119, 119, 0.1)',borderRadius:'11px'}}>
           <Box sx={{background:'#32385a',borderRadius:'11px 11px 0px 0px',height:'70px',boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',}} >
           <Typography align='center'  fontSize='25px' fontWeight='500' color='#fff' paddingTop='1rem'>Confirm Client Details</Typography>
