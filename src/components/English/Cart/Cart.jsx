@@ -57,7 +57,7 @@ console.log(booking,"vada kuttappa");
             
             {bookings.length!=0 && bookings.map((booking,index)=>(
  <Box key={index}>
- <Box  sx={{ display:'flex',justifyContent:'space-between' ,gap:'1rem',  width:'100%',height:'250px',marginTop:'3rem',borderRadius:'6px',padding:'2rem',flexDirection:{xs:'column',sm:'column',md:'row'}}}>
+ <Box  sx={{ display:'flex',justifyContent:'space-between' ,gap:'1rem',  width:'100%',height:'350px',marginTop:'3rem',borderRadius:'6px',padding:'2rem',flexDirection:{xs:'column',sm:'column',md:'row'}}}>
             <div style={{ position: 'relative', width: '25%', height: '100%' }}>
             <Image src={Stock1} layout="fill" objectFit="cover"  alt='events'/>
             </div>
