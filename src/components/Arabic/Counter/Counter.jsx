@@ -9,7 +9,7 @@ const CounterContainer = styled(Box)({
   display: "flex",
   justifyContent: "space-around",
   alignItems: "center",
-  background: "linear-gradient(to right, #3b4371,#f3904f )",
+  background: "linear-gradient(to left, #141e30, #243b55)",
   padding: "50px",
   marginTop:'50px',
   flexDirection: "row", 
