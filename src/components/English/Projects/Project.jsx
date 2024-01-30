@@ -13,7 +13,7 @@ import Image from 'next/image';
 
 // Array of card details to populate the cards
 const cardDetails = [
-  { title: 'Investment Advisory',  description: 'Explore expert Investment Advisory services for strategic stock market decisions and various platform.', imageUrl: Image1},
+  { title: 'Investment Advisory',  description: 'EExplore Investment Advisory for strategic stock market decisions and diverse platforms, ensuring informed choices for optimal financial outcomes.', imageUrl: Image1},
   { title: 'Market Research',  description: 'Empower investment decisions with comprehensive stock market research for well-informed and strategic investment choices.',  imageUrl: Image2},
   { title: 'Market Trends Analysis',  description: 'Elevate investments with our Trends Analysis service, providing precise insights for strategic decisions in dynamic markets.',  imageUrl: Image3 },
   { title: 'Technical Analysis',  description: 'Leverage advanced tools for market trend analysis, gain insights, and optimize returns with our comprehensive financial analysis.',  imageUrl: Image4 },
@@ -23,7 +23,7 @@ const cardDetails = [
 ];
 const topSection = {
   heading: 'FINANCIAL INSIGHTS SPECTRUM',
-  subheading: 'Unveiling Investment Advisory.',
+  subheading: 'Unveiling Investment Advisory',
   description: 'A Comprehensive Guide to Investment Advisory, Offering Expert Analysis and Strategic Perspectives for Informed Financial Decision-Making in Todays Dynamic Markets.',
 };
 
@@ -32,16 +32,16 @@ const ProjectItems = () => {
     <Container  sx={{ flexGrow: 1, paddingTop:'80px',paddingBottom:'5rem' }}>
  <Grid container spacing={5} alignItems="center" justifyContent="center">
         <Grid item xs={12} sm={12} md={6}>
-          <Typography gutterBottom variant="h4" component="div" style={{fontWeight:'bold',color:'#485563',textTransform:'none'}} dir='rtl'>
+          <Typography gutterBottom variant="h4" component="div" style={{fontWeight:'bold',color:'#485563',textTransform:'none'}} >
             {topSection.heading}
           </Typography>
-          <Typography gutterBottom variant="h6" component="div" color='text.secondary' fontWeight='600' dir='rtl'>
+          <Typography gutterBottom variant="h6" component="div" color='text.secondary' fontWeight='600' >
             {topSection.subheading}
           </Typography>
           
         </Grid>
         <Grid item xs={12} md={6}>
-          <Typography variant="body1" color="darkgray" paddingTop='1rem' fontWeight='500' dir='rtl'>
+          <Typography variant="body1" color="darkgray" paddingTop='1rem' fontWeight='500'>
             {topSection.description}
           </Typography>
           <Button href='./bookings' sx={{background:'#32385a',borderRadius:'5px',fontWeight:'bold',textTransform:'none',color:'#fff',marginTop:'1rem',width:'180px',border:'1px solid #32385a', '&:hover': {color:'#fff',border:'1px solid #32385a',background:'linear-gradient(to right, #141e30, #32385a)'}}}>DISCOVER MORE</Button>

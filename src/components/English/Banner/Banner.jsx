@@ -73,7 +73,7 @@ const Banner = () => {
             Welcome to Venture
           </h1>
           <h3 style={isMobile ? mobileStyles.leftColumnH3 : desktopStyles.leftColumnH3} >
-          Cultivate long-term investments with personalized plans and professional support.
+Nurture enduring investments through tailored plans and personalized guidance.
           </h3>
           <p style={{ fontWeight: 'bold',marginTop:'1.5rem',textAlign:'left' }}>Elevate your ambitions with our professional support—forge your personalized investment plan with us, starting from the ground up.</p>
           <Button href='./bookings' style={{  

@@ -23,7 +23,7 @@ import Logout from '@mui/icons-material/Logout';
 import EventRepeatIcon from '@mui/icons-material/EventRepeat';
 import Image from 'next/image';
 import ListItemText from '@mui/material/ListItemText';
-import Logo from '../../../../public/lOGO.png'
+import Logo from '../../../../public/logo4.png'
 import Logo1 from '../../../../public/logos/logowhite.png'
 import User from '../../../../public/User.png'
 import Userlog from '../../../../public/userlog.webp'
@@ -247,14 +247,17 @@ const EnglishHeader = () => {
 
 
   return (
-    <Box sx={{display:'flex',alignItems:'center',justifyContent:'space-between',height:'10dvh',padding:'1rem',background:'#32385a',boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)',position: 'relative', overflow: 'hidden' }}>
+    <Box sx={{display:'flex',alignItems:'center',justifyContent:'space-between',height:'10dvh',padding:'.5rem',background:'#32385a',boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)',position: 'relative', overflow: 'hidden' }}>
     
     
     {language == 'english' ?  <Box sx={{display:{xs:'block',sm:'block',md:'none'}}}>
  <Box>
       <IconButton onClick={toggleDrawer(true)}>
         <MenuIcon style={{color:'#fff'}}/>
+        <Image src={Logo} style={{width:"30px", height:'auto',margin:"0 10px"}} alt='B&B'/>
       </IconButton>
+    
+      
       <Drawer
        anchor="top"
        open={state.top}
@@ -272,7 +275,7 @@ const EnglishHeader = () => {
    {language === 'english' ?
    
    <Link href='/' style={{textDecoration:'none'}}>
-   <Box sx={{display:{xs:'none',sm:'none',md:'block'}, width:'180px', height:'60px',marginLeft:"1rem" }}  >
+   <Box sx={{display:{xs:'none',sm:'none',md:'block'}, width:'180px', height:'60px',marginLeft:".5rem" }}  >
         <div style={{ position: 'relative', width: '100%', height: '100%' }}>
     <Image src={Logo1} fill alt='events' style={{ objectFit: 'contain' }} />
         </div>
@@ -282,9 +285,9 @@ const EnglishHeader = () => {
    : 
    <Box sx={{display:{xs:'none' ,sm:'none',md:'flex'},alignItems:'center',justifyContent:'center',gap:'1rem',color:'#021b79'}}>
      
-   <Link href='/cart'><Avatar sx={{cursor:'pointer',width:'15px' ,height:'15px',padding:"10px",padding:"10px"}}>
+   <Link href='/cart'><Avatar sx={{cursor:'pointer',width:'30px' ,height:'30px'}}>
 
-   <Image src={Cart} alt="User"  fill  style={{padding:"10px"}}/>
+   <Image src={Cart} alt="User"  fill />
    </Avatar>
    </Link>
 
@@ -293,7 +296,7 @@ const EnglishHeader = () => {
    <IconButton
             onClick={handleClick}
             size="small"
-            sx={{ ml: 2,color:'#021b79' }}
+            sx={{ ml: 1,color:'#021b79' }}
             aria-controls={open ? 'account-menu' : undefined}
             aria-haspopup="true"
             aria-expanded={open ? 'true' : undefined}
@@ -307,7 +310,7 @@ const EnglishHeader = () => {
           <IconButton
             onClick={handleClickLan}
             size="small"
-            sx={{ ml: 2,color:'#021b79' }}
+            sx={{ ml: 1,color:'#021b79' }}
             aria-controls={open1 ? 'account-menu' : undefined}
             aria-haspopup="true"
             aria-expanded={open1 ? 'true' : undefined}
@@ -369,11 +372,11 @@ const EnglishHeader = () => {
           anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
         >
    
-          <MenuItem onClick={handleLogin}  sx={{fontFamily:'Rubik',fontSize:'14px' ,fontWeight:'600'}}>
+          <MenuItem onClick={handleLogin}  sx={{fontSize:'14px' ,fontWeight:'600'}}>
             Login
           </MenuItem>
           
-          <MenuItem onClick={handleSignup} sx={{fontFamily:'Rubik',fontSize:'14px' ,fontWeight:'600'}}>
+          <MenuItem onClick={handleSignup} sx={{fontSize:'14px' ,fontWeight:'600'}}>
           Signup
           </MenuItem>
           
@@ -414,10 +417,10 @@ const EnglishHeader = () => {
           transformOrigin={{ horizontal: 'right', vertical: 'top' }}
           anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
         >
-          <MenuItem onClick={handleCloseLan} sx={{fontFamily:'Rubik',fontSize:'14px' ,fontWeight:'600'}}>
+          <MenuItem onClick={handleCloseLan} sx={{fontSize:'14px' ,fontWeight:'600'}}>
             English
           </MenuItem>
-          <MenuItem onClick={handleCloseLan} sx={{fontFamily:'Rubik',fontSize:'14px' ,fontWeight:'600'}}>
+          <MenuItem onClick={handleCloseLan} sx={{fontSize:'14px' ,fontWeight:'600'}}>
             Arabic
           </MenuItem>
         </Menu>
@@ -450,9 +453,9 @@ const EnglishHeader = () => {
       </Box>
       : 
       <Box sx={{display:{xs:'none' ,sm:'none',md:'flex'},alignItems:'center',justifyContent:'center',gap:'1rem',direction:'rtl'}}>
-   <Link href='/' style={{textDecoration:'none'}}><Typography fontFamily='Rubik' fontWeight='500' fontSize='15px' color='#fff' sx={{border: '1px solid rgba(44, 62, 80, 0.5)',paddingLeft:'0.5rem',paddingRight:'0.5rem',paddingTop:'0.2rem',paddingBottom:'0.2rem',cursor:'pointer',borderRadius:'8px' ,'&:hover':{background:'#fff',color:'#000'}}}>المنزل</Typography></Link>
-   <Link href={language === 'english' ?'/about': '/about'} style={{textDecoration:'none'}}><Typography fontFamily='Rubik' fontWeight='500' fontSize='15px' color='#fff' sx={{border: '1px solid rgba(44, 62, 80, 0.5)',paddingLeft:'0.5rem',paddingRight:'0.5rem',paddingTop:'0.2rem',paddingBottom:'0.2rem',cursor:'pointer',borderRadius:'8px','&:hover':{background:'#fff',color:'#000'}}}>حولنا</Typography></Link>
-   <Link href={language === 'english' ? '/bookings' :'/bookings'} style={{textDecoration:'none'}}><Typography fontFamily='Rubik' fontWeight='500' fontSize='15px' color='#fff' sx={{border: '1px solid rgba(44, 62, 80, 0.5)',paddingLeft:'0.5rem',paddingRight:'0.5rem',paddingTop:'0.2rem',paddingBottom:'0.2rem',cursor:'pointer',borderRadius:'8px','&:hover':{background:'#fff',color:'#000'}}}>احجز الآن</Typography></Link>
+   <Link href='/' style={{textDecoration:'none'}}><Typography fontWeight='500' fontSize='15px' color='#fff' sx={{border: '1px solid rgba(44, 62, 80, 0.5)',paddingLeft:'0.5rem',paddingRight:'0.5rem',paddingTop:'0.2rem',paddingBottom:'0.2rem',cursor:'pointer',borderRadius:'8px' ,'&:hover':{background:'#fff',color:'#000'}}}>المنزل</Typography></Link>
+   <Link href={language === 'english' ?'/about': '/about'} style={{textDecoration:'none'}}><Typography   fontWeight='500' fontSize='15px' color='#fff' sx={{border: '1px solid rgba(44, 62, 80, 0.5)',paddingLeft:'0.5rem',paddingRight:'0.5rem',paddingTop:'0.2rem',paddingBottom:'0.2rem',cursor:'pointer',borderRadius:'8px','&:hover':{background:'#fff',color:'#000'}}}>حولنا</Typography></Link>
+   <Link href={language === 'english' ? '/bookings' :'/bookings'} style={{textDecoration:'none'}}><Typography   fontWeight='500' fontSize='15px' color='#fff' sx={{border: '1px solid rgba(44, 62, 80, 0.5)',paddingLeft:'0.5rem',paddingRight:'0.5rem',paddingTop:'0.2rem',paddingBottom:'0.2rem',cursor:'pointer',borderRadius:'8px','&:hover':{background:'#fff',color:'#000'}}}>احجز الآن</Typography></Link>
    {subscribed && (
    <Link href={language === 'english' ? '/news' : '/news'} style={{textDecoration:'none'}}>
       <Typography fontWeight='500' fontSize='15px' color='#fff' sx={{border: '1px solid rgba(44, 62, 80, 0.5)',paddingLeft:'0.5rem',paddingRight:'0.5rem',paddingTop:'0.2rem',paddingBottom:'0.2rem',cursor:'pointer',borderRadius:'8px','&:hover':{background:'#fff',color:'#000'}}}>
@@ -460,9 +463,9 @@ const EnglishHeader = () => {
       </Typography>
    </Link>
 )}
-   {/* <Link href={language ===  'english' ?'/financial' : '/financialArabic'} style={{textDecoration:'none'}}><Typography fontFamily='Rubik' fontWeight='500' fontSize='15px' color='#fff' sx={{border: '1px solid rgba(44, 62, 80, 0.5)',paddingLeft:'0.5rem',paddingRight:'0.5rem',paddingTop:'0.2rem',paddingBottom:'0.2rem',cursor:'pointer',borderRadius:'8px','&:hover':{background:'#fff',color:'#000'}}}>عيادة الصحة المالية</Typography></Link> */}
+   {/* <Link href={language ===  'english' ?'/financial' : '/financialArabic'} style={{textDecoration:'none'}}><Typography  fontWeight='500' fontSize='15px' color='#fff' sx={{border: '1px solid rgba(44, 62, 80, 0.5)',paddingLeft:'0.5rem',paddingRight:'0.5rem',paddingTop:'0.2rem',paddingBottom:'0.2rem',cursor:'pointer',borderRadius:'8px','&:hover':{background:'#fff',color:'#000'}}}>عيادة الصحة المالية</Typography></Link> */}
    <Link href={language ===  'english' ?'/subscription' : '/subscription'} style={{textDecoration:'none'}}><Typography  fontWeight='500' fontSize='15px' color='#fff' sx={{border: '1px solid rgba(44, 62, 80, 0.5)',paddingLeft:'0.5rem',paddingRight:'0.5rem',paddingTop:'0.2rem',paddingBottom:'0.2rem',cursor:'pointer',borderRadius:'8px','&:hover':{background:'#fff',color:'#000'}}}>الاشتراكات</Typography></Link>
-   <Link href={language === 'english' ? '/contact' :'/contact'} style={{textDecoration:'none'}}><Typography fontFamily='Rubik' fontWeight='500' fontSize='15px' color='#fff' sx={{border:'1px solid rgba(44, 62, 80, 0.5)',paddingLeft:'0.5rem',paddingRight:'0.5rem',paddingTop:'0.2rem',paddingBottom:'0.2rem',cursor:'pointer',borderRadius:'8px','&:hover':{background:'#fff',color:'#000'}}}>تواصل معنا</Typography></Link>
+   <Link href={language === 'english' ? '/contact' :'/contact'} style={{textDecoration:'none'}}><Typography   fontWeight='500' fontSize='15px' color='#fff' sx={{border:'1px solid rgba(44, 62, 80, 0.5)',paddingLeft:'0.5rem',paddingRight:'0.5rem',paddingTop:'0.2rem',paddingBottom:'0.2rem',cursor:'pointer',borderRadius:'8px','&:hover':{background:'#fff',color:'#000'}}}>تواصل معنا</Typography></Link>
    </Box>
     }
 
@@ -472,7 +475,7 @@ const EnglishHeader = () => {
 
    {language == 'english' ? 
    
-<Box sx={{display:'flex',alignItems:'center',justifyContent:'center',gap:'1rem',color:'#021b79'}}>
+<Box sx={{display:'flex',alignItems:'center',justifyContent:'center',gap:'.5rem',color:'#021b79'}}>
      
      <Link href='/cart'>   <Avatar sx={{cursor:'pointer',width:'30px' ,height:'30px',}}>
      <Image src={Cart} alt="User"  fill />
@@ -518,19 +521,24 @@ const EnglishHeader = () => {
 </IconButton>
   :
   <IconButton
-              onClick={handleClick}
-              size="small"
-              sx={{ ml: 2,color:'#021b79' }}
-              aria-controls={open ? 'account-menu' : undefined}
-              aria-haspopup="true"
-              aria-expanded={open ? 'true' : undefined}
-            >
-           <Avatar sx={{width:'30px' ,height:'30px'}}>
-       <Image src={Userlog } alt="User"fill />
-  
+  onClick={handleClick}
+  size="small"
+  sx={{
+    ml: 1,
+    color: '#021b79',
+    '@media screen and (min-width: 600px)': {
+     ml:2
+    },
+  }}
+  aria-controls={open ? 'account-menu' : undefined}
+  aria-haspopup="true"
+  aria-expanded={open ? 'true' : undefined}
+>
+  <Avatar sx={{ width: '30px', height: '30px' }}>
+    <Image src={Userlog} alt="User" fill />
   </Avatar>
-             
-            </IconButton>
+</IconButton>
+
   }
     </>
   )}
@@ -540,7 +548,7 @@ const EnglishHeader = () => {
             <IconButton
               onClick={handleClickLan}
               size="small"
-              sx={{ ml: 2,color:'#021b79' }}
+              sx={{ ml: 1,color:'#021b79' }}
               aria-controls={open1 ? 'account-menu' : undefined}
               aria-haspopup="true"
               aria-expanded={open1 ? 'true' : undefined}
@@ -604,11 +612,11 @@ const EnglishHeader = () => {
          transformOrigin={{ horizontal: 'right', vertical: 'top' }}
          anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
        >
-          <MenuItem onClick={ handleLogin}  sx={{fontFamily:'Rubik',fontSize:'14px' ,fontWeight:'600'}}>
+          <MenuItem onClick={ handleLogin}  sx={{fontSize:'14px' ,fontWeight:'600'}}>
            Login
          </MenuItem>
 
-         <MenuItem onClick={ handleSignup  }   sx={{fontFamily:'Rubik',fontSize:'14px' ,fontWeight:'600'}}>
+         <MenuItem onClick={ handleSignup  }   sx={{fontSize:'14px' ,fontWeight:'600'}}>
           Sign Up
          </MenuItem>
 
@@ -652,7 +660,7 @@ const EnglishHeader = () => {
          anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
        >
           
-         <MenuItem onClick={handleSignout}   sx={{fontFamily:'Rubik',fontSize:'14px' ,fontWeight:'600'}}>
+         <MenuItem onClick={handleSignout}   sx={{fontSize:'14px' ,fontWeight:'600'}}>
          Logout
          </MenuItem>
          </Menu>
@@ -695,11 +703,11 @@ const EnglishHeader = () => {
          transformOrigin={{ horizontal: 'right', vertical: 'top' }}
          anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
        >
-          <MenuItem onClick={ handleProfile}  sx={{fontFamily:'Rubik',fontSize:'14px' ,fontWeight:'600'}}>
+          <MenuItem onClick={ handleProfile}  sx={{fontSize:'14px' ,fontWeight:'600'}}>
             My Profile
           </MenuItem>
 
-         <MenuItem onClick={ handleLogout  }   sx={{fontFamily:'Rubik',fontSize:'14px' ,fontWeight:'600'}}>
+         <MenuItem onClick={ handleLogout  }   sx={{fontSize:'14px' ,fontWeight:'600'}}>
          Logout
          </MenuItem>
          </Menu>
@@ -740,11 +748,11 @@ const EnglishHeader = () => {
          transformOrigin={{ horizontal: 'right', vertical: 'top' }}
          anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
        >
-          <MenuItem onClick={ handleLogin}  sx={{fontFamily:'Rubik',fontSize:'14px' ,fontWeight:'600'}}>
+          <MenuItem onClick={ handleLogin}  sx={{fontSize:'14px' ,fontWeight:'600'}}>
            Login
          </MenuItem>
 
-         <MenuItem onClick={ handleSignup  }   sx={{fontFamily:'Rubik',fontSize:'14px' ,fontWeight:'600'}}>
+         <MenuItem onClick={ handleSignup  }   sx={{fontSize:'14px' ,fontWeight:'600'}}>
           Sign Up
          </MenuItem>
 

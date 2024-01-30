@@ -20,10 +20,12 @@ const PrivacyPolicy = () => {
   const headingStyle = {
     color: 'black',
     marginBottom: '16px',
+ 
   };
 
   const listItemStyle = {
     marginBottom: '8px',
+    marginLeft:"18px",
   };
 
   const linkStyle = {

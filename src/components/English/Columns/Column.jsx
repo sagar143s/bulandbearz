@@ -18,10 +18,10 @@ const services = [
   {
     title: 'Platform Proficiency',
     image: Icon1,
-    description: 'Expert advice on selecting the ideal trading platform tailored to your requirements. ',
+    description: 'Cultivate enduring investments with personalized plans and tailored guidance. ',
   },
   {
-    title: 'Strategic Planning',
+    title: 'Strategic Planning', 
     image: Icon4,
     description: 'Develop a custom trading strategy with our experienced consultants.',
   },
@@ -50,7 +50,7 @@ const Columns =()=> {
         <Typography  fontSize='20px' textTransform='none' marginBottom={'1rem'}   sx={{ textAlign: 'center', color: '#485563',fontWeight:'600' }}>
         DISCOVER TRADE MASTERY        </Typography>
         <Typography variant={isMobile ? 'h6' : 'h4'} textTransform='none' component="h2" gutterBottom style={{ textAlign: 'center', marginBottom: 32, color: 'rgb(2,77,142)', fontWeight: 'bold' }}>
-        Navigating the Markets with Expert Consultancy
+        Navigating the Markets with Insightful Consultancy
       </Typography>
       <Grid container spacing={3}>
   {services.map((service, index) => (

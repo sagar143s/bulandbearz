@@ -18,7 +18,7 @@ const services = [
 {
     title: 'إتقان المنصات',
     image: Icon1,
-    description: 'نصائح خبيرة حول اختيار المنصة التداول المثلى وفقًا لاحتياجاتك.',
+    description: 'نمِّ الاستثمارات المستدامة من خلال خطط شخصية وإرشاد مخصص.',
 },
 {
     title: 'التخطيط الاستراتيجي',
@@ -51,9 +51,8 @@ const Columns = () => {
         اكتشف إتقان التداول
                 </Typography>
         <Typography  variant={isMobile ? 'h6' : 'h3'} textTransform='none' component="h1" gutterBottom style={{ textAlign: 'center', marginBottom: 32, color: 'rgb(2,77,142)', fontWeight: 'bold' }}>
-        توجيه في أسواق المال بخبرة الاستشارة 
-        
-               </Typography>
+        التنقل في الأسواق مع استشارات ذات رؤية.       
+                </Typography>
         <Grid container spacing={3}>
           {services.map((service, index) => (
             <Grid item xs={12} sm={6} md={3} lg={3} key={index} style={{ borderRadius: '10px' }}>

@@ -45,7 +45,6 @@ const Login = () => {
 
     useEffect(()=>{
  if(guser){
-console.log("unde");
 const name = guser.displayName
 const email=guser.email
 
@@ -81,7 +80,7 @@ if(res.ok){
 
     saveUser()
  }else{
- console.log("ille");
+
  }
     },[guser])
   
@@ -108,6 +107,8 @@ if(res.ok){
 
 
     const handleLogin = async(e) => {
+      e.preventDefault();
+
       if (!email || !password) {
         console.error('Please provide both email and password');
         return;
@@ -126,7 +127,7 @@ if(res.ok){
             }),
            })
            const response = await res.json()
-           console.log(response,"hui");
+       
            if(res.ok){
             const userId = response._id;
             const subscribed = response.subscribed
@@ -161,7 +162,7 @@ if(res.ok){
 
     const handleGoogleLogin = (response) => {
      
-      console.log(response);
+    
     };
 
     
@@ -193,12 +194,13 @@ if(res.ok){
 >               <Typography fontSize='28px'  color='#32385a' fontWeight={600}>Login</Typography>
                <Box sx={{width:'70%',}}>
                <Typography marginTop='1rem' fontSize='16px' align='left' color='#32385a' fontWeight={500}>Email*</Typography>
-               <TextField sx={{width:'100%',marginTop:'0.2rem'}}  InputProps={{style:{height:'40px'}}} onChange={(e)=>setEmail(e.target.value)}/>
+               <TextField sx={{width:'100%',marginTop:'0.2rem'}}  InputProps={{style:{height:'40px'}}}   type="email" onChange={(e)=>setEmail(e.target.value)}/>
+               
                </Box>
 
                <Box sx={{ width: '70%' }}>
                     <Typography marginTop='1rem' fontSize='16px' align='left' color='#32385a' fontWeight={500}>Password*</Typography>
-                    <TextField type='password' sx={{ width: '100%', marginTop: '0.2rem' }} InputProps={{ style: { height: '40px' } }} onChange={handlePasswordChange} />
+                    <TextField value={password} type='password' sx={{ width: '100%', marginTop: '0.2rem' }} InputProps={{ style: { height: '40px' } }} onChange={handlePasswordChange} />
                     <Typography onClick={handleForgotPassword} marginTop='0.5rem' fontSize='14px' align='right' color='#7f63f4' fontWeight={400} style={{ cursor: 'pointer' }}>Forgot Password?</Typography>
                 </Box>
 
@@ -206,7 +208,7 @@ if(res.ok){
             
 
 
-                <Button onClick={handleLogin} sx={{background:'#32385a',color:'#fff',width:'75%',padding:'10px 0',borderRadius:'5px',margin:'2rem 0rem 2rem ','&:hover':{background:'#32385a',color:'#fff'}}}>Login</Button>
+                <Button type="submit" onClick={handleLogin} sx={{background:'#32385a',color:'#fff',width:'75%',padding:'10px 0',borderRadius:'5px',margin:'2rem 0rem 2rem ','&:hover':{background:'#32385a',color:'#fff'}}}>Login</Button>
               
 
                <Button
