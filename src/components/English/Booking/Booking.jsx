@@ -74,7 +74,7 @@ console.log(courseData,"c");
                       </Box>
            </Box>
 
-           <Box sx={{height:'50%',background:'linear-gradient(to right, #2b5876, #4e4376)',mt:'1rem',borderRadius:'25px'}}>
+           <Box sx={{height:'50%',width:'250px',background:'linear-gradient(to right, #2b5876, #4e4376)',mt:'1rem',borderRadius:'25px'}}>
                <Image src={Vert} alt='vert' style={{width:'100%',height:'50%',borderRadius:'25px 25px 0px 0px'}} />
                <Typography align='center' mt='2rem' width='100%' color='#fff' fontWeight='500' >Book Common <br/>&amp; Private Sessions</Typography>
              <Box sx={{display:'flex',justifyContent:'center',mt:'2rem'}}>
