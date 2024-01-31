@@ -12,13 +12,20 @@ import {useRouter} from 'next/navigation';
 import Swal from 'sweetalert2';
 import Stock1 from '../../../../public/stockImg1.jpeg'
 import Stock2 from '../../../../public/stockImg2.jpeg'
-
+import Footer from '../Footer/Footer'
+import FooterArabic from '@/components/Arabic/Footer/Footer'
+import { useLanguage } from '@/context/LanguageContext'
+import BottomBar from '@/components/English/bottombar/bottom'
+import BottomBarArabic from '@/components/Arabic/bottombar/bottom'
+import { Box } from '@mui/material'
 
 
 
 
 export default function PrivateCard({id,title,description,image,price}) {
   const router = useRouter()
+  const { language } = useLanguage();
+
 
   
 
@@ -27,7 +34,8 @@ export default function PrivateCard({id,title,description,image,price}) {
     router.push(`/privateBooking/${id}`)
   }
   return (
-    <Card sx={{ maxWidth: 345, height: '100%',display: 'flex', flexDirection: 'column',justifyContent:'space-between',padding:"0 0 20px" }}>
+    <Box sx={{padding:"1rem 0"}}>
+    <Card sx={{ maxWidth: 365, height: '100%',display: 'flex', flexDirection: 'column',justifyContent:'space-between' }}>
       <CardMedia
         sx={{ height: 140 }}
         title="Stock Bull"
@@ -38,7 +46,7 @@ export default function PrivateCard({id,title,description,image,price}) {
       </CardMedia>
       
       
-      <CardContent   >
+      <CardContent>
         <Typography    fontSize='20px' color='#32385a'  fontWeight='600'>
           {title}
         </Typography>
@@ -49,12 +57,19 @@ export default function PrivateCard({id,title,description,image,price}) {
         
       </CardContent>
       
-      <CardActions sx={{display:'flex',justifyContent:'space-between',padding:"0 18px"}} >
-      <Typography   color="#636FA4"  fontSize='12px' fontWeight='600'  >
+      <CardActions sx={{display:'flex',justifyContent:'space-between',padding:"15px 18px",  fontFamily: 'Poppins, sans-serif',fontFamily: 'Poppins, sans-serif',background:'linear-gradient(to right, #141e30, #243b55)'}} >
+      <Typography   color="#fff"  fontSize='14px' fontWeight='500' >
          AED {price}
         </Typography>
-        <Button variant='contained' onClick={handleBook}  sx={{background:'linear-gradient(to right, #f3904f, #3b4371)',borderRadius:'17.5px',height:'30px',textTransform:'none',fontSize:'12px'}}  size="large">Book Now</Button>
+        <Button variant='contained' onClick={handleBook}  sx={{background:'#fff',color:"#32385a",borderRadius:'17.5px',height:'35px',textTransform:'none',fontSize:'12px',fontWeight:'bold',  fontFamily: 'Poppins, sans-serif','&:hover': {
+    background: '#008000',
+    color: '#fff',
+    fontWeight:"bold",
+    fontFamily: 'Poppins, sans-serif',
+  },
+}}  size="large">Book Now</Button>
       </CardActions>
     </Card>
+    </Box>
   );
 }
