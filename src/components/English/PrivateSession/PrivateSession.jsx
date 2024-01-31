@@ -2,12 +2,19 @@
 import {Container, Box,Typography, Grid, } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import PrivateCard from '../PrivateCards/PrivateCard'
+import Footer from '../Footer/Footer'
+import FooterArabic from '@/components/Arabic/Footer/Footer'
+import { useLanguage } from '@/context/LanguageContext'
+import BottomBar from '@/components/English/bottombar/bottom'
+import BottomBarArabic from '@/components/Arabic/bottombar/bottom'
 
 
 
 
 const PrivateSession = () => {
  const [sessions,setSessions] = useState([])
+ const { language } = useLanguage();
+
 
  useEffect(()=>{
     const fetchSession = async()=>{
@@ -32,9 +39,11 @@ console.log(response,'sessions');
 
 
   return (
-    <Container sx={{pt:'2rem',height:'90dvh',overflow:'auto'}}>
+    <Box sx={{height:'90dvh',overflow:'auto'}}>
+
+    <Container sx={{pt:'2rem',height:'80dvh',overflow:'auto'}}>
       <Box>
-          <Typography  fontSize='25px' fontWeight='bold' >Private Sessions</Typography>
+          <Typography  fontSize='35px'  fontWeight='bold'  style={{color:'#32385a'}}>Private Sessions</Typography>
           <Box sx={{background:'#f3f6f9' , height:'1px' ,width:'100%' }}></Box> 
      </Box> 
 
@@ -48,6 +57,9 @@ console.log(response,'sessions');
     </Grid>
        
      </Container>
+     {language === 'english' ? <Footer/> :  <FooterArabic/> }
+     {language === 'english' ? <BottomBar/> :  <BottomBarArabic/> }
+    </Box>
   )
 }
 

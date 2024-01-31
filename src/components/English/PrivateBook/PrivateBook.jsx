@@ -4,6 +4,12 @@ import { Box, Button, Container, Grid, TextField, Typography } from '@mui/materi
 import Image from 'next/image'
 import Stock from '../../../../public/stockImg.jpeg'
 import { useParams } from 'next/navigation'
+import Footer from '../Footer/Footer'
+import FooterArabic from '@/components/Arabic/Footer/Footer'
+import { useLanguage } from '@/context/LanguageContext'
+import BottomBar from '@/components/English/bottombar/bottom'
+import BottomBarArabic from '@/components/Arabic/bottombar/bottom'
+
 
 
 const PrivateBook = () => {
@@ -17,7 +23,16 @@ const PrivateBook = () => {
     const [title,setTitle]=useState('')
     const [price,setPrice] = useState('')
     const params = useParams()
+    const { language } = useLanguage();
 
+
+    const [errors, setErrors] = useState({
+      name: '',
+      email: '',
+      phone: '',
+      date: '',
+      time: '',
+    });
 
     useEffect(()=>{
     const fetchSession = async()=>{
@@ -61,11 +76,66 @@ const PrivateBook = () => {
               fetchUser()
     },[])
 
+
+    const validateForm = () => {
+      let valid = true;
+      const newErrors = { name: '', email: '', phone: '', date: '', time: '' };
+    
+      // Validate Name
+      if (!name.trim()) {
+        newErrors.name = 'Name is required';
+        valid = false;
+      }
+    
+      // Validate Email
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!email.trim() || !emailRegex.test(email)) {
+        newErrors.email = 'Valid email is required';
+        valid = false;
+      }
+    
+      // Validate Phone
+      const phoneRegex = /^\d+$/;
+      if (!phone.trim() || !phoneRegex.test(phone)) {
+        newErrors.phone = 'Valid phone number is required';
+        valid = false;
+      }
+    
+      // Validate Date
+      if (!date.trim()) {
+        newErrors.date = 'Date is required';
+        valid = false;
+      }
+    
+      // Validate Time
+      if (!time.trim()) {
+        newErrors.time = 'Time is required';
+        valid = false;
+      }
+    
+      setErrors(newErrors);
+    
+      return valid;
+    };
+    
+    
+
+
+    const handleFormSubmit = () => {
+      if (validateForm()) {
+        console.log('Form is valid, submitting...');
+      } else {
+        console.log('Form is not valid, please check the errors');
+      }
+    };
+
     
   return (
-   <Container sx={{pt:'2rem',height:'90dvh',overflow:'auto'}}>
+    <Box sx={{height:'90dvh',overflow:'auto'}}>
 
-    <Box>
+   <Container sx={{overflow:'auto',padding:"2rem 0 3rem"}}>
+
+    <Box sx={{padding:"2rem 0"}}>
     <Typography  fontSize='25px' color='#32385a' fontWeight='bold' >Book Now</Typography>
           <Box sx={{background:'#f3f6f9' , height:'2px' ,width:'100%' }}></Box> 
     </Box>
@@ -79,6 +149,8 @@ const PrivateBook = () => {
             height:'40px',
 
           }}} />
+            <div style={{ color: 'red', fontSize: '12px' }}>{errors.name}</div>
+
     </Grid>
     <Grid item xs={12} sm={12} md={6} lg={6}  >
            
@@ -105,10 +177,13 @@ const PrivateBook = () => {
             height:'40px',
             borderRadius:0
           }}} />
+            <div style={{ color: 'red', fontSize: '12px' }}>{errors.phone}</div>
+
     </Grid>
     <Grid item xs={12} sm={12} md={6} lg={6}  >
     <Typography fontSize='14px' pt='15px' fontWeight='500'>Choose the Date*</Typography>  
-          <TextField type='date'
+          <TextField 
+          type='date'
           value={date}
           onChange={(e)=>setDate(e.target.value)}
           sx={{width:'100%',mt:'5px'}} InputProps={{style:{
@@ -116,6 +191,8 @@ const PrivateBook = () => {
             fontWeight:'500',
             height:'40px'
           }}} />
+  <div style={{ color: 'red', fontSize: '12px' }}>{errors.date}</div>
+
     </Grid>
     
     <Grid item xs={12} sm={12} md={6} lg={6}  >
@@ -128,6 +205,8 @@ const PrivateBook = () => {
             fontWeight:'500',
             height:'40px'
           }}} />
+            <div style={{ color: 'red', fontSize: '12px' }}>{errors.time}</div>
+
     </Grid>
     </Grid>
 
@@ -161,7 +240,7 @@ const PrivateBook = () => {
     </Grid>
      
     <Grid item xs={12} sm={12} md={12} lg={12} sx={{pb:'1rem'}}>
-     <Button fullWidth variant='outlined' sx={{mt:'1rem',background:'#32385a',color:'#fff','&:hover':{background:'#32385a',color:'#fff'},textTransform:'none'}} >Book Now</Button>
+     <Button onClick={handleFormSubmit} fullWidth variant='outlined' sx={{mt:'1rem',background:'#32385a',color:'#fff','&:hover':{background:'#32385a',color:'#fff'},textTransform:'none'}} >Book Now</Button>
     </Grid>      
 
     </Grid>
@@ -170,6 +249,9 @@ const PrivateBook = () => {
     </Box>
 
    </Container>
+   {language === 'english' ? <Footer/> :  <FooterArabic/> }
+     {language === 'english' ? <BottomBar/> :  <BottomBarArabic/> }
+    </Box>
   )
 }
 
