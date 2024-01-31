@@ -22,7 +22,8 @@ export async function POST(req) {
           quantity: 1,
       }],
       mode: 'subscription',
-      success_url: `${origin}/paymentsuccess`,
+     
+      success_url: `${origin}/subscription`,
       cancel_url: `${origin}/error`,
       metadata:{
         name:userDetails.name ,
@@ -30,9 +31,12 @@ export async function POST(req) {
         price:planDetails.price,
         subscriptionType:planDetails.subscriptionType,
         package:planDetails.name,
-        userId:userDetails._id
+        userId:userDetails._id,
+        planId:planDetails.planId
       }
   });
+
+  console.log(session,'session');
    
   return new NextResponse(JSON.stringify({ sessionId: session.id }), {
     status: 200,

@@ -3,42 +3,37 @@ const { Schema } = mongoose;
 
 const BookingSchema = new Schema({
     name:{
-        type:String,
-     
+        type:String, 
     },
     email:{
-        type:String,
-        
+        type:String,   
     },
     phone:{
-        type:Number,
-       
+        type:Number,  
     },
     date:{
         type:String,
-       
     },
     time:{
         type:String,
-        
     },
     package:{
-        type:String,
-       
+        type:String, 
     },
-   link:{
-    type:String,
+    link:{
+      type:String,
    },
    aprroved:{
-    type:Boolean
+     type:Boolean
    },
    courseId:{
-    type:String,
-
+     type:String,
    },
    userId:{
     type:String,
-
+   },
+   bookingType:{
+    type:String
    }
 },
 

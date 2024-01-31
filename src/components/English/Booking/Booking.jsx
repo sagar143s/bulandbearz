@@ -18,12 +18,14 @@ import { useLanguage } from '@/context/LanguageContext'
 import BottomBar from '@/components/English/bottombar/bottom'
 import BottomBarArabic from '@/components/Arabic/bottombar/bottom'
 import Image from 'next/image';
-
+import { useRouter } from 'next/navigation';
 
 const Booking = () => {
   const [selectedValue, setSelectedValue] = useState(0);
   const { language } = useLanguage();
   const [courseData, setCourseData] = useState([]);
+  const router = useRouter()
+
   const handleChange = (event) => {
     setSelectedValue(event.target.value);
   };
@@ -48,6 +50,10 @@ const Booking = () => {
   
     fetchCourses()
   },[])
+  
+  const handlePrivate = ()=>{
+     router.push('/privatesessions')
+  }
  
 console.log(courseData,"c");
 
@@ -64,7 +70,7 @@ console.log(courseData,"c");
                         <Typography  fontSize='10px' align='center' fontWeight='400' color='#fff'>Consultation with Proffesionals</Typography>
                       </Box>
                       <Box sx={{display:'grid',placeItems:'center',height:'50%'}}>
-                      <Button variant='contained' sx={{background:'linear-gradient(to right, #141e30, #243b55)',borderRadius:'17.5px',height:'30px',textTransform:'none',fontFamily:"Rubik",fontSize:'12px'}}>Book Now</Button>
+                      <Button onClick={handlePrivate} variant='contained' sx={{background:'linear-gradient(to right, #141e30, #243b55)',borderRadius:'17.5px',height:'30px',textTransform:'none',fontFamily:"Rubik",fontSize:'12px'}}>Book Now</Button>
                       </Box>
            </Box>
 

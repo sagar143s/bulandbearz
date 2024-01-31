@@ -15,13 +15,13 @@ console.log(params);
                 })
                     }else
                     {
-                return new NextResponse('No User found',{status:404})
+                return new NextResponse(JSON.stringify('No User found'),{status:404})
                     }
            
 
         }catch(err){
             console.log(err.message);
-                return new NextResponse(err.message,{status:500})
+                return new NextResponse(JSON.stringify(err.message),{status:500})
         }
 
 

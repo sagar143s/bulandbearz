@@ -11,7 +11,7 @@ export const POST = async (request) => {
     
     const price = courseDetails.price*100
     console.log(price,'price');
-    const origin = request.headers.get("origin") || "http://localhost:3002";
+    const origin = request.headers.get("origin") || "http://localhost:3000";
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
       

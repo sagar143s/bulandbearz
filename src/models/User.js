@@ -43,6 +43,15 @@ price:{
     isGoogle:{
         type:Boolean,
         default:false
+    },
+    planId:{
+        type:String  
+    },
+    customerId:{
+        type:String 
+    },
+    subscriptionId:{
+        type:String
     }
 
 },

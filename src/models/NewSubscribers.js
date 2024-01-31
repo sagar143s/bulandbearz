@@ -24,6 +24,15 @@ const NewsubscribersSchema = new Schema({
     userId:{
     type:String,
  
+   },
+   planId:{
+       type:String  
+   },
+   customerId:{
+       type:String 
+   },
+   subscriptionId:{
+       type:String
    }
 },
 

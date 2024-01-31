@@ -15,12 +15,16 @@ import BottomBarAarabic from '@/components/Arabic/bottombar/bottom';
 import { useRouter } from 'next/navigation'
 import Swal from 'sweetalert2';
 import CircleNotificationsIcon from '@mui/icons-material/CircleNotifications';
+import Loader from '@/components/Loader/Loader';
+
 
 const SubscriptionPage = () => {
   const { language } = useLanguage();
     const [billingPeriod, setBillingPeriod] = useState('Per Month');
     const [userDetails ,setUserDetails] = useState(null)
     const [suscriptionPlan,setSubscriptionPlan] = useState([])
+    const [open, setOpen] = useState(false);
+    const [trigger,setTrigger] = useState(false)
     const telLink = 'https://t.me/+Fh-xHrmMcoYyOTZk'   
     const telLink1 = 'https://t.me/+Fh-xHrmMcoYyOTZk'   
     const router = useRouter();
@@ -50,7 +54,7 @@ if(userId){
        fetchUser()
 }
       
-    },[])
+    },[trigger])
 
 
     useEffect(()=>{
@@ -100,9 +104,25 @@ if(userId){
 
   console.log(filteredPlans,'');
 
+  const handleClose = () => {
+    setOpen(false);
+  };
 
-  const handleCancelSubscribe = ()=>{
-
+  const handleCancelSubscribe = async()=>{
+         setOpen(true)
+    const subscriptionId = userDetails.subscriptionId
+  const res = await fetch('/api/cancelsubscription',{
+    method:'DELETE',
+    body:JSON.stringify({subscriptionId})
+  })
+  if(res.ok){
+    setOpen(false)
+    Swal.fire({
+      icon: "success",
+      title: "Subscription Cancelled",  
+    });
+    setTrigger(!trigger)
+  }
   }
 
   const handleSubscribe = async(plan)=>{
@@ -153,7 +173,7 @@ try {
 }
   }
 
-  console.log(userDetails?.subscribed,'use');
+  console.log(userDetails?.subscriptionId,'use');
   return (
     <div style={{ overflow:"auto",height:"90dvh",display:'flex',flexDirection:'column',justifyContent:'space-between'}}>
       <Container maxWidth="lg" style={{ paddingTop: '5vh', paddingBottom: '9vh'}}>
@@ -429,6 +449,7 @@ try {
       {language === 'english' ? <Footer/> :  <FooterArabic/> }
       {language === 'english' ? <BottomBar/> :  <BottomBarAarabic/> }
       </Box>
+      <Loader dialog={open} onClose={handleClose} />
     </div>
   );
 };
