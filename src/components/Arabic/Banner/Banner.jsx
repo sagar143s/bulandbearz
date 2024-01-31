@@ -74,7 +74,7 @@ const Banner = () => {
           مرحبًا بك في فينتشر
           </h1>
           <h3 style={isMobile ? mobileStyles.leftColumnH3 : desktopStyles.leftColumnH3} >
-          زرع الاستثمارات على المدى الطويل من خلال خطط شخصية ودعم مهني.
+          تنمية الاستثمارات المستدامة من خلال خطط مخصصة وإرشاد شخصي.
           </h3>
           <p style={{ fontWeight: 'bold',marginTop:'1.5rem',textAlign:'left' }}>ارتق بطموحاتك مع دعمنا المهني - صقل خطط استثمارك الشخصية معنا، بدءًا من الصفر.</p>
           <Button href='./bookings' style={{  

@@ -89,22 +89,22 @@ const Checkout = () => {
         <Box sx={{display:'flex',gap:'1rem',flexDirection:{xs:'column',sm:'column',md:'row'}}}>
             <Box sx={{flex:2,display:'flex',background:'#fff',flexDirection:'column',gap:'1rem',width:'100%',border:'solid 1px #dddfe1',boxShadow:'1.5px 2.6px 10px 0 rgba(119, 119, 119, 0.1)',borderRadius:'11px'}}>
           <Box sx={{background:'#32385a',borderRadius:'11px 11px 0px 0px',height:'70px',boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',}} >
-          <Typography align='center'  fontSize='25px' fontWeight='500' color='#fff' paddingTop='1rem'>Confirm Client Details</Typography>
+          <Typography align='center'  fontSize='25px' fontWeight='500' color='#fff' paddingTop='1rem'>Validate Client Information</Typography>
           </Box>
          
          <Box sx={{width:'100%',paddingLeft:'1rem'}}>
           <Typography  fontSize='14px' fontWeight='400' color='#021b79' paddingTop='1rem' paddingBottom='0.2rem'>Confirm Name *</Typography>
-          <TextField value={bookingDetail.username}  type='text' InputProps={{ style: { borderRadius: '8px', height: '40px', fontFamily: "Rubik", fontSize: '15px', width: '200%' } }} />
+          <TextField value={bookingDetail.username}  type='text' InputProps={{ style: { borderRadius: '8px', height: '40px', fontSize: '15px', width: '200%',marginTop:'.25rem'  } }} />
           </Box>
           <Box sx={{width:'100%',paddingLeft:'1rem'}}>
-          <Typography  fontSize='14px' fontWeight='400' color='#021b79' paddingTop='1rem' paddingBottom='0.2rem'>Confirm Email *</Typography>
-          <TextField value={bookingDetail.email}  placeholder='Enter the Email' type='email' InputProps={{ style: { borderRadius: '8px', height: '40px', fontFamily: "Rubik", fontSize: '15px', width: '200%',marginTop:'1rem' } }} />
+          <Typography  fontSize='14px' fontWeight='400' color='#021b79' paddingTop='.5rem' paddingBottom='0.2rem'>Confirm Email *</Typography>
+          <TextField value={bookingDetail.email}  placeholder='Enter the Email' type='email' InputProps={{ style: { borderRadius: '8px', height: '40px',  fontSize: '15px', width: '200%',marginTop:'.25rem' } }} />
           </Box>
           <Box sx={{width:'100%',paddingLeft:'1rem',paddingBottom:'1rem'}}>
-          <Typography  fontSize='14px' fontWeight='400' color='#021b79' paddingTop='1rem' paddingBottom='0.2rem'>Confirm Phone *</Typography>
-          <TextField value={bookingDetail.phone}  placeholder='Enter the Email' type='email' InputProps={{ style: { borderRadius: '8px', height: '40px', fontFamily: "Rubik", fontSize: '15px', width: '200%',marginTop:'1rem' } }} />
-          </Box>
-            </Box>
+          <Typography  fontSize='14px' fontWeight='400' color='#021b79' paddingTop='.5rem' paddingBottom='0.2rem'>Confirm Phone *</Typography>
+          <TextField value={bookingDetail.phone}  placeholder='Enter the Email' type='email' InputProps={{ style: { borderRadius: '8px', height: '40px',  fontSize: '15px', width: '200%',marginTop:'.25rem' } }} />
+           </Box>
+       </Box>
             <Box sx={{flex:1 ,background:'#fff',display:'flex',flexDirection:'column',gap:'0.5rem',width:'100%',border:'solid 1px #dddfe1',boxShadow:'1.5px 2.6px 10px 0 rgba(119, 119, 119, 0.1)',borderRadius:'11px'}}>
             <Box sx={{background:'#32385a',borderRadius:'11px 11px 0px 0px',height:'70px',boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)'}}>
             <Typography align='center'  fontSize='25px' fontWeight='500' color='#fff' paddingTop='1rem'>Order Summary </Typography>
@@ -147,7 +147,7 @@ const Checkout = () => {
                
             </Box>
 
-            <Box sx={{display:'flex', alignItems:'center' , justifyContent:'space-between',paddingLeft:'1rem',paddingRight:'1rem'}}>
+            <Box sx={{display:'flex', alignItems:'center' , justifyContent:'space-between',paddingLeft:'1rem',paddingRight:'1rem',paddingBottom:"2rem"}}>
             <Typography   fontSize='19px' fontWeight='450' color='#021b79' paddingTop='1rem'>Total</Typography>
             <Typography   fontSize='19px' fontWeight='450' color='#021b79' paddingTop='1rem'>{courseDetails.price} AED </Typography> 
             
@@ -158,7 +158,7 @@ const Checkout = () => {
 
         </Box>
            <Box sx={{display:'flex',justifyContent:'center',marginBottom:'1rem'}}>
-        <Button variant='contained' onClick={handleCheckout}  sx={{ background: '#32385a', borderRadius: '8px', height: '45px', textTransform: 'none', fontFamily: "Rubik", fontSize: '12px', width: '50%', marginTop: '3rem','&:hover':{background:'#32385a'} }}>Pay Now</Button>
+        <Button variant='contained' onClick={handleCheckout}  sx={{ background: '#32385a', borderRadius: '8px', height: '45px', textTransform: 'none',  fontSize: '12px', width: '50%', marginTop: '3rem','&:hover':{background:'#32385a'} }}>Pay Now</Button>
 
            </Box>
     </Container>

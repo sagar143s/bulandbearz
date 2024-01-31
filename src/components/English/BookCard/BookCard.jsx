@@ -15,10 +15,16 @@ import Swal from 'sweetalert2';
 
 
 
+
 export default function MediaCard({title,description,price,image,id,maxUsers}) {
   const router = useRouter()
 
-  
+
+  const calculateProgress = () => {
+    const remainingSlots = maxUsers; 
+    const progressPercentage = (remainingSlots / maxUsers) * 100;
+    return progressPercentage;
+  };
 
 console.log(maxUsers,'users');
   const handleBook = ()=>{
@@ -37,11 +43,11 @@ console.log(maxUsers,'users');
    
   }
   return (
-    <Card sx={{ maxWidth: 345, height: '100%',display: 'flex', flexDirection: 'column',justifyContent:'space-between',padding:"0 0 20px" }}>
+    <Card sx={{ maxWidth: 345, height: '100%',display: 'flex', flexDirection: 'column',justifyContent:'space-between',padding:"0 0 0px" }}>
       <CardMedia
         sx={{ height: 140 }}
        
-        title="Stock Bull"
+        title="Bull and Bearz"
       >
 <div style={{ position: 'relative', width: '100%', height: '100%' }}>
             <Image src={image} fill  style={{objectFit:'cover'}}   alt='events'/>
@@ -57,14 +63,23 @@ console.log(maxUsers,'users');
           {description}
         </Typography>
 
-        <Typography color="#636FA4" fontSize='12px' paddingTop='1rem' fontWeight='bold'  height={20}>Slot left : <span style={{color:'red'}}>{maxUsers}</span> </Typography>
+        <Typography style={{fontFamily: 'Poppins, sans-serif'}} color="#636FA4" fontSize='12px' paddingTop='1rem' fontWeight='bold'  height={32}>Slot left : <span style={{color:'red'}}>{maxUsers}</span> </Typography>
+        {/* <div style={{marginTop: '0.5rem',height: '8px',width: '100%', backgroundColor: '#eee', }}>
+          <div style={{ width: `${calculateProgress()}%`,height: '5px',borderRadius:"25px", transition: 'width 0.3s ease-in-out',height: '100%',background: 'linear-gradient(to right, #2b5876, #4e4376)'  }}></div>
+        </div> */}
       </CardContent>
       
-      <CardActions sx={{display:'flex',justifyContent:'space-between',padding:"0 18px"}} >
-      <Typography   color="#636FA4"  fontSize='12px' fontWeight='600'  >
+      <CardActions sx={{display:'flex',justifyContent:'space-between',padding:"15px 18px",  fontFamily: 'Poppins, sans-serif',fontFamily: 'Poppins, sans-serif',background:'linear-gradient(to right, #141e30, #243b55)'}} >
+      <Typography   color="#fff"  fontSize='14px' fontWeight='500' >
          AED {price}
-        </Typography>
-        <Button variant='contained' onClick={handleBook}  sx={{background:'linear-gradient(to right, #f3904f, #3b4371)',borderRadius:'17.5px',height:'30px',textTransform:'none',fontSize:'12px'}}  size="large">Book Now</Button>
+      </Typography>
+        <Button variant='contained' onClick={handleBook}  sx={{background:'#fff',color:"#32385a",borderRadius:'17.5px',height:'35px',textTransform:'none',fontSize:'12px',fontWeight:'bold',  fontFamily: 'Poppins, sans-serif','&:hover': {
+    background: '#008000',
+    color: '#fff',
+    fontWeight:"bold",
+    fontFamily: 'Poppins, sans-serif',
+  },
+}}  size="large">Book Now</Button>
       </CardActions>
     </Card>
   );

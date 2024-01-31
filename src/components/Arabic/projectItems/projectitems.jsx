@@ -5,18 +5,18 @@ import { Container } from '@mui/material';
 
 // Array of card details to populate the cards
 const cardDetails = [
-  { title: 'تمويل المشروع',  description: 'قم بتمويل مشاريعك بفعالية.', imageUrl: 'https://web.moxcreative.com/ventuure/wp-content/uploads/sites/20/2023/03/businessman-analyzing-investment-charts-on-the-office-desk-.jpg' },
-  { title: 'تمويل المشروع',  description: 'قم بتمويل مشاريعك بفعالية.', imageUrl: 'https://web.moxcreative.com/ventuure/wp-content/uploads/sites/20/2023/03/stock-market-analysis-on-digital-tablet.jpg' },
-  { title: 'تمويل المشروع',  description: 'قم بتمويل مشاريعك بفعالية.', imageUrl: 'https://web.moxcreative.com/ventuure/wp-content/uploads/sites/20/2023/03/middle-age-businessmen-after-signing-an-international-deal-at-boardtable-1024x576.jpg' },
-  { title: 'تمويل المشروع',  description: 'قم بتمويل مشاريعك بفعالية.', imageUrl: 'https://web.moxcreative.com/ventuure/wp-content/uploads/sites/20/2023/03/real-estate-woman-with-house-model-on-working-desk-for-investment-to-buying-property-1024x536.jpg' },
-  { title: 'تمويل المشروع', description: 'قم بتمويل مشاريعك بفعالية.', imageUrl: 'https://web.moxcreative.com/ventuure/wp-content/uploads/sites/20/2023/03/businessman-analyzing-investment-charts-on-the-office-desk-.jpg' },
-  { title: 'تمويل المشروع', description: 'قم بتمويل مشاريعك بفعالية.', imageUrl: 'https://web.moxcreative.com/ventuure/wp-content/uploads/sites/20/2023/03/aerial-view-of-oil-and-gas-refining-petrochemical-factory-with-high-refinery-plant-manufacture-1024x683.jpg' },
+  { title: 'استشارات الاستثمار',  description: 'استكشف خدمات الاستشارات الاستثمارية لاتخاذ قرارات استراتيجية في سوق الأسهم ومنصات متنوعة، مضمونة لتحقيق نتائج مالية مثلى بقرارات مستنيرة.', imageUrl: 'https://web.moxcreative.com/ventuure/wp-content/uploads/sites/20/2023/03/businessman-analyzing-investment-charts-on-the-office-desk-.jpg' },
+  { title: 'أبحاث السوق',  description: 'قم بتمكين قرارات الاستثمار من خلال أبحاث شاملة حول سوق الأسهم لاتخاذ قرارات استثمارية مستنيرة واستراتيجية.', imageUrl: 'https://web.moxcreative.com/ventuure/wp-content/uploads/sites/20/2023/03/stock-market-analysis-on-digital-tablet.jpg' },
+  { title: 'تحليل اتجاهات السوق',  description: 'ارتقِ بالاستثمارات من خلال خدمة تحليل الاتجاهات لدينا، التي توفر رؤى دقيقة لاتخاذ قرارات استراتيجية في الأسواق الديناميكية.', imageUrl: 'https://web.moxcreative.com/ventuure/wp-content/uploads/sites/20/2023/03/middle-age-businessmen-after-signing-an-international-deal-at-boardtable-1024x576.jpg' },
+  { title: 'تحليل فني',  description: 'استفد من الأدوات المتقدمة لتحليل اتجاهات السوق، احصل على رؤى، وحسِّن عوائدك مع تحليلنا المالي الشامل.', imageUrl: 'https://web.moxcreative.com/ventuure/wp-content/uploads/sites/20/2023/03/real-estate-woman-with-house-model-on-working-desk-for-investment-to-buying-property-1024x536.jpg' },
+  { title: 'تخطيط مالي', description: 'حمِّي مستقبلك المالي من خلال استراتيجيات الاستثمار الشخصية، مضمونًا رحلة مزدهرة نحو النجاح المالي المستدام.', imageUrl: 'https://web.moxcreative.com/ventuure/wp-content/uploads/sites/20/2023/03/businessman-analyzing-investment-charts-on-the-office-desk-.jpg' },
+  { title: 'استراتيجيات التداول', description: 'قم بتحقيق أقصى عائد ممكن مع استراتيجيات التداول الرائدة لدينا، باستغلال رؤى السوق لاتخاذ قرارات استثمارية استراتيجية ومستنيرة.', imageUrl: 'https://web.moxcreative.com/ventuure/wp-content/uploads/sites/20/2023/03/aerial-view-of-oil-and-gas-refining-petrochemical-factory-with-high-refinery-plant-manufacture-1024x683.jpg' },
 
 ];
 const topSection = {
-  heading: 'طيف الرؤى المالية',
-  subheading: 'كشف النقاب عن الاستشارات الاستثمارية.',
-  description: 'دليل شامل للاستشارات الاستثمارية، يقدم تحليلاً خبيرًا وآفاق استراتيجية لاتخاذ قرارات مالية مستنيرة في أسواق اليوم الدينامية.'};
+  heading: 'طيف رؤى مالية',
+  subheading: 'كشف عن الاستشارات الاستثمارية',
+  description: 'دليل شامل للاستشارات الاستثمارية، يقدم تحليلات خبيرة وآراء استراتيجية لاتخاذ قرارات مالية مستنيرة في أسواق اليوم المتغيرة.'};
 
 const ProjectItems = () => {
   return (

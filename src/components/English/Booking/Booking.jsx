@@ -70,15 +70,15 @@ console.log(courseData,"c");
                         <Typography  fontSize='10px' align='center' fontWeight='400' color='#fff'>Consultation with Proffesionals</Typography>
                       </Box>
                       <Box sx={{display:'grid',placeItems:'center',height:'50%'}}>
-                      <Button onClick={handlePrivate} variant='contained' sx={{background:'linear-gradient(to right, #141e30, #243b55)',borderRadius:'17.5px',height:'30px',textTransform:'none',fontFamily:"Rubik",fontSize:'12px'}}>Book Now</Button>
+                      <Button onClick={handlePrivate} variant='contained' sx={{background:'linear-gradient(to right, #141e30, #243b55)',borderRadius:'17.5px',height:'30px',textTransform:'none',fontSize:'12px'}}>Book Now</Button>
                       </Box>
            </Box>
 
-           <Box sx={{height:'60%',background:'linear-gradient(to right, #2b5876, #4e4376)',mt:'1rem',borderRadius:'25px'}}>
-               <Image src={Vert} alt='vert' style={{width:'100%',height:'200px',borderRadius:'25px 25px 0px 0px'}} />
+           <Box sx={{height:'50%',background:'linear-gradient(to right, #2b5876, #4e4376)',mt:'1rem',borderRadius:'25px'}}>
+               <Image src={Vert} alt='vert' style={{width:'100%',height:'50%',borderRadius:'25px 25px 0px 0px'}} />
                <Typography align='center' mt='2rem' width='100%' color='#fff' fontWeight='500' >Book Common <br/>&amp; Private Sessions</Typography>
              <Box sx={{display:'flex',justifyContent:'center',mt:'2rem'}}>
-               <Button variant='contained' sx={{background:'#fff',color:'#000','&:hover':{background:'#fff',color:'#000'},borderRadius:'17.5px',height:'30px',textTransform:'none',fontFamily:"Rubik",fontSize:'12px'}}>Book Now</Button>
+               <Button variant='contained' sx={{background:'#fff',color:'#000','&:hover':{background:'#fff',color:'#000'},borderRadius:'17.5px',height:'30px',textTransform:'none',fontSize:'12px'}}>Book Now</Button>
              </Box>
          
            </Box>
