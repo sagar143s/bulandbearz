@@ -105,61 +105,71 @@ const Profile = () => {
 
     
   return (
-    <Box sx={{overflow:'auto',height:"90dvh"}}>
-    <Box sx={{display:'grid',placeItems:'center',width:'100%',margin:"8rem 0 5rem"}}>
+    <Box sx={{ overflow: 'auto', height: "90dvh",display:'flex',flexDirection:'column',justifyContent:'space-between' }}>
+      <Box sx={{ display: 'grid', placeItems: 'center', width: '100%', margin: "8rem 0 5rem" }}>
 
 
-        <Box sx={{display:'flex',alignItems:'center',justifyContent:'center',border:'1px solid #f3f3f3',position:'relative',width:'100%',flexDirection:'column',background:"#f3f6f9",border:'1px solid #32385a',borderRadius:"25px",maxWidth:"500px",boxShadow: 'rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px'}}>
-            <Box sx={{position:'absolute',top:-90,}}>
-            <Avatar alt='user'  sx={{width:'150px', height:'150px',position:'relative'}}>
+        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px solid #f3f3f3', position: 'relative', width: '100%', flexDirection: 'column', background: "#f3f6f9", border: '1px solid #32385a', borderRadius: "25px", maxWidth: "500px", boxShadow: 'rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px' }}>
+          <Box sx={{ position: 'absolute', top: -90, }}>
+            <Avatar alt='user' sx={{ width: '150px', height: '150px', position: 'relative' }}>
 
-             <Image src={image?image:User} fill alt='User' />
+              <Image src={image ? image : User} fill alt='User' />
             </Avatar>
-             <Image  onClick={uploadImage} src={Edit} width={25} height={25} style={{position:'absolute',right:10,bottom:5,cursor:'pointer'}} />
-             <input
+            <Image onClick={uploadImage} src={Edit} width={25} height={25} style={{ position: 'absolute', right: 10, bottom: 5, cursor: 'pointer' }} />
+            <input
               type='file'
               ref={ref}
-              style={{display:'none'}}
+              style={{ display: 'none' }}
               onChange={handleImageChange}
-             />
-            </Box>
-            <Box sx={{display:'flex',flexDirection:'column',gap:'0.2rem',color:'#32385a',marginTop:'7rem'}}>
-             <Typography align='left' fontWeight='bold'>Username</Typography>
-             <TextField value={name} onChange={(e)=>setName(e.target.value)}  sx={{width:'100%'}} InputProps={{style:{
-                height:'40px'
-             }}} />
-            </Box>
+            />
+          </Box>
+          <Box sx={{ display: 'flex', flexDirection: 'column', gap: '0.2rem', color: '#32385a', marginTop: '7rem' }}>
+            <Typography align='left' fontWeight='bold'>Username</Typography>
+            <TextField value={name} onChange={(e) => setName(e.target.value)} sx={{ width: '100%' }} InputProps={{
+              style: {
+                height: '40px'
+              }
+            }} />
+          </Box>
 
-            <Box sx={{display:'flex',flexDirection:'column',gap:'0.2rem',color:'#32385a',marginTop:'0.5rem'}}>
-             <Typography align='left' fontWeight='bold'>Current Password</Typography>
-             <TextField type='password' value={currentPassword} onChange={(e)=>setCurrentPassword(e.target.value)} sx={{width:'100%'}} InputProps={{style:{
-                height:'40px'
-             }}} />
-            </Box>
+          <Box sx={{ display: 'flex', flexDirection: 'column', gap: '0.2rem', color: '#32385a', marginTop: '0.5rem' }}>
+            <Typography align='left' fontWeight='bold'>Current Password</Typography>
+            <TextField type='password' value={currentPassword} onChange={(e) => setCurrentPassword(e.target.value)} sx={{ width: '100%' }} InputProps={{
+              style: {
+                height: '40px'
+              }
+            }} />
+          </Box>
 
-            <Box sx={{display:'flex',flexDirection:'column',gap:'0.2rem',color:'#32385a',marginTop:'0.5rem'}}>
-             <Typography align='left' fontWeight='bold'>New Password</Typography>
-             <TextField type='password' value={newPassword} onChange={(e)=>setNewPassword(e.target.value)}  sx={{width:'100%'}} InputProps={{style:{
-                height:'40px'
-             }}} />
-            </Box>
+          <Box sx={{ display: 'flex', flexDirection: 'column', gap: '0.2rem', color: '#32385a', marginTop: '0.5rem' }}>
+            <Typography align='left' fontWeight='bold'>New Password</Typography>
+            <TextField type='password' value={newPassword} onChange={(e) => setNewPassword(e.target.value)} sx={{ width: '100%' }} InputProps={{
+              style: {
+                height: '40px'
+              }
+            }} />
+          </Box>
 
-            <Box sx={{display:'flex',flexDirection:'column',gap:'0.2rem',color:'#32385a',marginTop:'0.5rem'}}>
-             <Typography align='left' fontWeight='bold'>Confirm Password</Typography>
-             <TextField type='password'  value={confirmPassword} onChange={(e)=>setConfirmPassword(e.target.value)} error={!!error} helperText={error} sx={{width:'100%'}} InputProps={{style:{
-                height:'40px'
-             }}} />
-            </Box>
-            
+          <Box sx={{ display: 'flex', flexDirection: 'column', gap: '0.2rem', color: '#32385a', marginTop: '0.5rem' }}>
+            <Typography align='left' fontWeight='bold'>Confirm Password</Typography>
+            <TextField type='password' value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} error={!!error} helperText={error} sx={{ width: '100%' }} InputProps={{
+              style: {
+                height: '40px'
+              }
+            }} />
+          </Box>
 
 
-            <Button onClick={handleSubmit} sx={{height:'40px',background:'#32385a',color:'white',textTransform:'none',margin:'2rem 0rem',width:'30%','&:hover':{background:'#32385a',color:'white'}}}>Update Profile</Button>
-              
+
+          <Button onClick={handleSubmit} sx={{ height: '40px', background: '#32385a', color: 'white', textTransform: 'none', margin: '2rem 0rem', width: '30%', '&:hover': { background: '#32385a', color: 'white' } }}>Update Profile</Button>
+
         </Box>
-       
-    </Box>
-    {language === 'english' ? <Footer/> :  <FooterArabic/> }
-         {language === 'english' ? <BottomBar/> :  <BottomBarAarabic/> }
+
+      </Box>
+      <Box>
+        {language === 'english' ? <Footer /> : <FooterArabic />}
+        {language === 'english' ? <BottomBar /> : <BottomBarAarabic />}
+      </Box>
     </Box>
   )
 }

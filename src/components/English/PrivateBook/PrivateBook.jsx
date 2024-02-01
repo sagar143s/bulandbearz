@@ -9,8 +9,11 @@ import FooterArabic from '@/components/Arabic/Footer/Footer'
 import { useLanguage } from '@/context/LanguageContext'
 import BottomBar from '@/components/English/bottombar/bottom'
 import BottomBarArabic from '@/components/Arabic/bottombar/bottom'
+import { loadStripe } from '@stripe/stripe-js'
 
-
+const stripePromise = loadStripe(
+  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
+);
 
 const PrivateBook = () => {
     const [name,setName] = useState('')
@@ -121,12 +124,47 @@ const PrivateBook = () => {
     
 
 
-    const handleFormSubmit = () => {
-      if (validateForm()) {
-        console.log('Form is valid, submitting...');
-      } else {
-        console.log('Form is not valid, please check the errors');
+    const handleFormSubmit = async() => {
+      const userId = localStorage.getItem('userId')
+      try {
+        if (validateForm()) {
+          console.log('Form is valid, submitting...');
+          const stripe = await stripePromise;
+           const payload = {
+            bookingDetails:{
+              username:name,
+              email:email,
+              phone:phone,
+              selectedDate:date,
+              selectedTime:time,
+            },
+            courseDetails:{
+              _id:params.id,
+              title:title,
+              price:price,
+              privateSession:true
+            },
+            userId:userId
+           }
+           const response = await fetch("/api/checkoutsession", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(payload),
+          });
+  
+          const { sessionId } = await response.json();
+          const { error } = await stripe.redirectToCheckout({
+                sessionId,
+              });
+        } else {
+          console.log('Form is not valid, please check the errors');
+        }
+      } catch (error) {
+        alert(error.message)
       }
+      
     };
 
     

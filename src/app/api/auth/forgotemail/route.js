@@ -42,7 +42,7 @@ try{
         message: {
           content: {
             title: "Welcome to BullandBearz!",
-            body : " Email :{{email}},Password : {{joke}}"
+            body : " Email :{{email}}\nPassword : {{joke}}"
           },
           data: {
             email:email,

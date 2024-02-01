@@ -64,8 +64,9 @@ console.log(booking,"vada kuttappa");
               
               <Box sx={{display:'flex',flexDirection:'column',gap:'1rem' }}>
                <Typography  fontSize='19px' fontWeight='500' color='#021b79'>Item &nbsp; &nbsp;&nbsp;: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;   {booking.package}</Typography>
-               <Typography  fontSize='16px' paddingTop='0.1rem' fontWeight='500' color='#021b79'>Date &nbsp; : &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {booking.date}</Typography>
-               <Typography  fontSize='16px' paddingTop='0.1rem' fontWeight='500' color='#021b79'>Time &nbsp; &nbsp; &nbsp; : &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {booking.time}</Typography>
+        {booking.privateSession && !booking.aprroved ?  <Typography  fontSize='16px' paddingTop='0.1rem' fontWeight='500' color='#021b79'>Date &nbsp; : &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {booking.date} <span style={{color:'red',fontSize:'11px' ,fontWeight:'400'}}>**Please Check the Date and time (it may vary after approval)  **</span> </Typography> :  <Typography  fontSize='16px' paddingTop='0.1rem' fontWeight='500' color='#021b79'>Date &nbsp; : &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {booking.date} </Typography>}      
+        {booking.privateSession && !booking.aprroved ?  <Typography  fontSize='16px' paddingTop='0.1rem' fontWeight='500' color='#021b79'>Date &nbsp; : &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {booking.time} <span style={{color:'red',fontSize:'11px' ,fontWeight:'400'}}>**Please Check the Date and time (it may vary after approval)  **</span> </Typography> :  <Typography  fontSize='16px' paddingTop='0.1rem' fontWeight='500' color='#021b79'>Date &nbsp; : &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {booking.time} </Typography>}  
+               
                <Typography  fontSize='16px' paddingTop='0.1rem' fontWeight='500'  color='#021b79'>Link : {booking.link ? 
     <a href={booking.link}><span style={{ textDecoration: 'underline', cursor: 'pointer', color: '#f05933' }}>
     {booking.link}

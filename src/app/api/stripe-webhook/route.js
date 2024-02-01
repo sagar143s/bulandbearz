@@ -309,6 +309,7 @@ export const POST = async(request)=>{
             package: metadata.courseTitle,
             courseId: metadata.courseId,
             userId:metadata.userId,
+            privateSession:metadata.privateSession
           });
   
           await newBooking.save();
