@@ -5,7 +5,7 @@ import { Container } from '@mui/material';
 
 // Array of card details to populate the cards
 const cardDetails = [
-  { title: 'استشارات الاستثمار',  description: 'استكشف خدمات الاستشارات الاستثمارية لاتخاذ قرارات استراتيجية في سوق الأسهم ومنصات متنوعة، مضمونة لتحقيق نتائج مالية مثلى بقرارات مستنيرة.', imageUrl: 'https://web.moxcreative.com/ventuure/wp-content/uploads/sites/20/2023/03/businessman-analyzing-investment-charts-on-the-office-desk-.jpg' },
+  { title: 'استشارات الاستثمار',  description: 'إرشاد الاستثمار لاتخاذ قرارات استراتيجية في سوق الأسهم ومنصات متنوعة، ضمان اتخاذ قرارات مستنيرة لتحقيق النتائج المالية المثلى.', imageUrl: 'https://web.moxcreative.com/ventuure/wp-content/uploads/sites/20/2023/03/businessman-analyzing-investment-charts-on-the-office-desk-.jpg' },
   { title: 'أبحاث السوق',  description: 'قم بتمكين قرارات الاستثمار من خلال أبحاث شاملة حول سوق الأسهم لاتخاذ قرارات استثمارية مستنيرة واستراتيجية.', imageUrl: 'https://web.moxcreative.com/ventuure/wp-content/uploads/sites/20/2023/03/stock-market-analysis-on-digital-tablet.jpg' },
   { title: 'تحليل اتجاهات السوق',  description: 'ارتقِ بالاستثمارات من خلال خدمة تحليل الاتجاهات لدينا، التي توفر رؤى دقيقة لاتخاذ قرارات استراتيجية في الأسواق الديناميكية.', imageUrl: 'https://web.moxcreative.com/ventuure/wp-content/uploads/sites/20/2023/03/middle-age-businessmen-after-signing-an-international-deal-at-boardtable-1024x576.jpg' },
   { title: 'تحليل فني',  description: 'استفد من الأدوات المتقدمة لتحليل اتجاهات السوق، احصل على رؤى، وحسِّن عوائدك مع تحليلنا المالي الشامل.', imageUrl: 'https://web.moxcreative.com/ventuure/wp-content/uploads/sites/20/2023/03/real-estate-woman-with-house-model-on-working-desk-for-investment-to-buying-property-1024x536.jpg' },
@@ -16,7 +16,7 @@ const cardDetails = [
 const topSection = {
   heading: 'طيف رؤى مالية',
   subheading: 'كشف عن الاستشارات الاستثمارية',
-  description: 'دليل شامل للاستشارات الاستثمارية، يقدم تحليلات خبيرة وآراء استراتيجية لاتخاذ قرارات مالية مستنيرة في أسواق اليوم المتغيرة.'};
+  description: 'دليل شامل للإرشاد الاستثماري، يقدم تحليلًا وآفاق استراتيجية لاتخاذ قرارات مالية مستنيرة في أسواق اليوم الدينامية.'};
 
 const ProjectItems = () => {
   return (

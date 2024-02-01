@@ -18,7 +18,8 @@ const FAQ = () => {
   const containerStyle = {
     
     height:'90dvh',
-    overflowY: 'auto'
+    overflowY: 'auto',
+  
   };
 
   const accordionStyle = {
@@ -29,14 +30,15 @@ const FAQ = () => {
   };
 
   const summaryStyle = {
-    backgroundColor: '#9ba2c7',
+    backgroundColor: '#32385a',
     borderBottom: '1px solid #ccc',
     borderRadius: '8px 8px 0 0',
+   
   };
 
   const questionStyle = {
     fontWeight: 'bold',
-    color: '#333',
+    color: '#fff',
   };
 
   const answerStyle = {
@@ -45,7 +47,7 @@ const FAQ = () => {
 
   return (
     < div  style={containerStyle}>
-    <Container maxWidth="md" sx={{padding:"50px 0"}}>
+    <Container maxWidth="md" sx={{padding:"50px 10px"}}>
       <h1 style={{padding:"50px 0"}}>Frequently Asked Questions</h1>
 
       <Accordion style={accordionStyle}
@@ -98,7 +100,7 @@ const FAQ = () => {
   </AccordionSummary>
   <AccordionDetails>
     <Typography style={answerStyle}>
-      Answer 4: Opening an account with Bull and Bearz is easy. Visit our website and click on the &apos;Sign Up&apos; or &apos;Open Account&apos; button. Follow the on-screen instructions to complete the registration process.
+      Answer 4: Opening an account with Bull and Bearz is easy. Visit our website and click on the &apos;Sign Up&apos; or &apos;Sign in with Google&apos; button. Follow the on-screen instructions to complete the registration process.
     </Typography>
   </AccordionDetails>
 </Accordion>
@@ -123,7 +125,7 @@ const FAQ = () => {
   </AccordionSummary>
   <AccordionDetails>
     <Typography style={answerStyle}>
-      Answer 6: Our financial experts recommend a diversified portfolio that may include stocks, bonds, mutual funds, and other investment instruments. The recommended mix depends on your financial goals, risk tolerance, and investment horizon.
+      Answer 6: Our financial advisors suggest a diversified portfolio that could encompass stocks, bonds, mutual funds, and other investment instruments. The optimal combination varies based on your financial objectives, risk tolerance, and investment timeframe.
     </Typography>
   </AccordionDetails>
 </Accordion>
