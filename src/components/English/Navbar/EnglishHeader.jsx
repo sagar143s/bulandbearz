@@ -254,7 +254,7 @@ const EnglishHeader = () => {
  <Box>
       <IconButton onClick={toggleDrawer(true)}>
         <MenuIcon style={{color:'#fff'}}/>
-        <Image src={Logo} style={{width:"30px", height:'auto',margin:"0 10px"}} alt='B&B'/>
+        <Image src={Logo1} style={{width:"100px", height:'auto',margin:"0 10px"}} alt='B&B'/>
       </IconButton>
     
       

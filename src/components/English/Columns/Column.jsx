@@ -28,7 +28,7 @@ const services = [
   {
     title: 'Confidence Building:',
     image: Icon3,
-    description: 'Hone skills risk-free through hands-on demos led by industry experts.',
+    description: 'Develop your skills without any risk through hands-on demonstrations led by industry professionals.',
   },
 ];
 
