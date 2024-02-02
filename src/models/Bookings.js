@@ -24,7 +24,8 @@ const BookingSchema = new Schema({
       type:String,
    },
    aprroved:{
-     type:Boolean
+     type:Boolean,
+     default:false
    },
    courseId:{
      type:String,
@@ -32,8 +33,9 @@ const BookingSchema = new Schema({
    userId:{
     type:String,
    },
-   bookingType:{
-    type:String
+   privateSession:{
+    type:Boolean,
+    default:false
    }
 },
 

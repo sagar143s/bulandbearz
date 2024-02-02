@@ -8,8 +8,9 @@ export const POST = async (request) => {
   try {
     const body = await request.json();
     const { bookingDetails, courseDetails,userId } = body;
-    
     const price = courseDetails.price*100
+    
+    
     console.log(price,'price');
     const origin = request.headers.get("origin") || "http://localhost:3000";
     const session = await stripe.checkout.sessions.create({
@@ -36,7 +37,8 @@ export const POST = async (request) => {
         selectedTime: bookingDetails.selectedTime,
         courseTitle: courseDetails.title,
         courseId: courseDetails._id.toString(),
-        userId:userId.toString()
+        userId:userId.toString(),
+        privateSession:courseDetails.privateSession
       }
     });
 
@@ -44,6 +46,8 @@ export const POST = async (request) => {
       status: 200,
       headers: { "Content-Type": "application/json" },
     });
+
+    return new NextResponse(JSON.stringify("Success"),{status:200})
   } catch (err) {
     return new NextResponse(JSON.stringify(err.message), {
       status: 500,
