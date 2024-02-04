@@ -35,9 +35,9 @@ export default function PrivateCard({id,title,description,image,price}) {
   }
   return (
     <Box sx={{padding:"1rem 0"}}>
-    <Card sx={{ maxWidth: 365, height: '100%',display: 'flex', flexDirection: 'column',justifyContent:'space-between' }}>
+    <Card sx={{ maxWidth: 365, height: '100%',display: 'flex', flexDirection: 'column',justifyContent:'space-between',borderRadius:"8px",boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px' }}>
       <CardMedia
-        sx={{ height: 140 }}
+        sx={{ height: 200 }}
         title="Stock Bull"
       >
           <div style={{ position: 'relative', width: '100%', height: '100%' }}>
@@ -47,10 +47,10 @@ export default function PrivateCard({id,title,description,image,price}) {
       
       
       <CardContent>
-        <Typography    fontSize='20px' color='#32385a'  fontWeight='600'>
+        <Typography    fontSize='20px' color='#32385a'  fontWeight='bold'>
           {title}
         </Typography>
-        <Typography   color="#636FA4"  height={50} fontSize='14px' >
+        <Typography   color="#636FA4"  height={60} fontSize='14px' >
           {description}
         </Typography>
 

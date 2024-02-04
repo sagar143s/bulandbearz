@@ -10,6 +10,9 @@ import FooterArabic from '@/components/Arabic/Footer/Footer'
 import { useLanguage } from '@/context/LanguageContext'
 import BottomBar from '@/components/English/bottombar/bottom'
 import BottomBarArabic from '@/components/Arabic/bottombar/bottom'
+import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
+import LinkIcon from '@mui/icons-material/Link';
+import Link from 'next/link'
 
 const Cart = () => {
   const { language } = useLanguage();
@@ -45,7 +48,7 @@ console.log(booking,"vada kuttappa");
     <Box sx={{height:'90dvh',overflow:'auto'}}>
     <Container sx={{overflow:'auto',padding:"1rem 0 5rem"}}>
         <Box sx={{padding:'2rem'}}>
-            <Typography  fontSize='25px' fontWeight='600' paddingLeft='1rem' color='#f3904f'>Bookings</Typography>
+            <Typography  fontSize='35px' fontWeight='600' paddingLeft='1rem' color='#32385a'>Bookings</Typography>
             <Box sx={{background:'#f3f3f3' ,height:'1px' ,width:'100%',margin:'1rem'}}></Box>
 
             {bookings.length==0 && (
@@ -57,31 +60,39 @@ console.log(booking,"vada kuttappa");
             
             {bookings.length!=0 && bookings.map((booking,index)=>(
  <Box key={index}>
- <Box  sx={{ display:'flex',justifyContent:'space-between' ,gap:'1rem',  width:'100%',height:'350px',marginTop:'3rem',borderRadius:'6px',padding:'2rem',flexDirection:{xs:'column',sm:'column',md:'row'}}}>
-            <div style={{ position: 'relative', width: '25%', height: '100%' }}>
-            <Image src={Stock1} layout="fill" objectFit="cover"  alt='events'/>
+ <Box  sx={{ display:'flex',justifyContent:'space-between' ,gap:'1rem',  width:'100%',height:'auto',border:'1px solid #32385a',boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px',marginTop:'3rem',borderRadius:'6px',padding:'2rem',flexDirection:{xs:'column',sm:'column',md:'row'}}}>
+            <div style={{ position: 'relative', width: '35%', height: '100%',minHeight:'200px' }}>
+            <Image src={Stock1} layout="fill" objectFit="cover"  alt='events' style={{borderRadius:"10PX",minWidth:"220px"}}/>
             </div>
               
-              <Box sx={{display:'flex',flexDirection:'column',gap:'1rem' }}>
-               <Typography  fontSize='19px' fontWeight='500' color='#021b79'>Item &nbsp; &nbsp;&nbsp;: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;   {booking.package}</Typography>
+              <Box sx={{display:'flex',flexDirection:'column',gap:'1rem',
+             '@media screen and (min-width: 900px)': {
+             padding:"0 0 0 5rem"
+            },
+            '@media screen and (min-width: 1100px)': {
+              padding:"0 0 0 0rem"
+             },}}>
+               <Typography  fontSize='19px' fontWeight='500' color='#021b79'>Item &nbsp; &nbsp;&nbsp;: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  <span style={{fontWeight:"bold"}}>{booking.package}</span> </Typography>
         {booking.privateSession && !booking.aprroved ?  <Typography  fontSize='16px' paddingTop='0.1rem' fontWeight='500' color='#021b79'>Date &nbsp; : &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {booking.date} <span style={{color:'red',fontSize:'11px' ,fontWeight:'400'}}>**Please Check the Date and time (it may vary after approval)  **</span> </Typography> :  <Typography  fontSize='16px' paddingTop='0.1rem' fontWeight='500' color='#021b79'>Date &nbsp; : &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {booking.date} </Typography>}      
-        {booking.privateSession && !booking.aprroved ?  <Typography  fontSize='16px' paddingTop='0.1rem' fontWeight='500' color='#021b79'>Date &nbsp; : &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {booking.time} <span style={{color:'red',fontSize:'11px' ,fontWeight:'400'}}>**Please Check the Date and time (it may vary after approval)  **</span> </Typography> :  <Typography  fontSize='16px' paddingTop='0.1rem' fontWeight='500' color='#021b79'>Date &nbsp; : &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {booking.time} </Typography>}  
+        {booking.privateSession && !booking.aprroved ?  <Typography  fontSize='16px' paddingTop='0.1rem' fontWeight='500' color='#021b79'>Time &nbsp; : &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {booking.time} <span style={{color:'red',fontSize:'11px' ,fontWeight:'400'}}>**Please Check the Date and time (it may vary after approval)  **</span> </Typography> :  <Typography  fontSize='16px' paddingTop='0.1rem' fontWeight='500' color='#021b79'>Time&nbsp;(24hrs) &nbsp; : &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {booking.time} </Typography>}  
                
-               <Typography  fontSize='16px' paddingTop='0.1rem' fontWeight='500'  color='#021b79'>Link : {booking.link ? 
-    <a href={booking.link}><span style={{ textDecoration: 'underline', cursor: 'pointer', color: '#f05933' }}>
-    {booking.link}
+               <Typography  fontSize='16px' paddingTop='0.1rem' fontWeight='500'  color='#021b79'>Zoom Meeting Link :{booking.link ? 
+    <a href={booking.link}><span style={{ textDecoration: 'none', cursor: 'pointer', color: '#f05933',padding:"0 1rem" }}>
+    {/* {booking.link} */} Click Here 
   </span> </a>       : 
           "The link will reach to you shortly after admin approval"
         }  </Typography>
-               <Typography  fontSize='13px' paddingTop='0.1rem' fontWeight='500' align='right'  color='#021b79'>For any queries contact our admin +971 558899744 </Typography>
+               <Typography  fontSize='13px' paddingTop='0.1rem' fontWeight='500' align='right'  color='#021b79'>For any queries contact our <Link style={{fontSize:"13px",padding:"0px",textDecoration:"underline"}} href='/contact'>Customare Care</Link> </Typography>
 
-              <Box sx={{display:'flex',alignItems:'center',justifyContent:'end',paddingTop:'1rem',gap:'1rem'}}>
+              <Box sx={{display:'flex',alignItems:'center',justifyContent:'end',paddingTop:'.5rem',gap:'1rem'}}>
                   <Button 
-                href={telLink}
-                target="_blank"
+                href='./subscription'
                 rel="noopener noreferrer"
-               sx={{fontFamily:'Rubik',fontSize:'15px',fontWeight:'400',background:'#f3904f',textTransform:'none',width:'100%',color:'#fff','&:hover':{background:'linear-gradient(to right, #f3904f, #3b4371)',color:'#fff'}}}>Join Telegram Group</Button>
+               sx={{fontSize:'15px',fontWeight:'400',background:'linear-gradient(to right, #141e30, #243b55)',textTransform:'none',width:'100%',color:'#fff','&:hover':{background:'linear-gradient(to left, #141e30, #243b55)',color:'#fff',boxShadow: 'rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px'}}}>Join Telegram Group</Button>
+          
               </Box>
+              <Box sx={{color:'#32385a',border:"1px solid #414976",padding:"5px 15px",borderRadius:"5PX",background:"#F2F3F8"}}>
+                <Typography sx={{fontSize:"13px"}}>Note: Upon approval, one copy of the meeting link will be in your cart, and another will be sent to your email for seamless access. Thank you.</Typography></Box>
                </Box>
               </Box>
               
