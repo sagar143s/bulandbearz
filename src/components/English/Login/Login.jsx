@@ -17,6 +17,9 @@ import Swal from 'sweetalert2'
 
 const Login = () => {
     const [email,setEmail] = useState('')
+    const [emailError,setEmailError] = useState('')
+    const [passwordError,setPasswordError]=useState('')
+    const [error,setError]=useState('')
     const [password,setPassword] = useState('')
     const router = useRouter()
     const {login} = useUser()
@@ -59,11 +62,10 @@ const res = await fetch('/api/saveGoogleUser',{
 const response = await res.json()
 if(res.ok){
   Swal.fire({
-    position: "center",
     icon: "success",
     title: "Login Success",
-    showConfirmButton: false,
-    timer: 1500
+    
+    
   });
   const userId = response._id;
   const subscribed = response.subscribed
@@ -71,9 +73,12 @@ if(res.ok){
   if (userId) {
     localStorage.setItem('userId', userId);
     localStorage.setItem('subscribed', subscribed);
+    login(response);
+    router.push('/bookings', { shallow: true })
   }
-  login(response);
-  router.push('/bookings')
+
+
+
   
  }
     }
@@ -84,24 +89,7 @@ if(res.ok){
  }
     },[guser])
   
-    // useEffect(() => {
-    //   getRedirectResult(auth).then(async (userCred) => {
-    //     if (!userCred) {
-    //       return;
-    //     }
-  
-    //     fetch("/api/login", {
-    //       method: "POST",
-    //       headers: {
-    //         Authorization: `Bearer ${await userCred.user.getIdToken()}`,
-    //       },
-    //     }).then((response) => {
-    //       if (response.status === 200) {
-    //         router.push("/");
-    //       }
-    //     });
-    //   });
-    // }, []);
+   
         
     
 
@@ -111,6 +99,7 @@ if(res.ok){
 
       if (!email || !password) {
         console.error('Please provide both email and password');
+        setError('Please provide both email and password')
         return;
       }
     
@@ -140,9 +129,14 @@ if(res.ok){
             router.push('/bookings')
             
            }
+           else{
+            console.log(response,'log resp');
+            setError(response)
+           }
         }
         catch(err){
           console.log(err.message);
+
         }       
       };
 
@@ -201,8 +195,11 @@ if(res.ok){
                <Box sx={{ width: '70%' }}>
                     <Typography marginTop='1rem' fontSize='16px' align='left' color='#32385a' fontWeight={500}>Password*</Typography>
                     <TextField value={password} type='password' sx={{ width: '100%', marginTop: '0.2rem' }} InputProps={{ style: { height: '40px' } }} onChange={handlePasswordChange} />
+                   {error && ( <Typography color='red' fontSize='11px' mt='15px'>{error}</Typography>)}
                     <Typography onClick={handleForgotPassword} marginTop='0.5rem' fontSize='14px' align='right' color='#7f63f4' fontWeight={400} style={{ cursor: 'pointer' }}>Forgot Password?</Typography>
                 </Box>
+
+
 
    
             

@@ -1,6 +1,6 @@
 "use client"
 import React,{useState,useEffect} from 'react'
-import { Box,Typography,Button, Container, TextField, Select, MenuItem } from '@mui/material'
+import { Box,Typography,Button, Container, TextField, Select, MenuItem, CircularProgress } from '@mui/material'
 import Calendar from '../Calendar/Calendar'
 import TimeRange from '../TimePicker/TimePicker'
 import Accordion from '@mui/material/Accordion';
@@ -19,6 +19,7 @@ const [emailError, setEmailError] = useState('');
 const [phoneError, setPhoneError] = useState('');
 const [dateError, setDateError] = useState('');
 const [timeError, setTimeError] = useState('');
+const [loading, setLoading] = useState(true);
 
   
   const dateData = courseDetails?.dates 
@@ -35,6 +36,37 @@ const [timeError, setTimeError] = useState('');
     const [username,setUserName]= useState('')
     const [email,setEmail] = useState('')
     const [phone,setPhone] = useState('')
+    const [countryCode,setCountryCode] = useState(971)
+
+
+
+    useEffect(()=>{
+
+
+      const userId = localStorage.getItem('userId');
+    const fetchUser = async () => {
+      try {
+        const res = await fetch(`/api/fetchUser/${userId}`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+
+        if (!res.ok) {
+          router.push('/login', { shallow: true });
+        } else {
+          const response = await res.json();
+          setUserName(response?.name);
+          setEmail(response.email);
+        }
+      } finally {
+        setLoading(false); 
+      }
+    };
+
+    fetchUser();
+    },[])
 
     // Update available times when selected date changes
     useEffect(() => {
@@ -114,7 +146,12 @@ const handlePhoneChange = (e) => {
 
   return (
     <Container  >
-      <Box sx={{ padding: '2rem' }}>
+{loading ? ( // Show loader while data is still loading
+        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100vh' }}>
+          <CircularProgress />
+        </Box>
+      ) : (
+        <Box sx={{ padding: '2rem' }}>
 
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
           <Box>
@@ -130,12 +167,13 @@ const handlePhoneChange = (e) => {
         <Box>
           {/* <Typography  fontSize='20px' fontWeight='500' color='#021b79' paddingTop='1rem'>Enter client Details</Typography> */}
           <Box sx={{ width: '100%', height: '2px', background: '#f3f3f3' }}></Box>
-          <Box sx={{ width: '100%',display:'flex',alignItems:'center',gap:'1rem',marginTop:'1rem'}}>
-          <TextField placeholder='Enter the Name' onChange={(e)=>setUserName(e.target.value)}  error={Boolean(usernameError)}  helperText={usernameError} sx={{width:'30%'}} type='text' InputProps={{ style: { borderRadius: '8px', height: '40px', fontSize: '12px', marginTop:'1rem' } }} />
-          <TextField placeholder='Enter the Email' onChange={(e)=>setEmail(e.target.value)}  error={Boolean(emailError)}  helperText={emailError}  sx={{width:'30%'}} type='email' InputProps={{ style: { borderRadius: '8px', height: '40px',  fontSize: '12px',marginTop:'1rem' } }} />
+          <Box sx={{ width: '100%',display:'flex',gap:'1rem',marginTop:'1rem',flexDirection:{xs:'column',sm:'column',md:'column',lg:'row',xl:'row'}}}>
+          <TextField placeholder='Enter the Name' value={username}  error={Boolean(usernameError)}  helperText={usernameError} sx={{width:'100%'}} type='text' InputProps={{ style: { borderRadius: '8px', height: '40px', fontSize: '12px', marginTop:'1rem' } }} />
+          <TextField placeholder='Enter the Email' value={email}  error={Boolean(emailError)}  helperText={emailError}  sx={{width:'100%'}} type='email' InputProps={{ style: { borderRadius: '8px', height: '40px',  fontSize: '12px',marginTop:'1rem' } }} />
           </Box>
-          <Box>
-          <TextField placeholder='Enter the Phone number' onChange={(e)=>setPhone(e.target.value)}   error={Boolean(phoneError)}  helperText={phoneError}   sx={{width:'61.5%'}} InputProps={{ style: { borderRadius: '8px', height: '40px',  fontSize: '12px', marginTop:'1rem' } }} />
+          <Box sx={{display:'flex'}}>
+           <TextField  value={countryCode}    sx={{width:'15%'}} InputProps={{ startAdornment:(<p style={{marginRight:'5px'}}>+</p>), style: { borderRadius: '8px 0px 0px 8px', height: '40px',  fontSize: '12px', marginTop:'1rem' } }}/> 
+          <TextField placeholder='Enter the Phone number' onChange={(e)=>setPhone(e.target.value)}   error={Boolean(phoneError)}  helperText={phoneError}   sx={{width:'85%'}} InputProps={{ style: { borderRadius: '0px 8px 8px 0px', height: '40px',  fontSize: '12px', marginTop:'1rem',} }} />
           </Box>
 
           
@@ -187,6 +225,9 @@ const handlePhoneChange = (e) => {
         </Box>
         
       </Box>
+      )}
+
+      
     </Container>
   )
 }

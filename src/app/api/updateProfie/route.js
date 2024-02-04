@@ -74,6 +74,22 @@ export const POST = async (request) => {
             } catch (error) {
                 console.error(error);
             }
+
+            const oldImageUrl = user.image; 
+            const publicId = oldImageUrl.split('/').slice(-1)[0].replace(/\.[^/.]+$/, '');
+
+            console.log(publicId,'old');
+      if (oldImageUrl) {
+        try {
+         const deleteImg = await cloudinary.uploader.destroy(publicId);
+         if(deleteImg){
+            console.log(deleteImg,'success');
+         }
+
+        } catch (error) {
+          console.error("Error deleting image from Cloudinary:", error);
+        }
+      }
         }
 
         // Update the user with the changed fields

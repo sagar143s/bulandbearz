@@ -19,11 +19,13 @@ import BottomBar from '@/components/English/bottombar/bottom'
 import BottomBarArabic from '@/components/Arabic/bottombar/bottom'
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import Skeleton from '@mui/material/Skeleton';
 
 const Booking = () => {
   const [selectedValue, setSelectedValue] = useState(0);
   const { language } = useLanguage();
   const [courseData, setCourseData] = useState([]);
+  const [loading, setLoading] = useState(true);
   const router = useRouter()
 
   const handleChange = (event) => {
@@ -33,16 +35,22 @@ const Booking = () => {
 
 
   useEffect(()=>{
+
     const fetchCourses = async()=>{
-      const response   = await fetch('/api/getCourse',{
-        method:'GET',
-        headers:{
-          'Content-type':'application/json'
+      try {
+        const response = await fetch('/api/getCourse', {
+          method: 'GET',
+          headers: {
+            'Content-type': 'application/json',
+          },
+        });
+
+        if (response.ok) {
+          const courses = await response.json();
+          setCourseData(courses);
         }
-      })
-      if(response.ok){
-        const courses = await response.json()
-        setCourseData(courses)
+      } finally {
+        setLoading(false); // Set loading to false regardless of success or failure
       }
      
   
@@ -96,13 +104,34 @@ console.log(courseData,"c");
     '&-ms-overflow-style:': {
         display: 'none', 
     },}}>
-           <Grid container spacing={2}>
-      {courseData.map((service,index) => (
-        <Grid item xs={12} sm={6} md={4} key={index} >
-          <MediaCard title={service.title} description= {service.description} price={service.price} image={service.image} id={service._id} maxUsers={service.maxUsers}  />
-        </Grid>
-      ))}
-    </Grid>
+          {loading ? ( // Check if data is still loading
+              <Grid container spacing={2}>
+                {/* Render skeleton instead of MediaCard */}
+                {[1, 2, 3,4,5,6,7,8,9].map((index) => (
+                  <Grid item xs={12} sm={6} md={4} key={index}>
+                    <Skeleton
+                      variant="rectangular"
+                      sx={{ width: '100%', height: '300px' }}
+                    />
+                  </Grid>
+                ))}
+              </Grid>
+            ) : (
+              <Grid container spacing={2}>
+                {courseData.map((service, index) => (
+                  <Grid item xs={12} sm={6} md={4} key={index}>
+                    <MediaCard
+                      title={service.title}
+                      description={service.description}
+                      price={service.price}
+                      image={service.image}
+                      id={service._id}
+                      maxUsers={service.maxUsers}
+                    />
+                  </Grid>
+                ))}
+              </Grid>
+            )}
            </Box>
         </Box>
 

@@ -42,4 +42,6 @@ export async function middleware(request) {
   return NextResponse.next();
 
 }
-export const config = { matcher: ["/login", "/clientdetails" ,'/cart' ,'/paymentsuccess' , '/confirmbooking/:bookingId*'] };
+export const config = { matcher: [ "/clientdetails" ,'/cart' ,'/paymentsuccess' , ] };
+
+// '/confirmbooking/:bookingId*'

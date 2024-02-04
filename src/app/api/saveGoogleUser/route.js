@@ -39,9 +39,21 @@ try {
           });
           try {
             await newUser.save();
-            return new NextResponse(JSON.stringify( "User Created"), {
-              status: 201,
-              
+            const token = await new SignJWT({ id: newUser._id })
+              .setProtectedHeader({ alg: "HS256" })
+              .setIssuedAt()
+              .sign(getJwtSecretKey());
+    
+            cookies().set({
+              name: 'userToken',
+              value: token,
+              httpOnly: true,
+              path: '/',
+            });
+    
+            const serializedUser = JSON.stringify(newUser);
+            return new NextResponse(serializedUser, {
+              status: 200,
             });
           } catch (err) {
             console.error("Error saving newUser:", err);

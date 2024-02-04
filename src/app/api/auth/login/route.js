@@ -43,7 +43,7 @@ export const POST = async(request)=>{
         else
         {
           
-            return new NextResponse(JSON.stringify("User not register now"), { status: 404 });
+            return new NextResponse(JSON.stringify("User not registered"), { status: 404 });
 
         }
         }catch(error){

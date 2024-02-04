@@ -8,18 +8,22 @@ import Footer from '@/components/English/Footer/Footer';
 import { useLanguage } from '@/context/LanguageContext'
 import BottomBar from '@/components/English/bottombar/bottom';
 import BottomBarAarabic from '@/components/Arabic/bottombar/bottom';
+import Swal from 'sweetalert2'
 
 const Profile = () => {
    const [image,setImage]=useState(null)
    const [name,setName]=useState('')
+   const [originalName, setOriginalName] = useState('');
    const [id,setId]=useState('')
    const [currentPassword,setCurrentPassword]=useState('')
    const [newPassword,setNewPassword]=useState('')
    const [confirmPassword,setConfirmPassword]= useState('')
+   const [temporaryImageUrl, setTemporaryImageUrl] = useState(null);
    const [imageName,setImageName] = useState('')
    const [imageData, setImageData] = useState(null)
    const [error,setError]= useState('')
    const { language } = useLanguage();
+   const [isUpdated, setIsUpdated] = useState(false);
 
 
    const ref = useRef()
@@ -30,15 +34,17 @@ const Profile = () => {
 
      const handleImageChange = (e) => {
       const selectedImage = e.target.files[0];
-      
+  
       if (selectedImage) {
-        // Check if the image size is less than 1MB
         if (selectedImage.size > 1024 * 1024) {
-            return  
-      } else {
-         
-          setImage(selectedImage);
-          setImageName(selectedImage.name)
+          return;
+        } else {
+          const imageUrl = URL.createObjectURL(selectedImage);
+  
+          setTemporaryImageUrl(imageUrl);
+          setImage(selectedImage); // Store the actual File object
+          setImageName(selectedImage.name);
+          setIsUpdated(true);
         }
       }
     };
@@ -60,39 +66,70 @@ const Profile = () => {
         const userresponse = await user.json()
         console.log(userresponse);
         setName(userresponse.name)
+        setOriginalName(userresponse.name);
         setImage(userresponse.image)
         
       }
       fetchUser()
     },[])
 
+    useEffect(() => {
+      // Check for changes in relevant state variables and update isUpdated
+      if (
+        name !== originalName ||
+        newPassword !== '' ||
+        confirmPassword !== '' ||
+        isUpdated
+      ) {
+        setIsUpdated(true);
+      } else {
+        setIsUpdated(false);
+      }
+    }, [name, originalName, newPassword, confirmPassword, isUpdated]);
+
     const handleSubmit = async(e)=>{
-       e.preventDefault()
-       const userId = localStorage.getItem('userId')
-       if(newPassword !== confirmPassword){
-         setError('Password Not match')
-         return
-       }
-       
-       const formData = new FormData()
-       if(image){
-         formData.append('image',image)
-       }
-       formData.append('name',name)
-       formData.append('currentpassword',currentPassword)
-       formData.append('newPassword',newPassword)
-       formData.append('id',userId)
-
-       const res = await fetch('/api/updateProfie',{
-         method:'POST',
-         body:formData,
-       })
-
-       if(res.ok){
-         alert('set sanam')
-       }else{
-         alert('oombi myr')
-       }
+      e.preventDefault();
+      const userId = localStorage.getItem('userId');
+  
+      if (newPassword !== confirmPassword) {
+        setError('Password Not match');
+        return;
+      }
+  
+      const formData = new FormData();
+      if (image) {
+        formData.append('image', image); // Send the actual File object
+      }
+      formData.append('name', name);
+      formData.append('currentpassword', currentPassword);
+      formData.append('newPassword', newPassword);
+      formData.append('id', userId);
+  
+      const res = await fetch('/api/updateProfie', {
+        method: 'POST',
+        body: formData,
+      });
+  
+      const response = await res.json();
+      if (res.ok) {
+        setIsUpdated(false);
+  
+        // Update temporaryImageUrl with the URL of the uploaded image
+        const uploadedImageResponse = await fetch(`/api/fetchUser/${userId}`);
+        const uploadedImage = await uploadedImageResponse.json();
+  
+        setTemporaryImageUrl(uploadedImage.image);
+  
+        Swal.fire({
+          icon: 'success',
+          title: 'Profile Updated',
+        });
+      } else {
+        Swal.fire({
+          icon: 'error',
+          title: response,
+        });
+      }
 
 
 
@@ -113,7 +150,7 @@ const Profile = () => {
           <Box sx={{ position: 'absolute', top: -90, }}>
             <Avatar alt='user' sx={{ width: '150px', height: '150px', position: 'relative' }}>
 
-              <Image src={image ? image : User} fill alt='User' />
+            <Image src={temporaryImageUrl ? temporaryImageUrl :image ? image : User} fill alt='User' />
             </Avatar>
             <Image onClick={uploadImage} src={Edit} width={25} height={25} style={{ position: 'absolute', right: 10, bottom: 5, cursor: 'pointer' }} />
             <input
@@ -161,7 +198,7 @@ const Profile = () => {
 
 
 
-          <Button onClick={handleSubmit} sx={{ height: '40px', background: '#32385a', color: 'white', textTransform: 'none', margin: '2rem 0rem', width: '30%', '&:hover': { background: '#32385a', color: 'white' } }}>Update Profile</Button>
+          <Button  disabled={!isUpdated && newPassword === '' && confirmPassword === ''}  onClick={handleSubmit} sx={{ height: '40px', background: '#32385a', color: 'white', textTransform: 'none', margin: '2rem 0rem', width: '30%', '&:hover': { background: '#32385a', color: 'white' } }}>Update Profile</Button>
 
         </Box>
 

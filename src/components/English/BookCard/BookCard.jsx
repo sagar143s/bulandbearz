@@ -37,8 +37,12 @@ console.log(maxUsers,'users');
         footer: '<a href="/contact">Request a booking?</a>'
       });
     }else{
-
-      router.push(`/confirmbooking/${id}`);
+      const userId = localStorage.getItem('userId')
+      if(userId){
+        router.push(`/confirmbooking/${id}`,{ shallow: true });
+      }else{
+        router.push(`/login`,{ shallow: true });
+      }
     }
    
   }
