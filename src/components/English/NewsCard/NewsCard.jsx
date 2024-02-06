@@ -8,27 +8,37 @@ import { Box, CardActionArea } from '@mui/material';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
-export default function NewsCard({title,description,image,id,date}) {
+export default function NewsCard({item}) {
    const router = useRouter()
 
 
  const  handleView =()=>{
-  router.push(`/news/${id}`)
+  router.push(`/news/${item._id}`)
  }
+
+ const newsDate = new Date(item.date);
+
+  // Format the date as '6 Feb'
+  const formattedDate = newsDate.toLocaleDateString('en-GB', {
+    day: 'numeric',
+    month: 'short',
+  });
+
+ console.log(item,'hi itwm');
   return (
-    <Card sx={{ maxWidth: 345 ,height:'330px' }}>
+    <Card sx={{ maxWidth: 345 ,height:'330px' }} onClick={()=>handleView()}>
       <CardActionArea>
         <CardMedia
 
    sx={{ height: 150 }}
           >
            <div style={{ position: 'relative', width: '100%', height: '100%' }}>
-            <Image src={image} fill  style={{objectFit:'cover'}}   alt='events'/>
+            <Image src={item?.news[0]?.imageUrl} fill  style={{objectFit:'cover'}}   alt='events'/>
           </div>
           </CardMedia>
         <CardContent>
           <Typography gutterBottom fontSize='20px' fontWeight='500'>
-            {title}
+            {item?.news[0]?.title}
           </Typography>
           <Typography fontSize='14px' height='100px'  fontWeight='400'
           sx={{
@@ -39,14 +49,14 @@ export default function NewsCard({title,description,image,id,date}) {
             // WebkitBoxOrient: 'vertical',
           }}
           >
-            {description}
+            {item?.news[0]?.description}
           </Typography>
           <Box sx={{display:'flex',justifyContent:'space-between',flexDirection:"row",marginTop:'1rem'}}>
           <Typography fontSize='12px' marginTop='0.5rem' color='orangered' fontWeight='400' onClick={()=>handleView()} sx={{cursor:'pointer'}}>
             View More
           </Typography>
           <Typography fontSize='12px' marginTop='0.5rem' color='orangered' fontWeight='400'  sx={{cursor:'pointer'}}>
-            {date}
+          {formattedDate}
           </Typography>
           </Box>
         </CardContent>

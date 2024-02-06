@@ -28,70 +28,75 @@ const [news,setNews]= useState([])
 
   useEffect(()=>{
     const fetchNews = async()=>{
- 
       const res= await fetch('/api/fetchNews',{
         method:"GET",
         headers:{
           'Content-Type':'application/json'
         }
       })
-
+      const response = await res.json()
+      console.log(response,'news');
       if(res.ok){
-        const response = await res.json()
-        console.log(response,'news');
         setNews(response)
       }
-
-
     }
     fetchNews()
   },[])
 
 
 
-  const router = useRouter()
+ 
 
 
- const handleView = (id)=>{
- router.push(`/news/${id}`)
- }
-
- const sortedNews = () => {
-  switch (sortby) {
-    case 'today':
-      return news.filter((item) => item.date === getCurrentDate());
-    case 'week':
-      return news.filter((item) => isDateInThisWeek(item.date));
-    case 'month':
-      return news.filter((item) => isDateInThisMonth(item.date));
-    default:
-      return news;
-  }
-};
-
-
-const getCurrentDate = () => {
-  const today = new Date();
-  const dd = String(today.getDate()).padStart(2, '0');
-  const mm = String(today.getMonth() + 1).padStart(2, '0');
-  const yyyy = today.getFullYear();
-  return `${dd}/${mm}/${yyyy}`;
-};
-
-const isDateInThisWeek = (date) => {
-  // Implementation to check if the date is in the current week
-  // You can use a library like date-fns or moment for a more robust solution
-  // For simplicity, I'm leaving the implementation as an exercise
-  return true; // Placeholder, update as needed
-};
-
-const isDateInThisMonth = (date) => {
-  // Implementation to check if the date is in the current month
-  // You can use a library like date-fns or moment for a more robust solution
-  // For simplicity, I'm leaving the implementation as an exercise
-  return true; // Placeholder, update as needed
-};
-
+ 
+  const sortedNews = () => {
+    switch (sortby) {
+      case 'today':
+        return news.filter((item) => isToday(item.date));
+      case 'week':
+        return news.filter((item) => isDateInThisWeek(item.date));
+      case 'month':
+        return news.filter((item) => isDateInThisMonth(item.date));
+      default:
+        return news;
+    }
+  };
+  
+  const isToday = (date) => {
+    const today = new Date();
+    const newsDate = new Date(date);
+    return (
+      today.getDate() === newsDate.getDate() &&
+      today.getMonth() === newsDate.getMonth() &&
+      today.getFullYear() === newsDate.getFullYear()
+    );
+  };
+  
+  const isDateInThisWeek = (date) => {
+    
+    const today = new Date();
+    const firstDayOfWeek = new Date(today);
+    firstDayOfWeek.setDate(today.getDate() - today.getDay());
+  
+    
+    const newsDate = new Date(date);
+  
+    
+    return (
+      newsDate >= firstDayOfWeek && newsDate <= new Date(today.setDate(firstDayOfWeek.getDate() + 6))
+    );
+  };
+  
+  const isDateInThisMonth = (date) => {
+   
+    const today = new Date();
+  
+    
+    const newsDate = new Date(date);
+  
+    
+    return today.getMonth() === newsDate.getMonth() && today.getFullYear() === newsDate.getFullYear();
+  };
 
   return (
     <Box sx={{height:'90dvh',overflow:'auto',display:'flex',flexDirection:'column',justifyContent:'space-between'}}>
@@ -133,10 +138,12 @@ const isDateInThisMonth = (date) => {
 
 <Container sx={{display:'grid',placeItems:'center'}}>
   <Grid container spacing={{ xs: 5, md: 3 }} columns={{ xs: 3, sm: 8, md: 12 }} sx={{paddingBottom:'2rem',marginTop:'1rem'}} >
-  {sortedNews().map((item) => (
+  {news.map((item) => (
+          
             <Grid key={item.id} item xs={12} sm={12} md={4}>
               {/* <Box onClick={handleView(item.id)}> */}
-              <NewsCard title={item.title} description={item.description} image={item.image} id={item._id} date={item.date} />
+              
+              <NewsCard item={item} />
               {/* </Box> */}
             </Grid>
           ))}
