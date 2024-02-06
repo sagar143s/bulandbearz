@@ -67,6 +67,7 @@ const EnglishHeader = () => {
   });
 
   const toggleDrawer = (open) => (event) => {
+    console.log('calsl');
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
       return;
     }
@@ -97,7 +98,9 @@ const EnglishHeader = () => {
          <Link href='/'>
           <ListItem  disablePadding>
             <ListItemButton >
-               <Typography sx={{color:'#fff',fontSize:'15px',fontWeight:'500'}} align='right'>Home</Typography>
+               {language=='english' ? <Typography sx={{color:'#fff',fontSize:'15px',fontWeight:'500'}} align='right'>Home</Typography> :
+               <Typography sx={{color:'#fff',fontSize:'15px',fontWeight:'500'}} align='right'>المنزل</Typography>
+               }
               <ListItemText  />
             </ListItemButton>
           </ListItem>
@@ -105,7 +108,7 @@ const EnglishHeader = () => {
           <Link href='/about'>
           <ListItem  disablePadding>
             <ListItemButton sx={{color:'#fff',fontSize:'15px',fontWeight:'500'}}>
-              About
+          {language=='english' ? 'About' : 'حولنا' }   
               <ListItemText  />
             </ListItemButton>
           </ListItem>
@@ -113,7 +116,7 @@ const EnglishHeader = () => {
           <Link href='/bookings'>
           <ListItem  disablePadding>
             <ListItemButton sx={{color:'#fff',fontSize:'15px',fontWeight:'500'}}>
-              Bookings
+       {language == 'english' ? 'Bookings' : 'احجز الآن'}     
               <ListItemText  />
             </ListItemButton>
           </ListItem>
@@ -122,7 +125,8 @@ const EnglishHeader = () => {
           <Link href='/news'>
           <ListItem  disablePadding>
             <ListItemButton sx={{color:'#fff',fontSize:'15px',fontWeight:'500'}}>
-             News
+             
+             {language == 'english' ? 'News' : 'أخبار'}
               <ListItemText  />
             </ListItemButton>
           </ListItem>
@@ -131,7 +135,8 @@ const EnglishHeader = () => {
            <Link href='/subscription'>
           <ListItem  disablePadding>
             <ListItemButton sx={{color:'#fff',fontSize:'15px',fontWeight:'500'}}>
-              Subscription
+            {language == 'english' ? 'Subscription' : 'الاشتراكات'}
+              
               <ListItemText  />
             </ListItemButton>
           </ListItem>
@@ -140,7 +145,7 @@ const EnglishHeader = () => {
           <Link href='/contact'>
           <ListItem  disablePadding>
             <ListItemButton sx={{color:'#fff',fontSize:'15px',fontWeight:'500'}}>
-              Contact Us
+              {language == 'english' ? 'Contact Us' : 'اتصل بنا'} 
               <ListItemText  />
             </ListItemButton>
           </ListItem>
@@ -250,8 +255,9 @@ const EnglishHeader = () => {
     <Box sx={{display:'flex',alignItems:'center',justifyContent:'space-between',height:'10dvh',padding:'.5rem',background:'#32385a',boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)',position: 'relative', overflow: 'hidden' }}>
     
     
-    {language == 'english' ?  <Box sx={{display:{xs:'block',sm:'block',md:'none'}}}>
- <Box>
+    {language == 'english' ? 
+     <Box sx={{display:{xs:'block',sm:'block',md:'none'}}}>
+       <Box>
       <IconButton onClick={toggleDrawer(true)}>
         <MenuIcon style={{color:'#fff'}}/>
         <Image src={Logo1} style={{width:"100px", height:'auto',margin:"0 10px"}} alt='B&B'/>
@@ -270,7 +276,11 @@ const EnglishHeader = () => {
 
    </Box>
   :
-  <></> 
+  <>
+  
+  
+  
+  </> 
   }
    {language === 'english' ?
    
@@ -326,9 +336,56 @@ const EnglishHeader = () => {
    }
 
   { language !== 'english'? <Box sx={{display:{xs:'block',sm:'block',md:'none'}}}>
-  <IconButton onClick={handleMenuClick}>
-        <MenuIcon />
-      </IconButton>
+  <Box sx={{alignItems:'center',gap:'1rem',color:'#021b79'}}>
+     
+     
+     <Link href='/cart'>
+     <IconButton
+              onClick={handleClick}
+              size="small"
+              sx={{ ml: 1,color:'#021b79' }}
+              aria-controls={open ? 'account-menu' : undefined}
+              aria-haspopup="true"
+              aria-expanded={open ? 'true' : undefined}
+            >
+           <Avatar sx={{width:'30px' ,height:'30px'}}>
+           <Image src={Cart} alt="User"  fill />
+  </Avatar>
+             
+            </IconButton>
+            </Link>
+    
+  
+     <IconButton
+              onClick={handleClick}
+              size="small"
+              sx={{ ml: 1,color:'#021b79' }}
+              aria-controls={open ? 'account-menu' : undefined}
+              aria-haspopup="true"
+              aria-expanded={open ? 'true' : undefined}
+            >
+           <Avatar sx={{width:'30px' ,height:'30px'}}>
+     <Image src={User} alt="User"fill />
+  </Avatar>
+             
+            </IconButton>
+  
+            <IconButton
+              onClick={handleClickLan}
+              size="small"
+              sx={{ ml: 1,color:'#021b79' }}
+              aria-controls={open1 ? 'account-menu' : undefined}
+              aria-haspopup="true"
+              aria-expanded={open1 ? 'true' : undefined}
+            >
+              <Avatar sx={{width:'30px' ,height:'30px'}}>
+      <Image src={Language} alt="User" fill  />
+  </Avatar>
+             
+            </IconButton>
+      
+      
+     </Box>
 
   
      </Box>
@@ -562,12 +619,27 @@ const EnglishHeader = () => {
       
      </Box>
   :
-  <Box sx={{width:'120px', height:'60px'}} >
+  <>
+  <Box sx={{width:'120px', height:'60px',display:{xs:'none',sm:'none',md:'block'}}} >
   <div style={{ position: 'relative', width: '100%', height: '100%' }}>
 <Image src={Logo1} fill alt='events' style={{ objectFit: 'contain' }} />
   </div>
 </Box>
 
+<Box sx={{display:{xs:'block',sm:'block',md:'none'}}}>
+  <IconButton >
+        <Image src={Logo1} style={{width:"100px", height:'auto',margin:"0 10px"}} alt='B&B'/>
+        <MenuIcon onClick={toggleDrawer(true)} style={{color:'#fff'}}/>
+      </IconButton>
+      <Drawer
+       anchor="top"
+       open={state.top}
+       onClose={toggleDrawer(false)}
+      >
+        {list()}
+      </Drawer>
+   </Box>
+   </>
   }
 
 
