@@ -39,8 +39,8 @@ const response = await res.json()
 
   return (
     <Box sx={{height: '90dvh', overflow: 'auto'}}>
-    {Array.isArray(news) && news?.map((item)=>(
-      <Container >
+    {Array.isArray(news) && news?.map((item,index)=>(
+      <Container key={index}>
          <Typography fontSize='25px' color='#f3904f' fontWeight='500' style={{marginTop:'2rem'}}>
          {item?.title}
           </Typography>
