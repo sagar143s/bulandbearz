@@ -20,6 +20,7 @@ import Form from '@/components/English/HomeForm/Form'
 import FormArabic from '@/components/Arabic/HomeForm/Form'
 import BottomBar from '@/components/English/bottombar/bottom'
 import BottomBarArabic from '@/components/Arabic/bottombar/bottom'
+import BannerNew from '../components/English/BannerNew/page'
 import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const Home = () => {
@@ -35,7 +36,7 @@ const Home = () => {
      </Box>
      <SpeedInsights/>
 
-     {language === 'english' ? <Banner /> : <BannerArabic />}
+     {language === 'english' ? <BannerNew /> : <BannerArabic />}
      {language === 'english' ? <Columns/> : <ColumnArabic/>  }
      {language === 'english' &&  window.innerWidth > 600 ? <Video /> : null}
      {language === 'english' ? <Counter/> : <CounterArabic/>  }

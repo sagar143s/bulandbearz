@@ -99,7 +99,7 @@ Nurture enduring investments through tailored plans and personalized guidance.
           alignItems: 'flex-end',
           ...(isMobile ? mobileStyles.rightColumn : {})
         }}>
-          {/* <Image src={Image1} alt="Sales by Month" width={750}   style={{ height: '70vh',objectFit:"contain" }} /> */}
+
         </div>
       </Container>
     </div>
