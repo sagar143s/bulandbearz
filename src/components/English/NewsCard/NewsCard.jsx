@@ -24,7 +24,7 @@ export default function NewsCard({item}) {
     month: 'short',
   });
 
- console.log(item,'hi itwm');
+ 
   return (
     <Card sx={{ maxWidth: 345 ,height:'330px' }} onClick={()=>handleView()}>
       <CardActionArea>
