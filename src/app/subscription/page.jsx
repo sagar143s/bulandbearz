@@ -190,7 +190,7 @@ try {
 
 <Grid container spacing={3} justifyContent="center">
 <Grid item xs={12} sm={6} md={4} >
-<Card raised sx={{ backgroundColor: '#3b4371', boxShadow: '0 4px 8px rgba(0,0,0,0.1)',borderRadius:"15px",padding:"25px 10px",color:"#fff",height:'65dvh',position:'relative' }}>
+<Card raised sx={{ backgroundColor: '#3b4371', boxShadow: '0 4px 8px rgba(0,0,0,0.1)',borderRadius:"15px",padding:"25px 10px",color:"#fff",height:'65dvh',position:'relative',maxHeight:"450px"}}>
                 <CardContent>
                   <Typography variant="h5" component="h2" color="#fff" gutterBottom>
                  Current-Plan :   {userDetails.package}
