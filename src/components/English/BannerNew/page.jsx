@@ -292,7 +292,7 @@ const Banner = () => {
 
 
            <Box sx={{display:"flex",justifyContent:"center",gap:"1rem"}}>
-           <Button href='./bookings' style={{  
+           <Button href='./subscription' style={{  
              background: 'linear-gradient(to right, #141e30, #32385a)',
              color: '#fff',
              padding:".5rem 3rem",
@@ -306,7 +306,7 @@ const Banner = () => {
              }}>
           SUBSCRIPTIONS
            </Button>
-           <Button href='./privatebookings' style={{  
+           <Button href='./privatesessions' style={{  
              background: '#fff',
              color: '#32385a',
             padding:".5rem 2rem",
