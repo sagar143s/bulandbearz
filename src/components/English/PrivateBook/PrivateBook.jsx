@@ -1,6 +1,6 @@
 "use client"
 import React, { useEffect, useState } from 'react'
-import { Box, Button, Container, Grid, TextField, Typography } from '@mui/material'
+import { Box, Button, Container, Grid, MenuItem, Select, TextField, Typography } from '@mui/material'
 import Image from 'next/image'
 import Stock from '../../../../public/stockImg.jpeg'
 import { useParams } from 'next/navigation'
@@ -20,11 +20,16 @@ const PrivateBook = () => {
     const [email,setEmail ]=useState('')
     const [contryCode,setCountryCode] =useState('971')
     const [phone,setPhone] = useState('')
-    const [date,setDate]=useState('')
-    const [time,setTime]=useState('')
+    const [dates,setDates] = useState([])
+    const [selectedDate, setSelectedDate] = useState('');
+    const [availableTimes, setAvailableTimes] = useState([]);
+    const [selectedTime, setSelectedTime] = useState('');
     const [image,setImage]=useState('')
     const [title,setTitle]=useState('')
     const [price,setPrice] = useState('')
+    const [dateError, setDateError] = useState('');
+  const [timeError, setTimeError] = useState('');
+    
     const params = useParams()
     const { language } = useLanguage();
 
@@ -51,6 +56,8 @@ const PrivateBook = () => {
      setImage(response.image)
      setTitle(response.title)
      setPrice(response.price)
+     setDates(JSON.parse(response.dates));
+     
   
 
     }
@@ -58,7 +65,17 @@ const PrivateBook = () => {
     fetchSession()
     },[])
 
+    const parsedDates = dates
+console.log(parsedDates,'paer');
+    useEffect(() => {
+      const found = parsedDates.find(d => d.date === selectedDate);
+      if (found) {
+          setAvailableTimes(found.time);
+      }
+  }, [selectedDate]);
 
+
+  console.log(availableTimes);
 
     useEffect(()=>{
         const userId = localStorage.getItem('userId')
@@ -70,7 +87,7 @@ const PrivateBook = () => {
                 }
             })
             const response = await res.json()
-            console.log(response,'user');
+            
                setName(response?.name)
                setEmail(response.email)
 
@@ -104,23 +121,35 @@ const PrivateBook = () => {
         valid = false;
       }
     
-      // Validate Date
-      if (!date.trim()) {
-        newErrors.date = 'Date is required';
-        valid = false;
-      }
+      // // Validate Date
+      // if (!date.trim()) {
+      //   newErrors.date = 'Date is required';
+      //   valid = false;
+      // }
     
-      // Validate Time
-      if (!time.trim()) {
-        newErrors.time = 'Time is required';
-        valid = false;
-      }
+      // // Validate Time
+      // if (!time.trim()) {
+      //   newErrors.time = 'Time is required';
+      //   valid = false;
+      // }
     
       setErrors(newErrors);
     
       return valid;
     };
     
+    const handleDateChange = (event) => {
+      setSelectedDate(event.target.value);
+      setDateError(event.target.value ? '' : 'Please select a date');
+      setSelectedTime('');
+  };
+
+
+  const handleTimeChange = (event) => {
+    setSelectedTime(event.target.value);
+    setTimeError(event.target.value ? '' : 'Please select a time');
+};
+
     
 
 
@@ -135,8 +164,8 @@ const PrivateBook = () => {
               username:name,
               email:email,
               phone:phone,
-              selectedDate:date,
-              selectedTime:time,
+              selectedDate:selectedDate,
+              selectedTime:selectedTime,
             },
             courseDetails:{
               _id:params.id,
@@ -171,7 +200,7 @@ const PrivateBook = () => {
   return (
     <Box sx={{height:'90dvh',overflow:'auto'}}>
 
-   <Container sx={{overflow:'auto',padding:"2rem 0 3rem"}}>
+   <Container sx={{overflow:'auto',padding:"2rem 0.5rem 3rem 0.5rem"}}>
 
     <Box sx={{padding:"2rem 0"}}>
     <Typography  fontSize='25px' color='#32385a' fontWeight='bold' >Book Now</Typography>
@@ -219,31 +248,44 @@ const PrivateBook = () => {
 
     </Grid>
     <Grid item xs={12} sm={12} md={6} lg={6}  >
-    <Typography fontSize='14px' pt='15px' fontWeight='500'>Choose the Date*</Typography>  
-          <TextField 
-          type='date'
-          value={date}
-          onChange={(e)=>setDate(e.target.value)}
-          sx={{width:'100%',mt:'5px'}} InputProps={{style:{
-            fontSize:'14px',
-            fontWeight:'500',
-            height:'40px'
-          }}} />
+    <Typography fontSize='14px' pt='20px' fontWeight='500'>Choose the Date*</Typography>  
+    <Select
+                value={selectedDate}
+                onChange={handleDateChange}
+                displayEmpty
+              
+                sx={{height:'40px',fontSize:'13px' ,fontWeight:500,width:'100%',borderRadius:'0px'}}
+                // fullWidth
+                
+            >
+                
+                {parsedDates?.map((item, index) => (
+                    <MenuItem key={index} value={item.date}>{item.date}</MenuItem>
+                ))}
+            </Select>
   <div style={{ color: 'red', fontSize: '12px' }}>{errors.date}</div>
 
     </Grid>
     
     <Grid item xs={12} sm={12} md={6} lg={6}  >
-         <Typography fontSize='14px' pt='15px' fontWeight='500'>Choose the time*</Typography>  
-          <TextField type='time'
-          value={time}
-          onChange={(e)=>setTime(e.target.value)}
-          sx={{width:'100%',mt:'5px'}}  InputProps={{  style:{
-            fontSize:'14px',
-            fontWeight:'500',
-            height:'40px'
-          }}} />
-            <div style={{ color: 'red', fontSize: '12px' }}>{errors.time}</div>
+    {selectedDate && (
+                <>
+                    <Typography fontSize='16px' fontWeight='500' color='#2c3e50' sx={{ mt: 2 }}>Choose the Available Time*</Typography>
+                    <Select
+                        value={selectedTime}
+                        onChange={handleTimeChange}
+                        displayEmpty
+                        error={Boolean(timeError)}  helperText={timeError}  
+                        sx={{height:'40px',fontSize:'13px' ,fontWeight:500,width:'100%',borderRadius:'0px'}}
+                      
+                    >
+                        
+                        {availableTimes?.map((time, index) => (
+                            <MenuItem key={index} value={time}>{time}</MenuItem>
+                        ))}
+                    </Select>
+                </>
+            )}
 
     </Grid>
     </Grid>
