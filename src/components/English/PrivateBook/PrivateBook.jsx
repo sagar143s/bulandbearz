@@ -202,7 +202,7 @@ console.log(parsedDates,'paer');
   return (
     <Box sx={{height:'90dvh',overflow:'auto',display:'flex',flexDirection:'column',justifyContent:'space-between'}}>
 
-   <Container sx={{overflow:'auto',padding:"2rem 0.5rem 3rem 0.5rem"}}>
+   <Container sx={{padding:"2rem 0.5rem 3rem 0.5rem"}}>
 
     <Box sx={{padding:"2rem 0"}}>
     <Typography  fontSize='25px' color='#32385a' fontWeight='bold' >Book Now</Typography>
@@ -344,11 +344,12 @@ console.log(parsedDates,'paer');
     </Box>
 
    </Container>
-
-    <Box>
    {language === 'english' ? <Footer/> :  <FooterArabic/> }
      {language === 'english' ? <BottomBar/> :  <BottomBarArabic/> }
+    <Box>
+  
      </Box>
+
     </Box>
   )
 }

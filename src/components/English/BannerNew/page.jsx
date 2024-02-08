@@ -318,7 +318,7 @@ const Banner = () => {
              fontWeight:'500',
              fontFamily: "Poppins, sans-serif" 
            }}>
-        PRIVATE CHANNEL
+        PRIVATE SESSIONS
            </Button>
            <Button href='./bookings' style={{  
              background: 'transparent',
