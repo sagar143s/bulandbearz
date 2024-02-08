@@ -1,9 +1,13 @@
 "use client";
 import React, { useState, useEffect } from 'react';
-import { FaFacebook, FaTwitter, FaInstagram, FaEnvelope } from 'react-icons/fa';
+import { FaFacebook, FaWhatsapp, FaInstagram, FaEnvelope, FaTelegram} from 'react-icons/fa';
 
 const SocialMediaSidebar = () => {
   const [leftPosition, setLeftPosition] = useState('2.5%');
+
+  const phoneNumber = '+971504664433';
+
+const whatsappLink = `https://wa.me/${phoneNumber}`;
 
   useEffect(() => {
     const handleResize = () => {
@@ -22,10 +26,10 @@ const SocialMediaSidebar = () => {
 
   return (
     <div style={{ ...sidebarStyle, left: leftPosition }}>
-      <a href="https://facebook.com" style={iconStyle}><FaFacebook /></a>
-      <a href="https://twitter.com" style={iconStyle}><FaTwitter /></a>
+      <a href="https://t.me/BullandBearzWelcome" target='blank' style={iconStyle}><FaTelegram /></a>
       <a href="https://instagram.com" style={iconStyle}><FaInstagram /></a>
       <a href="mailto:your.email@example.com" style={iconStyle}><FaEnvelope /></a>
+      <a href={whatsappLink} style={iconStyle}><FaWhatsapp /></a>
     </div>
   );
 };
