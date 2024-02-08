@@ -93,7 +93,10 @@ const Banner = () => {
              marginTop:'2rem',
              fontSize:'15px',
              fontWeight:'600',
-             fontFamily: "Poppins, sans-serif" 
+             fontFamily: "Poppins, sans-serif" ,
+             '@media (max-width: 400px)': {
+                fontSize: '13px',
+              },
              }}>
        الاشتراكات
            </Button>
@@ -106,8 +109,11 @@ const Banner = () => {
              borderRadius: '6px',
              marginTop:'2rem',
              fontSize:'15px',
-             fontWeight:'500',
-             fontFamily: "Poppins, sans-serif" 
+             fontWeight:'600',
+             fontFamily: "Poppins, sans-serif" ,
+             '@media (max-width: 400px)': {
+                fontSize: '13px',
+              },
            }}>
  القناة الخاصة
            </Button>
@@ -120,8 +126,11 @@ const Banner = () => {
              borderRadius: '6px',
              marginTop:'2rem',
              fontSize:'15px',
-             fontWeight:'500',
-             fontFamily: "Poppins, sans-serif" 
+             fontWeight:'600',
+             fontFamily: "Poppins, sans-serif" ,
+             '@media (max-width: 400px)': {
+                fontSize: '13px',
+              },
            }}>
       متجر العمل
            </Button>
