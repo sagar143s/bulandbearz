@@ -320,6 +320,20 @@ const Banner = () => {
            }}>
         PRIVATE CHANNEL
            </Button>
+           <Button href='./bookings' style={{  
+             background: 'transparent',
+             color: '#fff',
+            padding:".5rem 2rem",
+             border: '2PX solid #fff',
+             cursor: 'pointer',
+             borderRadius: '6px',
+             marginTop:'2rem',
+             fontSize:'15px',
+             fontWeight:'500',
+             fontFamily: "Poppins, sans-serif" 
+           }}>
+        WORKSHOP
+           </Button>
            </Box>
            
       </Box>
