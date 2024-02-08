@@ -159,8 +159,8 @@ const handlePhoneChange = (e) => {
             <Box sx={{ width: '100%', height: '2px', background: '#f3f3f3' }}></Box>
           </Box>
           <Box sx={{ paddingTop: '1.5rem' }}>
-            <Typography  fontSize='20px' fontWeight='550' color='#021b79' >{courseDetails?.title}</Typography>
-            <Typography  fontSize='13px' fontWeight='400' color='#2c3e50' >{courseDetails?.description}</Typography>
+            <Typography  fontSize='20px' fontWeight='550' color='#021b79'height={50} sx={{fontWeight:'bold'}} >{courseDetails?.title}</Typography>
+            <Typography  fontSize='13px' fontWeight='400' color='#2c3e50' style={{lineHeight:"1.5rem",padding:"1rem 0 2rem"}} >{courseDetails?.description}</Typography>
           </Box>
         </Box>
 
@@ -221,7 +221,7 @@ const handlePhoneChange = (e) => {
 
         <Box sx={{ width: '100%', height: '2px', background: '#f3f3f3',marginTop:'2rem' }}></Box>
         <Box sx={{display:'flex',alignItems:'center',justifyContent:'center'}}>
-        <Button variant='contained' onClick={handleBook}  sx={{ background: 'linear-gradient(to right, #141e30, #243b55)', borderRadius: '8px', height: '45px', textTransform: 'none', fontFamily: "Rubik", fontSize: '12px', width: '30%', marginTop: '3rem' }}>Go Next</Button>
+        <Button variant='contained' onClick={handleBook}  sx={{ background: 'linear-gradient(to right, #141e30, #243b55)', borderRadius: '8px', height: '45px', textTransform: 'none', fontSize: '12px', width: '30%', marginTop: '3rem' }}>Go Next</Button>
         </Box>
         
       </Box>

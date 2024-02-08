@@ -20,6 +20,14 @@ export default function MediaCard({title,description,price,image,id,maxUsers}) {
   const router = useRouter()
 
 
+  const truncatedDescription = (description) => {
+    const words = description.split(' ');
+    if (words.length > 9) {
+        return words.slice(0, 9).join(' ') + '...';
+    }
+    return description;
+};
+
   const calculateProgress = () => {
     const remainingSlots = maxUsers; 
     const progressPercentage = (remainingSlots / maxUsers) * 100;
@@ -60,12 +68,13 @@ console.log(maxUsers,'users');
       
       
       <CardContent   >
-        <Typography    fontSize='20px' color='#32385a'  fontWeight='600'>
+        <Typography    fontSize='20px' height={70} color='#32385a'  fontWeight='600'>
           {title}
         </Typography>
         <Typography   color="#636FA4"  height={50} fontSize='14px' >
-          {description}
+     {truncatedDescription(description)}
         </Typography>
+        
 
         <Typography style={{fontFamily: 'Poppins, sans-serif'}} color="#636FA4" fontSize='12px' paddingTop='1rem' fontWeight='bold'  height={32}>Slot left : <span style={{color:'red'}}>{maxUsers}</span> </Typography>
         {/* <div style={{marginTop: '0.5rem',height: '8px',width: '100%', backgroundColor: '#eee', }}>
