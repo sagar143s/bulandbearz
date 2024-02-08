@@ -1,7 +1,7 @@
 "use client"
 import React from 'react'
 import Banner from '@/components/English/Banner/Banner'
-import BannerArabic from '../components/Arabic/Banner/Banner'
+import BannerArabi from '../components/Arabic/Banner/Banner'
 import SocialMediaSidebar from '@/components/English/SocialMedia/SocialMedia'
 import Columns from '@/components/English/Columns/Column'
 import ColumnArabic from '@/components/Arabic/Columns/column'
@@ -21,6 +21,7 @@ import FormArabic from '@/components/Arabic/HomeForm/Form'
 import BottomBar from '@/components/English/bottombar/bottom'
 import BottomBarArabic from '@/components/Arabic/bottombar/bottom'
 import BannerNew from '../components/English/BannerNew/page'
+import BannerArabic from '@/components/Arabic/Newbanner/page'
 import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const Home = () => {
