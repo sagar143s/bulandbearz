@@ -30,6 +30,9 @@ const BookingSchema = new Schema({
    courseId:{
      type:String,
    },
+   question:{
+    type:String
+   },
    userId:{
     type:String,
    },

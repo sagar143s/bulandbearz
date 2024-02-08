@@ -27,6 +27,7 @@ const PrivateBook = () => {
     const [image,setImage]=useState('')
     const [title,setTitle]=useState('')
     const [price,setPrice] = useState('')
+    const [question,setQuestion]=useState('')
     const [dateError, setDateError] = useState('');
   const [timeError, setTimeError] = useState('');
     
@@ -164,6 +165,7 @@ console.log(parsedDates,'paer');
               username:name,
               email:email,
               phone:phone,
+              question:question,
               selectedDate:selectedDate,
               selectedTime:selectedTime,
             },
@@ -198,7 +200,7 @@ console.log(parsedDates,'paer');
 
     
   return (
-    <Box sx={{height:'90dvh',overflow:'auto'}}>
+    <Box sx={{height:'90dvh',overflow:'auto',display:'flex',flexDirection:'column',justifyContent:'space-between'}}>
 
    <Container sx={{overflow:'auto',padding:"2rem 0.5rem 3rem 0.5rem"}}>
 
@@ -288,6 +290,19 @@ console.log(parsedDates,'paer');
             )}
 
     </Grid>
+    <Grid item xs={12} sm={12} md={12} lg={12}  >
+    <Typography fontSize='14px' pt='15px' fontWeight='500'>Please ask any questions</Typography>  
+          <TextField
+           multiline
+            maxRows={4}
+           value={question} onChange={(e)=>setQuestion(e.target.value)} sx={{width:'100%',mt:'5px'}} InputProps={{style:{
+            fontSize:'14px',
+            fontWeight:'500',
+            
+
+          }}} />
+
+    </Grid>
     </Grid>
 
     <Box sx={{background:'#f3f6f9' ,mt:'3rem' , height:'2px' ,width:'100%' }}></Box> 
@@ -329,8 +344,11 @@ console.log(parsedDates,'paer');
     </Box>
 
    </Container>
+
+    <Box>
    {language === 'english' ? <Footer/> :  <FooterArabic/> }
      {language === 'english' ? <BottomBar/> :  <BottomBarArabic/> }
+     </Box>
     </Box>
   )
 }

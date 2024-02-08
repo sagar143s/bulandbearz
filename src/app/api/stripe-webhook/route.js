@@ -307,6 +307,7 @@ export const POST = async(request)=>{
             date: metadata.selectedDate,
             time: metadata.selectedTime,
             package: metadata.courseTitle,
+            question:metadata.question,
             courseId: metadata.courseId,
             userId:metadata.userId,
             privateSession:metadata.privateSession

@@ -36,6 +36,7 @@ export const POST = async (request) => {
         selectedDate: bookingDetails.selectedDate,
         selectedTime: bookingDetails.selectedTime,
         courseTitle: courseDetails.title,
+        question:bookingDetails.question,
         courseId: courseDetails._id.toString(),
         userId:userId.toString(),
         privateSession:courseDetails.privateSession
