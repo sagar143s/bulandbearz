@@ -196,7 +196,7 @@ const handlePhoneChange = (e) => {
                 onChange={handleDateChange}
                 displayEmpty
                  error={Boolean(emailError)}  helperText={emailError} 
-                sx={{height:'40px',fontSize:'13px' ,fontWeight:500,width:'61.5%',borderRadius:'8px'}}
+                sx={{height:'40px',fontSize:'13px' ,fontWeight:500,width:'50%',borderRadius:'8px'}}
                 // fullWidth
                 
             >
@@ -214,7 +214,7 @@ const handlePhoneChange = (e) => {
                         onChange={handleTimeChange}
                         displayEmpty
                         error={Boolean(timeError)}  helperText={timeError}  
-                        sx={{height:'40px',fontSize:'13px' ,fontWeight:500,width:'61.5%',borderRadius:'8px'}}
+                        sx={{height:'40px',fontSize:'13px' ,fontWeight:500,width:'50%',borderRadius:'8px'}}
                       
                     >
                         
@@ -225,7 +225,13 @@ const handlePhoneChange = (e) => {
                 </>
             )}
         </Box>
+                      
+                      <Box>
+                    <Typography fontSize='16px' fontWeight='500' color='#2c3e50' sx={{ mt: 2 }}>Number of sessions*</Typography>
+                      <TextField placeholder='Enter the Email' value={courseDetails.sessionNumbers}  error={Boolean(emailError)}  helperText={emailError}  sx={{width:'100%'}} type='email' InputProps={{ style: { borderRadius: '8px', height: '40px',  fontSize: '12px',marginTop:'1rem' } }} />
+                      </Box>
 
+          
        
 
         <Box sx={{ width: '100%', height: '2px', background: '#f3f3f3',marginTop:'2rem' }}></Box>

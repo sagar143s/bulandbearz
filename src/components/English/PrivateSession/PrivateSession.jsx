@@ -50,7 +50,7 @@ console.log(response,'sessions');
      <Grid container spacing={3} sx={{mt:'1rem'}}>
         {Array.isArray(sessions) && sessions.map((session,index)=>(
             <Grid key={index} item xs={12} sm={6} md={4}  >
-          <PrivateCard  id={session._id} title={session.title} description={session.subtitle} image={session.image} price={session.price} />
+          <PrivateCard  id={session._id} title={session.title} description={session.subtitle} image={session.image} price={session.price} sessionNumbers={session.sessionNumbers} />
            </Grid>
         ))}
         

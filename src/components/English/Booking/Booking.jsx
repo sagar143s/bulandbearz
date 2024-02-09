@@ -71,6 +71,7 @@ console.log(courseData,"c");
     <Box sx={{height:'90dvh',overflow:'auto'}}>
      <Container sx={{padding:'1.5rem'}}>
         <Box sx={{display:'flex',gap:'1rem',height:'90dvh'}}>
+  
           <Box sx={{paddingBottom:'1rem',display:{xs:'none', sm:'none' ,md:'block'}}} >
           <Box sx={{width:'250px',height:'25%',border:'2px solid #f3f3f3',borderRadius:'25px',boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)'}}>
                       <Box sx={{background:'#32385a',height:'50%',borderRadius:'25px 25px 0 0',display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'column'}} >
@@ -86,7 +87,7 @@ console.log(courseData,"c");
                <Image src={Vert} alt='vert' style={{width:'100%',height:'50%',borderRadius:'25px 25px 0px 0px'}} />
                <Typography align='center' mt='2rem' width='100%' color='#fff' fontWeight='500' >Book Common <br/>&amp; Private Sessions</Typography>
              <Box sx={{display:'flex',justifyContent:'center',mt:'2rem'}}>
-               <Button variant='contained' sx={{background:'#fff',color:'#000','&:hover':{background:'#fff',color:'#000'},borderRadius:'17.5px',height:'30px',textTransform:'none',fontSize:'12px'}}>Book Now</Button>
+               <Button onClick={handlePrivate}  variant='contained' sx={{background:'#fff',color:'#000','&:hover':{background:'#fff',color:'#000'},borderRadius:'17.5px',height:'30px',textTransform:'none',fontSize:'12px'}}>Book Now</Button>
              </Box>
          
            </Box>
@@ -104,6 +105,8 @@ console.log(courseData,"c");
     '&-ms-overflow-style:': {
         display: 'none', 
     },}}>
+              {/* <Typography  fontSize='35px'  fontWeight='bold'  style={{color:'#32385a'}}>WorkShop<Typography>Common Sessions</Typography></Typography> */}
+              <Box sx={{background:'#f3f6f9' , height:'1px' ,width:'100%',marginBottom:"1.5rem" }}></Box> 
           {loading ? ( // Check if data is still loading
               <Grid container spacing={2}>
                 {/* Render skeleton instead of MediaCard */}
@@ -127,6 +130,7 @@ console.log(courseData,"c");
                       image={service.image}
                       id={service._id}
                       maxUsers={service.maxUsers}
+                      sessionNumbers={service.sessionNumbers}
                     />
                   </Grid>
                 ))}

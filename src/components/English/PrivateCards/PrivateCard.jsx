@@ -22,14 +22,14 @@ import { Box } from '@mui/material'
 
 
 
-export default function PrivateCard({id,title,description,image,price}) {
+export default function PrivateCard({id,title,description,image,price,sessionNumbers}) {
   const router = useRouter()
-    const [sessionNumbers,setSessionNumbers]=useState([])
+   
   const { language } = useLanguage();
 
     
 
-
+console.log(sessionNumbers,'hi');
   
 
 
@@ -56,7 +56,7 @@ export default function PrivateCard({id,title,description,image,price}) {
         <Typography   color="#636FA4"  height={60} fontSize='14px' >
           {description}
         </Typography>
-        {/* <Box style={{color:"#32385a",fontWeight:"600"}}>Sessions: {sessionNumbers}</Box> */}
+        <Box style={{color:"#32385a",fontWeight:"600"}}>Sessions: {sessionNumbers}</Box>
 
         
       </CardContent>

@@ -16,7 +16,7 @@ import Swal from 'sweetalert2';
 
 
 
-export default function MediaCard({title,description,price,image,id,maxUsers}) {
+export default function MediaCard({title,description,price,image,id,maxUsers,sessionNumbers}) {
   const router = useRouter()
 
 
@@ -75,7 +75,7 @@ console.log(maxUsers,'users');
      {truncatedDescription(description)}
         </Typography>
         
-
+        <Typography style={{fontFamily: 'Poppins, sans-serif'}} color="#636FA4" fontSize='14px' paddingTop='1rem' fontWeight='bold'  height={32}>Sessions : <span style={{color:'red',fontSize:'15px'}}>{sessionNumbers}</span> </Typography>
         <Typography style={{fontFamily: 'Poppins, sans-serif'}} color="#636FA4" fontSize='12px' paddingTop='1rem' fontWeight='bold'  height={32}>Slot left : <span style={{color:'red'}}>{maxUsers}</span> </Typography>
         {/* <div style={{marginTop: '0.5rem',height: '8px',width: '100%', backgroundColor: '#eee', }}>
           <div style={{ width: `${calculateProgress()}%`,height: '5px',borderRadius:"25px", transition: 'width 0.3s ease-in-out',height: '100%',background: 'linear-gradient(to right, #2b5876, #4e4376)'  }}></div>
