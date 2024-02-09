@@ -32,6 +32,7 @@ const PrivateBook = () => {
   const [timeError, setTimeError] = useState('');
   const [subtitle,setSubtitle]=useState('')
   const [descPoints,setDescPoints]=useState([])
+  const [sessionNumbers,setSessionNumbers]=useState([])
     
     const params = useParams()
     const { language } = useLanguage();
@@ -62,6 +63,7 @@ const PrivateBook = () => {
      setDates(JSON.parse(response.dates));
      setSubtitle(response.subtitle)
      setDescPoints(response.descPoints)
+     setSessionNumbers(response.sessionNumbers)
      
   
 
@@ -284,7 +286,9 @@ console.log(parsedDates,'paer');
                     <MenuItem key={index} value={item.date}>{item.date}</MenuItem>
                 ))}
             </Select>
-  <div style={{ color: 'red', fontSize: '12px' }}>{errors.date}</div>
+
+  <div style={{ color: 'grey', fontSize: '13px', fontStyle: 'italic' }}>Note: There will be either one or two sessions scheduled simultaneously on the selected date.</div>
+ <div style={{ color: 'red', fontSize: '12px' }}>{errors.date}</div>
 
     </Grid>
     
@@ -309,6 +313,13 @@ console.log(parsedDates,'paer');
             )}
 
     </Grid>
+    {/* <Grid xs={12} sm={12} md={12} lg={12} sx={{padding:"1rem 1rem"}}>
+      <Typography>Meeting sessions</Typography>
+      <Typography>Session 1 :<Box sx={{fontWeight:"600"}}>Date: {selectedDate}</Box> <Box sx={{fontWeight:"600"}}>Time: {selectedTime}</Box></Typography>
+      <Typography>Session 2 : <Box sx={{fontWeight:"600"}}>Date: {selectedDate}</Box> <Box sx={{fontWeight:"600"}}>Time: {selectedTime}</Box></Typography>
+    </Grid> */}
+
+  
     <Grid item xs={12} sm={12} md={12} lg={12}  >
     <Typography fontSize='14px' pt='15px' fontWeight='500'>Please ask any questions</Typography>  
           <TextField
@@ -335,21 +346,33 @@ console.log(parsedDates,'paer');
     <Box sx={{width:'50%'}}>
     <Grid container spacing={2}>
     <Grid item xs={12} sm={12} md={12} lg={12}  >
-    <Typography fontSize='14px'  fontWeight='500'>Booking Title</Typography>  
+    <Typography fontSize='15px'  fontWeight='500'>Booking Title</Typography>  
           <TextField value={title}  sx={{width:'100%',mt:'5px'}} InputProps={{style:{
-            fontSize:'14px',
+            fontSize:'15px',
             fontWeight:'500',
             height:'40px',
           }}} />
     </Grid>
     <Grid item xs={12} sm={12} md={12} lg={12}  >
-    <Typography fontSize='14px'  fontWeight='500'>Booking Price</Typography>  
+    <Typography fontSize='15px'  fontWeight='500'>Booking Price</Typography>  
           <TextField value={price} sx={{width:'100%',mt:'5px'}} InputProps={{startAdornment:(
-            <Box sx={{pr:'1rem'}}>AED</Box>
+            <Box sx={{pr:'1rem',mt:'2px'}}>AED</Box>
           ) ,style:{
-            fontSize:'14px',
+            fontSize:'15px',
             fontWeight:'500',
             height:'40px',
+          }}} />
+    </Grid>
+
+    <Grid item xs={12} sm={12} md={12} lg={12}  >
+    <Typography fontSize='15px'  fontWeight='500'>Sessions:</Typography>  
+          <TextField value={sessionNumbers} sx={{width:'100%',mt:'5px'}}  InputProps={{startAdornment:(
+            <Box sx={{pr:'1rem',mt:'2px'}}>DAYS</Box>
+          ) ,style:{
+            fontSize:'15px',
+            fontWeight:'500',
+            height:'40px',
+           
           }}} />
     </Grid>
      

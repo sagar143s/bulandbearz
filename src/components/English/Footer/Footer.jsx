@@ -37,10 +37,10 @@ const Footer = () => {
             <MuiLink href="#" color="inherit" sx={{ display: 'block' ,textDecoration:"none" ,'&:hover': {textDecoration: 'underline'},}}><TwitterIcon/></MuiLink> */}
 
            <Grid sx={{lineHeight:'2rem'}}>
+            <MuiLink href="https://t.me/BullandBearzWelcome" target='blank' color="inherit" sx={{ display: 'block' ,textDecoration:"none" ,'&:hover': {textDecoration: 'underline'},}}><Typography>Telegram</Typography></MuiLink>
             <MuiLink href="#" color="inherit" sx={{ display: 'block' ,textDecoration:"none" ,'&:hover': {textDecoration: 'underline'},}}><Typography>Instagram</Typography></MuiLink>
-            <MuiLink href="#" color="inherit" sx={{ display: 'block' ,textDecoration:"none" ,'&:hover': {textDecoration: 'underline'},}}><Typography>Facebook</Typography></MuiLink>
-            <MuiLink href="#" color="inherit" sx={{ display: 'block' ,textDecoration:"none" ,'&:hover': {textDecoration: 'underline'},}}><Typography>Youtube</Typography></MuiLink>
-            <MuiLink href="#" color="inherit" sx={{ display: 'block' ,textDecoration:"none" ,'&:hover': {textDecoration: 'underline'},}}><Typography>Twitter</Typography></MuiLink>
+            <MuiLink href="mailto:example@example.com" color="inherit" sx={{ display: 'block', textDecoration: 'none', '&:hover': { textDecoration: 'underline' } }}><Typography>Email</Typography></MuiLink>
+            <MuiLink href="https://api.whatsapp.com/+971504664433" color="inherit" sx={{ display: 'block', textDecoration: 'none', '&:hover': { textDecoration: 'underline' } }}> <Typography>WhatsApp</Typography></MuiLink>
             </Grid>
           </Grid>
    

@@ -1,5 +1,5 @@
 "use client"
-import * as React from 'react';
+import React, { useEffect, useState } from 'react'
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -24,7 +24,10 @@ import { Box } from '@mui/material'
 
 export default function PrivateCard({id,title,description,image,price}) {
   const router = useRouter()
+    const [sessionNumbers,setSessionNumbers]=useState([])
   const { language } = useLanguage();
+
+    
 
 
   
@@ -53,6 +56,7 @@ export default function PrivateCard({id,title,description,image,price}) {
         <Typography   color="#636FA4"  height={60} fontSize='14px' >
           {description}
         </Typography>
+        <Box style={{color:"#32385a",fontWeight:"600"}}>Sessions: {sessionNumbers}</Box>
 
         
       </CardContent>
