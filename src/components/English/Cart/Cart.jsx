@@ -76,10 +76,13 @@ console.log(booking,"vada kuttappa");
         {booking.privateSession && !booking.aprroved ?  <Typography  fontSize='16px' paddingTop='0.1rem' fontWeight='500' color='#021b79'>Date &nbsp; : &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {booking.date} <span style={{color:'red',fontSize:'11px' ,fontWeight:'400'}}>**Please Check the Date and time (it may vary after approval)  **</span> </Typography> :  <Typography  fontSize='16px' paddingTop='0.1rem' fontWeight='500' color='#021b79'>Date &nbsp; : &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {booking.date} </Typography>}      
         {booking.privateSession && !booking.aprroved ?  <Typography  fontSize='16px' paddingTop='0.1rem' fontWeight='500' color='#021b79'>Time &nbsp; : &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {booking.time} <span style={{color:'red',fontSize:'11px' ,fontWeight:'400'}}>**Please Check the Date and time (it may vary after approval)  **</span> </Typography> :  <Typography  fontSize='16px' paddingTop='0.1rem' fontWeight='500' color='#021b79'>Time&nbsp;(24hrs) &nbsp; : &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {booking.time} </Typography>}  
                
-               <Typography  fontSize='16px' paddingTop='0.1rem' fontWeight='500'  color='#021b79'>Zoom Meeting Link :{booking.link ? 
-    <a href={booking.link}><span style={{ textDecoration: 'none', cursor: 'pointer', color: '#f05933',padding:"0 1rem" }}>
-    {/* {booking.link} */} Click Here 
-  </span> </a>       : 
+               <Typography  fontSize='16px' paddingTop='0.1rem' fontWeight='500'  color='#021b79'>Zoom Meeting Link :{booking.aprroved == true   ? 
+   booking?.link.map((link)=>(
+<a href={link}><span style={{ textDecoration: 'none', cursor: 'pointer', color: '#f05933',padding:"0 1rem" }}>
+     Click Here 
+  </span> </a> 
+   ))
+         : 
           "The link will reach to you shortly after admin approval"
         }  </Typography>
                <Typography  fontSize='13px' paddingTop='0.1rem' fontWeight='500' align='right'  color='#021b79'>For any queries contact our <Link style={{fontSize:"13px",padding:"0px",textDecoration:"underline"}} href='/contact'>Customare Care</Link> </Typography>

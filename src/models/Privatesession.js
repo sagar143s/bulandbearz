@@ -7,9 +7,11 @@ const PrivatesessionSchema = new Schema({
         type:String,
         required:true
     },
-    description:{
-        type:String,
-        required:true
+    subtitle:{
+        type:String
+    },
+    descPoints:{
+        type:[ String ],
     },
     image:{
         type:String,
@@ -19,9 +21,31 @@ const PrivatesessionSchema = new Schema({
         type:String,
         required:true
     },
+    sessionNumbers:{
+        type:Number
+    },
     link:{
         type:String
-    }
+    },
+    dates:{
+        type:[String],
+        required:true
+    },
+    meetings: [{
+        date: {
+            type: String,
+            required: true
+        },
+        time: {
+            type: String,
+            required: true
+        },
+        link: {
+            type: String,
+            required: true
+        }
+    }]
+
 },
 
 

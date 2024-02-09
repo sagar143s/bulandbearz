@@ -30,6 +30,8 @@ const PrivateBook = () => {
     const [question,setQuestion]=useState('')
     const [dateError, setDateError] = useState('');
   const [timeError, setTimeError] = useState('');
+  const [subtitle,setSubtitle]=useState('')
+  const [descPoints,setDescPoints]=useState([])
     
     const params = useParams()
     const { language } = useLanguage();
@@ -58,6 +60,8 @@ const PrivateBook = () => {
      setTitle(response.title)
      setPrice(response.price)
      setDates(JSON.parse(response.dates));
+     setSubtitle(response.subtitle)
+     setDescPoints(response.descPoints)
      
   
 
@@ -202,11 +206,24 @@ console.log(parsedDates,'paer');
   return (
     <Box sx={{height:'90dvh',overflow:'auto',display:'flex',flexDirection:'column',justifyContent:'space-between'}}>
 
-   <Container sx={{overflow:'auto',padding:"2rem 0.5rem 3rem 0.5rem"}}>
+   <Container sx={{padding:"2rem 0.5rem 3rem 0.5rem"}}>
 
     <Box sx={{padding:"2rem 0"}}>
     <Typography  fontSize='25px' color='#32385a' fontWeight='bold' >Book Now</Typography>
           <Box sx={{background:'#f3f6f9' , height:'2px' ,width:'100%' }}></Box> 
+    </Box>
+
+
+    <Box>
+    <Typography fontSize='22px' color='#32385a' fontWeight='bold'>{title}</Typography>
+      
+    <Typography fontSize='20px' color='#32385a' fontWeight='bold'>{subtitle}</Typography>
+    {descPoints.map((desc,index)=>(
+      <ul key={index}>
+        <li style={{color:'#32385a',fontSize:'14px',fontFamily:'Rubik',ml:'2rem'}}>{desc} </li>
+      </ul>
+      
+    ))}
     </Box>
 
     <Grid container spacing={2}>

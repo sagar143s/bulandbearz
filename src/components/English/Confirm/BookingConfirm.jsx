@@ -110,7 +110,6 @@ const [loading, setLoading] = useState(true);
 
 
     const bookingDetails = {
-      
           username,
           email,
           phone,
@@ -158,15 +157,23 @@ const handlePhoneChange = (e) => {
             <Typography  fontSize='22px' fontWeight='600' color='#021b79'>Book Now</Typography>
             <Box sx={{ width: '100%', height: '2px', background: '#f3f3f3' }}></Box>
           </Box>
-          <Box sx={{ paddingTop: '1.5rem' }}>
+          <Box sx={{ paddingTop: '0rem' }}>
             <Typography  fontSize='20px' fontWeight='550' color='#021b79' >{courseDetails?.title}</Typography>
-            <Typography  fontSize='13px' fontWeight='400' color='#2c3e50' >{courseDetails?.description}</Typography>
+            <Typography  fontSize='13px' fontWeight='400' color='#2c3e50' >{courseDetails?.subtitle}</Typography>
+            {courseDetails?.descPoints?.map((item,index)=>(
+              <Box sx={{pl:'2rem',pt:'0.5rem'}}>
+              <ul key={index}>
+                <li style={{fontSize:'12px',fontFamily:'Rubik'}}>{item}</li>
+              </ul>
+              </Box>
+            ))}
+
           </Box>
         </Box>
 
         <Box>
           {/* <Typography  fontSize='20px' fontWeight='500' color='#021b79' paddingTop='1rem'>Enter client Details</Typography> */}
-          <Box sx={{ width: '100%', height: '2px', background: '#f3f3f3' }}></Box>
+          <Box sx={{ width: '100%', height: '2px', background: '#f3f3f3',mt:'0.5rem' }}></Box>
           <Box sx={{ width: '100%',display:'flex',gap:'1rem',marginTop:'1rem',flexDirection:{xs:'column',sm:'column',md:'column',lg:'row',xl:'row'}}}>
           <TextField placeholder='Enter the Name' value={username}  error={Boolean(usernameError)}  helperText={usernameError} sx={{width:'100%'}} type='text' InputProps={{ style: { borderRadius: '8px', height: '40px', fontSize: '12px', marginTop:'1rem' } }} />
           <TextField placeholder='Enter the Email' value={email}  error={Boolean(emailError)}  helperText={emailError}  sx={{width:'100%'}} type='email' InputProps={{ style: { borderRadius: '8px', height: '40px',  fontSize: '12px',marginTop:'1rem' } }} />

@@ -21,7 +21,7 @@ const BookingSchema = new Schema({
         type:String, 
     },
     link:{
-      type:String,
+      type:[String],
    },
    aprroved:{
      type:Boolean,

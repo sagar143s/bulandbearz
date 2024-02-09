@@ -4,40 +4,43 @@ const { Schema } = mongoose;
 const CourseSchema = new Schema({
     title:{
         type:String,
-        required:true
     },
-    description:{
-        type:String,
-        required:true
+    subtitle:{
+        type:String
+    },
+    descPoints:{
+        type:[String],
     },
     image:{
         type:String,
-        required:true
+        
     },
     price:{
         type:String,
-        required:true
+      
+    },
+    sessionNumbers:{
+        type:Number
     },
     maxUsers:{
         type:Number,
-        required:true
     },
     dates:{
         type:[String],
-        required:true
     },
+
     meetings: [{
         date: {
             type: String,
-            required: true
+           
         },
         time: {
             type: String,
-            required: true
+       
         },
         link: {
             type: String,
-            required: true
+           
         }
     }]
 },

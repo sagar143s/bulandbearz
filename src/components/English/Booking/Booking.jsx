@@ -122,7 +122,7 @@ console.log(courseData,"c");
                   <Grid item xs={12} sm={6} md={4} key={index}>
                     <MediaCard
                       title={service.title}
-                      description={service.description}
+                      description={service.subtitle}
                       price={service.price}
                       image={service.image}
                       id={service._id}
