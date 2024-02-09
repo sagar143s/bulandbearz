@@ -56,7 +56,7 @@ export default function PrivateCard({id,title,description,image,price}) {
         <Typography   color="#636FA4"  height={60} fontSize='14px' >
           {description}
         </Typography>
-        <Box style={{color:"#32385a",fontWeight:"600"}}>Sessions: {sessionNumbers}</Box>
+        {/* <Box style={{color:"#32385a",fontWeight:"600"}}>Sessions: {sessionNumbers}</Box> */}
 
         
       </CardContent>
