@@ -214,16 +214,18 @@ console.log(parsedDates,'paer');
     </Box>
 
 
-    <Box>
-    <Typography fontSize='22px' color='#32385a' fontWeight='bold'>{title}</Typography>
+    <Box sx={{padding:"1rem",boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px'}}>
+    <Typography fontSize='25px' color='#32385a' fontWeight='600' sx={{textDecoration:"underline"}}>{title}</Typography>
       
-    <Typography fontSize='20px' color='#32385a' fontWeight='bold'>{subtitle}</Typography>
+    <Typography fontSize='20px' color='#32385a' fontWeight='500' sx={{paddingLeft:'.5rem'}}>{subtitle}</Typography>
+    <Box sx={{ml:"2rem"}}>
     {descPoints.map((desc,index)=>(
-      <ul key={index}>
-        <li style={{color:'#32385a',fontSize:'14px',fontFamily:'Rubik',ml:'2rem'}}>{desc} </li>
+      <ul key={index}  sx={{liststyleType: 'kannada'}}>
+        <li style={{color:'#32385a',fontSize:'15px'}}>{desc} </li>
       </ul>
       
     ))}
+   </Box>
     </Box>
 
     <Grid container spacing={2}>
