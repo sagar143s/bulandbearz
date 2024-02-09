@@ -315,10 +315,10 @@ const Banner = () => {
              borderRadius: '6px',
              marginTop:'2rem',
              fontSize:'15px',
-             fontWeight:'500',
+             fontWeight:'600',
              fontFamily: "Poppins, sans-serif" 
            }}>
-        PRIVATE CHANNEL
+        PRIVATE SESSIONS
            </Button>
            <Button href='./bookings' style={{  
              background: 'transparent',

@@ -228,7 +228,7 @@ const handlePhoneChange = (e) => {
 
         <Box sx={{ width: '100%', height: '2px', background: '#f3f3f3',marginTop:'2rem' }}></Box>
         <Box sx={{display:'flex',alignItems:'center',justifyContent:'center'}}>
-        <Button variant='contained' onClick={handleBook}  sx={{ background: 'linear-gradient(to right, #141e30, #243b55)', borderRadius: '8px', height: '45px', textTransform: 'none', fontFamily: "Rubik", fontSize: '12px', width: '30%', marginTop: '3rem' }}>Go Next</Button>
+        <Button variant='contained' onClick={handleBook}  sx={{ background: 'linear-gradient(to right, #141e30, #243b55)', borderRadius: '8px', height: '45px', textTransform: 'none', fontSize: '12px', width: '30%', marginTop: '3rem' }}>Go Next</Button>
         </Box>
         
       </Box>

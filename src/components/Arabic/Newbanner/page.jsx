@@ -115,7 +115,7 @@ const Banner = () => {
                 fontSize: '13px',
               },
            }}>
- القناة الخاصة
+الجلسات الخاصة
            </Button>
            <Button href='./bookings' style={{  
              background: 'transparent',

@@ -361,11 +361,12 @@ console.log(parsedDates,'paer');
     </Box>
 
    </Container>
-
-    <Box>
    {language === 'english' ? <Footer/> :  <FooterArabic/> }
      {language === 'english' ? <BottomBar/> :  <BottomBarArabic/> }
+    <Box>
+  
      </Box>
+
     </Box>
   )
 }
