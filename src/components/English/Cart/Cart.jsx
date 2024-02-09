@@ -77,10 +77,12 @@ console.log(booking,"vada kuttappa");
         {booking.privateSession && !booking.aprroved ?  <Typography  fontSize='16px' paddingTop='0.1rem' fontWeight='500' color='#021b79'>Time &nbsp; : &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {booking.time} <span style={{color:'red',fontSize:'11px' ,fontWeight:'400'}}>**Please Check the Date and time (it may vary after approval)  **</span> </Typography> :  <Typography  fontSize='16px' paddingTop='0.1rem' fontWeight='500' color='#021b79'>Time&nbsp;(24hrs) &nbsp; : &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {booking.time} </Typography>}  
                
                <Typography  fontSize='16px' paddingTop='0.1rem' fontWeight='500'  color='#021b79'>Zoom Meeting Link :{booking.aprroved == true   ? 
-   booking?.link.map((link)=>(
+   booking?.link.map((link ,index)=>(
+    <Box key={index}>
 <a href={link}><span style={{ textDecoration: 'none', cursor: 'pointer', color: '#f05933',padding:"0 1rem" }}>
      Click Here 
   </span> </a> 
+  </Box>
    ))
          : 
           "The link will reach to you shortly after admin approval"

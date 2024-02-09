@@ -161,7 +161,7 @@ const handlePhoneChange = (e) => {
             <Typography  fontSize='20px' fontWeight='550' color='#021b79' >{courseDetails?.title}</Typography>
             <Typography  fontSize='13px' fontWeight='400' color='#2c3e50' >{courseDetails?.subtitle}</Typography>
             {courseDetails?.descPoints?.map((item,index)=>(
-              <Box sx={{pl:'2rem',pt:'0.5rem'}}>
+              <Box key={index} sx={{pl:'2rem',pt:'0.5rem'}}>
               <ul key={index}>
                 <li style={{fontSize:'12px',fontFamily:'Rubik'}}>{item}</li>
               </ul>
