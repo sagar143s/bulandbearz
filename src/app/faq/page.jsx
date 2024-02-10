@@ -58,7 +58,7 @@ const FAQ = () => {
         </AccordionSummary>
         <AccordionDetails>
           <Typography style={answerStyle}>
-            Answer 1: Bull and bearz provides financial consultancy services,
+            Answer 1: Bull and bearz provides Learning  services,
             including market analysis, investment advice, and portfolio management.
           </Typography>
         </AccordionDetails>
@@ -125,7 +125,7 @@ const FAQ = () => {
   </AccordionSummary>
   <AccordionDetails>
     <Typography style={answerStyle}>
-      Answer 6: Our financial advisors suggest a diversified portfolio that could encompass stocks, bonds, mutual funds, and other investment instruments. The optimal combination varies based on your financial objectives, risk tolerance, and investment timeframe.
+      Answer 6: Our Learning advisors suggest a diversified portfolio that could encompass stocks, bonds, mutual funds, and other investment instruments. The optimal combination varies based on your Learning objectives, risk tolerance, and investment timeframe.
     </Typography>
   </AccordionDetails>
 </Accordion>
