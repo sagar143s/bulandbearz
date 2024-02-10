@@ -13,16 +13,16 @@ import Image from 'next/image';
 
 // Array of card details to populate the cards
 const cardDetails = [
-  { title: 'Investment Advisory',  description: 'Investment Advisory for strategic stock market decisions and diverse platforms, ensuring informed choices for optimal financial outcomes.', imageUrl: Image1},
+  { title: 'Investment Advisory',  description: 'Investment Advisory for strategic stock market decisions and diverse platforms, ensuring informed choices for optimal Money outcomes.', imageUrl: Image1},
   { title: 'Market Research',  description: 'Empower investment decisions with comprehensive stock market research for well-informed and strategic investment choices.',  imageUrl: Image2},
   { title: 'Market Trends Analysis',  description: 'Elevate investments with our Trends Analysis service, providing precise insights for strategic decisions in dynamic markets.',  imageUrl: Image3 },
   { title: 'Technical Analysis',  description: 'Leverage advanced tools for market trend analysis, gain insights, and optimize returns with our comprehensive financial analysis.',  imageUrl: Image4 },
-  { title: 'Financial Planning', description: 'Secure your financial future with personalized investment strategies, ensuring a prosperous journey towards lasting financial success.',  imageUrl: Image5 },
+  { title: 'Money Planning', description: 'Secure your Learning  future with personalized investment strategies, ensuring a prosperous journey towards lasting Learning success.',  imageUrl: Image5 },
   { title: 'Trading Strategies  ', description: 'Maximize returns with our cutting-edge trading strategies, leveraging market insights for strategic and informed investment decisions.',  imageUrl: Image6 },
 
 ];
 const topSection = {
-  heading: 'FINANCIAL INSIGHTS SPECTRUM',
+  heading: 'LEARNING INSIGHTS SPECTRUM',
   subheading: 'Unveiling Investment Advisory',
   description: 'A Comprehensive Guide to Investment Advisory, Providing Analysis and Strategic Perspectives for Informed Financial Decision-Making in Todays Dynamic Markets.',
 };

@@ -30,7 +30,8 @@ const TermsAndConditions = () => {
 
   const headingStyle = {
     color: 'black',
-    marginBottom: '16px',
+    marginTop: '16px',
+    marginBottom:'.5rem'
   };
 
   const listItemStyle = {
@@ -102,7 +103,7 @@ const TermsAndConditions = () => {
           <Typography variant="body1">
           The information and advice provided on the Site are for general
         informational purposes only and should not be considered as Learning
-        advice or a substitute for professional consultation. Bullandbearz.com
+        advice or a substitute for professional liscensed ppl. Bullandbearz.com
         makes no representations or warranties of any kind, express or implied,
         regarding the accuracy, adequacy, validity, reliability, availability,
         or completeness of any information on the Site.
