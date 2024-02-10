@@ -620,7 +620,7 @@ const EnglishHeader = () => {
      </Box>
   :
   <>
-  <Box sx={{width:'120px', height:'60px',display:{xs:'none',sm:'none',md:'block'}}} >
+  <Box sx={{width:'170px', height:'60px',display:{xs:'none',sm:'none',md:'block'}}} >
   <div style={{ position: 'relative', width: '100%', height: '100%' }}>
 <Image src={Logo1} fill alt='events' style={{ objectFit: 'contain' }} />
   </div>
