@@ -287,7 +287,7 @@ console.log(parsedDates,'paer');
                 ))}
             </Select>
 
-  <div style={{ color: 'grey', fontSize: '13px', fontStyle: 'italic' }}>Note: There will be either one or two sessions scheduled simultaneously on the selected date.</div>
+  <div style={{ color: 'grey', fontSize: '13px', fontStyle: 'italic' }}>Note: If the selected date and time fall within the 1st or 2nd section, the 2nd section will be scheduled for the next date after the selected date.</div>
  <div style={{ color: 'red', fontSize: '12px' }}>{errors.date}</div>
 
     </Grid>

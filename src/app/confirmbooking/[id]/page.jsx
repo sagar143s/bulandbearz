@@ -2,11 +2,17 @@
 import React, { useEffect, useState } from 'react'
 import BookingConfirm from '@/components/English/Confirm/BookingConfirm'
 import Footer from '@/components/English/Footer/Footer'
+import FooterArabic from '@/components/Arabic/Footer/Footer'
+import { useLanguage } from '@/context/LanguageContext'
+import BottomBar from '@/components/English/bottombar/bottom'
+import BottomBarArabic from '@/components/Arabic/bottombar/bottom'
 import { useParams } from 'next/navigation'
+import { Box } from '@mui/material'
 
 
 
 const ConfirmBooking = () => {
+  const { language } = useLanguage();
   const params = useParams()
   console.log(params.id,"param");
   const [courseData,setCourseData]=useState({})
@@ -41,7 +47,10 @@ fetchCourse()
     display:'flex',flexDirection:'column',justifyContent:'space-between'}}>
       
         <BookingConfirm courseDetails={courseData} dates={dates}/>
-        <Footer/>
+   <Box sx={{mt:"2rem"}}>
+     {language === 'english' ? <Footer/> :  <FooterArabic/> }
+     {language === 'english' ? <BottomBar/> :  <BottomBarArabic/> }
+     </Box>
     </div>
   )
 }
