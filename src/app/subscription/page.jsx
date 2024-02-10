@@ -76,27 +76,27 @@ if(userId){
 
    const feature1 = [
     'No telegram Access',
-    'Mailing Address',
-    'Mail Scanning & Security',
-    'HD Audio & Video Calls'
+    'Weekly Newsletter Access',
+
   ]
 
-  const feature2=['No telegram Access',
-  'Vet Features',
-  'Mailing Address',
-  'Mail Scanning & Security',
-  'HD Audio & Video Calls']
+  const feature2=[
+    'No telegram Access',
+  'Weekly Newsletter Access',
+ 
 
-  const  feature3= [ 'Newsletter access',
-  'Mailing Address',
-  'Mail Scanning & Security',
-  'HD Audio & Video Calls']
+]
+
+  const  feature3= [ 
+    'Telegram access',
+  'Weekly Newsletter Access',
+]
 
 
 
   const feature4=['Newsletter access',
-  'Vet Features',
-  'Unlimited Audio & Video Call',
+
+  'No Telegram acces',
   'Ultra HD Quality',
   'Unlimited Users']
 
@@ -190,7 +190,7 @@ try {
 
 <Grid container spacing={3} justifyContent="center">
 <Grid item xs={12} sm={6} md={4} >
-<Card raised sx={{ backgroundColor: '#3b4371', boxShadow: '0 4px 8px rgba(0,0,0,0.1)',borderRadius:"15px",padding:"25px 10px",color:"#fff",height:'65dvh',position:'relative',maxHeight:"450px"}}>
+<Card raised sx={{ backgroundColor: '#3b4371', boxShadow: '0 4px 8px rgba(0,0,0,0.1)',borderRadius:"15px",padding:"25px 10px",color:"#fff",height:'55dvh',position:'relative',maxHeight:"450px"}}>
                 <CardContent>
                   <Typography variant="h5" component="h2" color="#fff" gutterBottom>
                  Current-Plan :   {userDetails.package}
@@ -378,7 +378,7 @@ try {
                     </Box>
                   )) :
                   plan.subscriptionType=='year' && plan.name=='Premium Telegram'?
-                feature4.map((feature, idx) => (
+                feature3.map((feature, idx) => (
                     <Box key={idx} display="flex" alignItems="center" marginBottom={1}>
                       {feature === 'No telegram Access' ? (
                         <Box component="span" style={{ display: 'flex', alignItems: 'center', marginRight: 8 }}>
@@ -402,7 +402,7 @@ try {
                       )}
                       <Typography variant="body2">{feature}</Typography>
                     </Box>
-                  )): feature4.map((feature, idx) => (
+                  )): feature1.map((feature, idx) => (
                     <Box key={idx} display="flex" alignItems="center" marginBottom={1}>
                       {feature === 'No telegram Access' ? (
                         <Box component="span" style={{ display: 'flex', alignItems: 'center', marginRight: 8 }}>
