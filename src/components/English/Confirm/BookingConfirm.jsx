@@ -228,7 +228,7 @@ const handlePhoneChange = (e) => {
                       
                       <Box>
                     <Typography fontSize='16px' fontWeight='500' color='#2c3e50' sx={{ mt: 2 }}>Number of sessions*</Typography>
-                      <TextField placeholder='Enter the Email' value={courseDetails.sessionNumbers}  error={Boolean(emailError)}  helperText={emailError}  sx={{width:'100%'}} type='email' InputProps={{ style: { borderRadius: '8px', height: '40px',  fontSize: '12px',marginTop:'1rem' } }} />
+                      <TextField  value={courseDetails.sessionNumbers}  error={Boolean(emailError)}  helperText={emailError}  sx={{width:'100%'}} type='email' InputProps={{ style: { borderRadius: '8px', height: '40px',  fontSize: '12px',marginTop:'1rem' } }} />
                       </Box>
 
           

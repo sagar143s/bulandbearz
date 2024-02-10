@@ -16,10 +16,15 @@ const Connect = () => {
     
    <Box sx={{height:'90dvh',overflow:'auto',display:'flex',flexDirection:'column',justifyContent:'space-between'}}>
 
+
     {language === 'english' ?  <Contact/> : <ContactArabic/>}
+
+
+    <Box>
     {language === 'english' ? <Footer/> : <Footer/>}
     {language === 'english' ? <BottomBar/> : <BottomBarArabic/>}
-
+    </Box>
+    
  </Box>
   )
 }
