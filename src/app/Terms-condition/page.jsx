@@ -98,7 +98,7 @@ const TermsAndConditions = () => {
 
 
           <Typography variant="h6" style={headingStyle}>
-          3.  financial advise
+          3.  Financial advise
           </Typography>
           <Typography variant="body1">
           The information and advice provided on the Site are for general
