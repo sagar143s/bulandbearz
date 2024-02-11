@@ -19,7 +19,8 @@ const PrivacyPolicy = () => {
 
   const headingStyle = {
     color: 'black',
-    marginBottom: '16px',
+    marginBottom: '.5rem',
+    marginTop:'1rem'
  
   };
 

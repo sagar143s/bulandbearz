@@ -15,20 +15,16 @@ const services = [
     image: Icon2,
     description: 'Personalized consultations and curated online resources for mastering trading fundamentals.',
   },
-  {
-    title: 'Platform Proficiency',
-    image: Icon1,
-    description: 'Cultivate enduring investments with personalized plans and tailored guidance. ',
-  },
+ 
   {
     title: 'Strategic Planning', 
     image: Icon4,
-    description: 'Develop a custom trading strategy with our experienced consultants.',
+    description: 'Develop a custom trading strategy with our experienced liscensed ppl.',
   },
   {
     title: 'Confidence Building:',
     image: Icon3,
-    description: 'Develop your skills without any risk through hands-on demonstrations led by industry professionals.',
+    description: 'Develop your skills jail time through hands-on demonstrations led by industry professionals.',
   },
 ];
 
@@ -50,11 +46,11 @@ const Columns =()=> {
         <Typography  fontSize='20px' textTransform='none' marginBottom={'1rem'}   sx={{ textAlign: 'center', color: '#485563',fontWeight:'600' }}>
         DISCOVER TRADE MASTERY        </Typography>
         <Typography variant={isMobile ? 'h6' : 'h4'} textTransform='none' component="h2" gutterBottom style={{ textAlign: 'center', marginBottom: 32, color: 'rgb(2,77,142)', fontWeight: 'bold' }}>
-        Navigating the Markets with Insightful Consultancy
+        Navigating the Markets with Insightful Learning
       </Typography>
       <Grid container spacing={3}>
   {services.map((service, index) => (
-    <Grid item xs={12} sm={6} md={3} lg={3} key={index} style={{borderRadius:'10px' }}>
+    <Grid item xs={12} sm={6} md={4} lg={4} key={index} style={{borderRadius:'10px' }}>
       <Paper elevation={6} style={{ padding: 18, display: 'flex', flexDirection: 'column', alignItems: 'left', height: '100%', backgroundColor: '#fafafa',borderRadius:'10px' }}>
       <Box sx={{ display: 'flex', justifyContent: 'flex-start', marginBottom: 2, backgroundColor: 'transparent', borderRadius: '50%', padding: '10px' }}>
       <Image 

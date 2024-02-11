@@ -68,15 +68,15 @@ console.log(maxUsers,'users');
       
       
       <CardContent   >
-        <Typography    fontSize='20px' height={70} color='#32385a'  fontWeight='600'>
+        <Typography    fontSize='20px' height={70} color='#32385a'   style={{fontFamily: 'Poppins, sans-serif'}} fontWeight='600'>
           {title}
         </Typography>
-        <Typography   color="#636FA4"  height={50} fontSize='14px' >
+        <Typography   color="#636FA4"  height={50} fontSize='14px'style={{fontFamily: 'Poppins, sans-serif'}}  >
      {truncatedDescription(description)}
         </Typography>
         
-        <Typography style={{fontFamily: 'Poppins, sans-serif'}} color="#636FA4" fontSize='14px' paddingTop='1rem' fontWeight='bold'  height={32}>Sessions : <span style={{color:'red',fontSize:'15px'}}>{sessionNumbers}</span> </Typography>
-        <Typography style={{fontFamily: 'Poppins, sans-serif'}} color="#636FA4" fontSize='12px' paddingTop='1rem' fontWeight='bold'  height={32}>Slot left : <span style={{color:'red'}}>{maxUsers}</span> </Typography>
+        <Typography style={{fontFamily: 'Poppins, sans-serif'}} color="#636FA4" fontSize='14px' paddingTop='1rem' fontWeight='600'  height={32}>Sessions : <span style={{color:'red',fontSize:'15px'}}>{sessionNumbers}</span> </Typography>
+        <Typography style={{fontFamily: 'Poppins, sans-serif'}} color="#636FA4" fontSize='12px' paddingTop='1rem' fontWeight='600'  height={32}>Slot left : <span style={{color:'red'}}>{maxUsers}</span> </Typography>
         {/* <div style={{marginTop: '0.5rem',height: '8px',width: '100%', backgroundColor: '#eee', }}>
           <div style={{ width: `${calculateProgress()}%`,height: '5px',borderRadius:"25px", transition: 'width 0.3s ease-in-out',height: '100%',background: 'linear-gradient(to right, #2b5876, #4e4376)'  }}></div>
         </div> */}

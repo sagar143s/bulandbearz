@@ -27,8 +27,8 @@ const whatsappLink = `https://wa.me/${phoneNumber}`;
   return (
     <div style={{ ...sidebarStyle, left: leftPosition }}>
       <a href="https://t.me/BullandBearzWelcome" target='blank' style={iconStyle}><FaTelegram /></a>
-      <a href="https://instagram.com" style={iconStyle}><FaInstagram /></a>
-      <a href="mailto:your.email@example.com" style={iconStyle}><FaEnvelope /></a>
+      {/* <a href="https://instagram.com" style={iconStyle}><FaInstagram /></a> */}
+      <a href="mailto:bullandbearz.ae@gmail.com" style={iconStyle}><FaEnvelope /></a>
       <a href={whatsappLink} style={iconStyle}><FaWhatsapp /></a>
     </div>
   );

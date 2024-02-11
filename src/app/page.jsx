@@ -38,10 +38,10 @@ const Home = () => {
      <SpeedInsights/>
 
      {language === 'english' ? <BannerNew /> : <BannerArabic />}
-     {language === 'english' ? <Columns/> : <ColumnArabic/>  }
+     {/* {language === 'english' ? <Columns/> : <ColumnArabic/>  } */}
      {language === 'english' &&  window.innerWidth > 600 ? <Video /> : null}
-     {language === 'english' ? <Counter/> : <CounterArabic/>  }
-     {language === 'english' ? <ProjectItems/> : <ProjectItemsArabic/>  }
+     {/* {language === 'english' ? <Counter/> : <CounterArabic/>  } */}
+     {/* {language === 'english' ? <ProjectItems/> : <ProjectItemsArabic/>  } */}
      {language === 'english' ? <Form/> : <FormArabic/>  }
      {language === 'english' ? <Footer/> :  <FooterArabic/> }
      {language === 'english' ? <BottomBar/> :  <BottomBarArabic/> }

@@ -30,7 +30,8 @@ const TermsAndConditions = () => {
 
   const headingStyle = {
     color: 'black',
-    marginBottom: '16px',
+    marginTop: '16px',
+    marginBottom:'.5rem'
   };
 
   const listItemStyle = {
@@ -50,7 +51,7 @@ const TermsAndConditions = () => {
             Terms and Conditions
           </Typography>
           <Typography variant="body1">
-            Welcome to Bull and Bearz, a financial consultancy website (the Site).
+            Welcome to Bull and Bearz, a Learning website (the Site).
             By accessing or using the Site, you agree to comply with and be bound
             by the following terms and conditions (the Terms). If you do not agree
             to these Terms, please do not use the Site.
@@ -97,12 +98,12 @@ const TermsAndConditions = () => {
 
 
           <Typography variant="h6" style={headingStyle}>
-          3. Financial Consultancy Disclaimer
+          3.  Financial advise
           </Typography>
           <Typography variant="body1">
           The information and advice provided on the Site are for general
-        informational purposes only and should not be considered as financial
-        advice or a substitute for professional consultation. Bullandbearz.com
+        informational purposes only and should not be considered as Learning
+        advice or a substitute for professional liscensed ppl. Bullandbearz.com
         makes no representations or warranties of any kind, express or implied,
         regarding the accuracy, adequacy, validity, reliability, availability,
         or completeness of any information on the Site.
@@ -113,10 +114,10 @@ const TermsAndConditions = () => {
           4. Investment Risks
           </Typography>
           <Typography variant="body1">
-          Investing in financial markets involves risks, and past performance is
+          Investing in Learning markets involves risks, and past performance is
         not indicative of future results. Users are solely responsible for
         evaluating the risks associated with their investment decisions and
-        should seek professional advice before making any financial
+        should seek professional advice before making any Learning
         commitments.
           </Typography>
 

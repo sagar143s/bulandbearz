@@ -102,9 +102,10 @@ const [news,setNews]= useState([])
     <Box sx={{height:'90dvh',overflow:'auto',display:'flex',flexDirection:'column',justifyContent:'space-between'}}>
     <Container  >
 
-<Typography paddingTop='20px' color='#3b4371' fontWeight='600' fontSize='35px'>News</Typography>
 
-<Box sx={{display:'flex',justifyContent:'flex-end'}}>
+
+<Box sx={{display:'flex',justifyContent:'space-between',mt:"1rem"}}>
+<Typography paddingTop='20px' color='#3b4371' fontWeight='600' fontSize='35px'>News</Typography>
   <Box>
     <Typography fontSize='13px' fontWeight='500' marginLeft='0.5rem'>SortBy</Typography>
 <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
@@ -129,7 +130,7 @@ const [news,setNews]= useState([])
 <Box sx={{marginTop:'.5rem',background:'#f3f6f9',height:'2px',marginBottom:'2rem'}}></Box>
 
             <Box sx={{background:'#a8a9b3',borderRadius:'15px',margin:'0 0 3rem'}}>
-        <Typography style={{padding:"15px",color:'#fff'}}>
+        <Typography style={{padding:"15px",color:'#fff',fontStyle:"italic",fontSize:"14px"}}>
         *<b>disclaimer</b>: Not financial advice. This newsletter reflects my own personal trading journey, for entertainment purposes only. I am not qualified or licensed to advise anyone on their investments or trades, I am sharing my personal ideas and experiences only. Never make financial decisions based on any information on this site or any associated platforms. Always consult a professional for investment related advice.* 
         </Typography>
       </Box>

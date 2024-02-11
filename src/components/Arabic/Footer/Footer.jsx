@@ -33,10 +33,10 @@ const Footer = () => {
             وسائل التواصل الاجتماعي
           </Typography>
           <Grid sx={{ lineHeight: '2rem' }}>
-          <MuiLink href="#" color="inherit" sx={{ display: 'block' ,textDecoration:"none" ,'&:hover': {textDecoration: 'underline'},}}><Typography>إنستغرام</Typography></MuiLink>
-            <MuiLink href="#" color="inherit" sx={{ display: 'block' ,textDecoration:"none" ,'&:hover': {textDecoration: 'underline'},}}><Typography>فيسبوك</Typography></MuiLink>
-            <MuiLink href="#" color="inherit" sx={{ display: 'block' ,textDecoration:"none" ,'&:hover': {textDecoration: 'underline'},}}><Typography>يوتيوب</Typography></MuiLink>
-            <MuiLink href="#" color="inherit" sx={{ display: 'block' ,textDecoration:"none" ,'&:hover': {textDecoration: 'underline'},}}><Typography>تويتر</Typography></MuiLink>
+          <MuiLink  href="https://t.me/BullandBearzWelcome" color="inherit" sx={{ display: 'block' ,textDecoration:"none" ,'&:hover': {textDecoration: 'underline'},}}><Typography>إنستغرام</Typography></MuiLink>
+            {/* <MuiLink href="#" color="inherit" sx={{ display: 'block' ,textDecoration:"none" ,'&:hover': {textDecoration: 'underline'},}}><Typography>فيسبوك</Typography></MuiLink> */}
+            <MuiLink href="mailto:bullandbearz.ae@gmail.com"color="inherit" sx={{ display: 'block' ,textDecoration:"none" ,'&:hover': {textDecoration: 'underline'},}}><Typography>يوتيوب</Typography></MuiLink>
+            <MuiLink href="https://api.whatsapp.com/+971504664433"color="inherit" sx={{ display: 'block' ,textDecoration:"none" ,'&:hover': {textDecoration: 'underline'},}}><Typography>تويتر</Typography></MuiLink>
           </Grid>
         </Grid>
         <Grid item xs={12} sm={6} md={3} lg={3} sx={{ height: "150px" }}>
@@ -44,9 +44,9 @@ const Footer = () => {
             السياسات
           </Typography>
           <Grid sx={{ lineHeight: '2rem' }}>
-            <MuiLink href="#" color="inherit" sx={{ display: 'block', textDecoration: "none" }}>الشروط والأحكام</MuiLink>
-            <MuiLink href="#" color="inherit" sx={{ display: 'block', textDecoration: "none" }}>سياسة الخصوصية</MuiLink>
-            <MuiLink href="#" color="inherit" sx={{ display: 'block', textDecoration: "none" }}>الأسئلة الشائعة</MuiLink>
+            <MuiLink href="./Terms-condition" color="inherit" sx={{ display: 'block', textDecoration: "none" }}>الشروط والأحكام</MuiLink>
+            <MuiLink href="./privacy-policy"color="inherit" sx={{ display: 'block', textDecoration: "none" }}>سياسة الخصوصية</MuiLink>
+            <MuiLink href="./faq" color="inherit" sx={{ display: 'block', textDecoration: "none" }}>الأسئلة الشائعة</MuiLink>
           </Grid>
         </Grid>
       </Grid>

@@ -76,27 +76,27 @@ if(userId){
 
    const feature1 = [
     'No telegram Access',
-    'Mailing Address',
-    'Mail Scanning & Security',
-    'HD Audio & Video Calls'
+    'Weekly Newsletter Access',
+
   ]
 
-  const feature2=['No telegram Access',
-  'Vet Features',
-  'Mailing Address',
-  'Mail Scanning & Security',
-  'HD Audio & Video Calls']
+  const feature2=[
+    'No telegram Access',
+  'Weekly Newsletter Access',
+ 
 
-  const  feature3= [ 'Newsletter access',
-  'Mailing Address',
-  'Mail Scanning & Security',
-  'HD Audio & Video Calls']
+]
+
+  const  feature3= [ 
+    'Telegram access',
+  'Weekly Newsletter Access',
+]
 
 
 
   const feature4=['Newsletter access',
-  'Vet Features',
-  'Unlimited Audio & Video Call',
+
+  'No Telegram acces',
   'Ultra HD Quality',
   'Unlimited Users']
 

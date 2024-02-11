@@ -196,7 +196,7 @@ const handlePhoneChange = (e) => {
                 onChange={handleDateChange}
                 displayEmpty
                  error={Boolean(emailError)}  helperText={emailError} 
-                sx={{height:'40px',fontSize:'13px' ,fontWeight:500,width:'50%',borderRadius:'8px'}}
+                sx={{height:'40px',fontSize:'13px' ,fontWeight:500,width:'100%',borderRadius:'8px'}}
                 // fullWidth
                 
             >
@@ -205,6 +205,7 @@ const handlePhoneChange = (e) => {
                     <MenuItem key={index} value={item.date}>{item.date}</MenuItem>
                 ))}
             </Select>
+            <div style={{ color: 'grey', fontSize: '13px', fontStyle: 'italic' }}>Note: If the selected date and time fall within the 1st or 2nd section, the 2nd section will be scheduled for the next date after the selected date.</div>
 
             {selectedDate && (
                 <>
@@ -214,7 +215,7 @@ const handlePhoneChange = (e) => {
                         onChange={handleTimeChange}
                         displayEmpty
                         error={Boolean(timeError)}  helperText={timeError}  
-                        sx={{height:'40px',fontSize:'13px' ,fontWeight:500,width:'50%',borderRadius:'8px'}}
+                        sx={{height:'40px',fontSize:'13px' ,fontWeight:500,width:'100%',borderRadius:'8px'}}
                       
                     >
                         
@@ -222,13 +223,14 @@ const handlePhoneChange = (e) => {
                             <MenuItem key={index} value={time}>{time}</MenuItem>
                         ))}
                     </Select>
+                  
                 </>
             )}
         </Box>
                       
                       <Box>
                     <Typography fontSize='16px' fontWeight='500' color='#2c3e50' sx={{ mt: 2 }}>Number of sessions*</Typography>
-                      <TextField  value={courseDetails.sessionNumbers}  error={Boolean(emailError)}  helperText={emailError}  sx={{width:'100%'}} type='email' InputProps={{ style: { borderRadius: '8px', height: '40px',  fontSize: '12px',marginTop:'1rem' } }} />
+                      <TextField  value={courseDetails.sessionNumbers}  error={Boolean(emailError)}  helperText={emailError}  sx={{width:'50%'}} type='email' InputProps={{ style: { borderRadius: '8px', height: '40px',  fontSize: '12px',marginTop:'.5rem' } }} />
                       </Box>
 
           

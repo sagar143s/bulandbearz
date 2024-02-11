@@ -29,7 +29,7 @@ export default function NewsCard({item}) {
     <Card sx={{ maxWidth: 345 ,height:'330px' }} onClick={()=>handleView()}>
       <CardActionArea>
         <CardMedia
-
+ onClick={()=>handleView()} 
    sx={{ height: 150 }}
           >
            <div style={{ position: 'relative', width: '100%', height: '100%' }}>
@@ -37,7 +37,7 @@ export default function NewsCard({item}) {
           </div>
           </CardMedia>
         <CardContent>
-          <Typography gutterBottom fontSize='20px' fontWeight='500'>
+          <Typography gutterBottom fontSize='20px' fontWeight='600'>
             {item?.news[0]?.title}
           </Typography>
           <Typography fontSize='14px' height='100px'  fontWeight='400'
