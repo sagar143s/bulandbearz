@@ -42,6 +42,6 @@ export async function middleware(request) {
   return NextResponse.next();
 
 }
-export const config = { matcher: [ "/clientdetails"  ,'/paymentsuccess' , ] };
+export const config = { matcher: [ '/paymentsuccess' , ] };
 
 // '/confirmbooking/:bookingId*'

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Container, TextField, Button, Grid } from '@mui/material';
+import Swal from 'sweetalert2';
 
 const Home = () => {
   const [name, setName] = useState('');
@@ -10,7 +11,7 @@ const Home = () => {
   const [emailError, setEmailError] = useState(false);
   const [messageError, setMessageError] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
 
     // Simple validation
@@ -33,6 +34,36 @@ const Home = () => {
       return;
     } else {
       setMessageError(false);
+    }
+
+    try{
+      const res = await fetch('/api/sendContact',{
+        method:'POST',
+        headers:{
+          'Content-Type':'application/json'
+        },
+        body:JSON.stringify({
+          name,email,message
+        })
+      })
+      if(res.ok){
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          showConfirmButton: false,
+          timer: 1500
+        });
+        setName('')
+        setEmail('')
+        setMessage('')
+      }
+    }catch(error){
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: error.message,
+        footer: '<a href="#">Why do I have this issue?</a>'
+      });
     }
 
     // If all validations pass, you can proceed with form submission logic

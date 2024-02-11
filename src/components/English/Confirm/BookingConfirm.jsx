@@ -41,9 +41,8 @@ const [loading, setLoading] = useState(true);
 
 
     useEffect(()=>{
-
-
       const userId = localStorage.getItem('userId');
+      setLoading(true)
     const fetchUser = async () => {
       try {
         const res = await fetch(`/api/fetchUser/${userId}`, {

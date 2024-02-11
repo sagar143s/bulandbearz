@@ -46,6 +46,32 @@ const Checkout = () => {
   },[])
 
 
+   useEffect(()=>{
+    const userId = localStorage.getItem('userId');
+    if(!userId){
+      router.push('/login', { shallow: true });
+    }
+    const fetchUser = async () => {
+      try {
+        const res = await fetch(`/api/fetchUser/${userId}`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+
+        if (!res.ok) {
+          router.push('/login', { shallow: true });
+        }
+      }
+      catch(error){
+        alert(error.message)
+      }
+    }
+    fetchUser();
+   },[])
+
+
 
 
 console.log(bookingDetail,courseDetails,'det');

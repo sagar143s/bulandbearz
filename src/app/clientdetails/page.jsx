@@ -15,10 +15,12 @@ const { language } = useLanguage();
   return (
     <>
     <Box sx={{overflow:'auto',height:'90dvh',display:'flex',flexDirection:'column',justifyContent:'space-between'}}>
-
+    
          <ClientDetails />
+         <Box>
          {language === 'english' ? <Footer/> :  <FooterArabic/> }
          {language === 'english' ? <BottomBar/> :  <BottomBarAarabic/> }
+         </Box>
     </Box>
     
     </>
