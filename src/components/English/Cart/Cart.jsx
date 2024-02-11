@@ -45,8 +45,8 @@ console.log(booking,"vada kuttappa");
 
   const telLink = 'https://t.me/+Z5agUe32NKw0NTFl'
   return (
-    <Box sx={{height:'90dvh',overflow:'auto'}}>
-    <Container sx={{overflow:'auto',padding:"1rem 0 5rem"}}>
+    <Box sx={{height:'90dvh',overflow:'auto',display:'flex',flexDirection:'column',justifyContent:'space-between'}}>
+    <Container sx={{padding:"1rem 0 5rem"}}>
         <Box sx={{padding:'2rem'}}>
             <Typography  fontSize='35px' fontWeight='600' paddingLeft='1rem' color='#32385a'>Bookings</Typography>
             <Box sx={{background:'#f3f3f3' ,height:'1px' ,width:'100%',margin:'1rem'}}></Box>
@@ -75,16 +75,17 @@ console.log(booking,"vada kuttappa");
                <Typography  fontSize='19px' fontWeight='500' color='#021b79'>Item &nbsp; &nbsp;&nbsp;: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  <span style={{fontWeight:"bold"}}>{booking.package}</span> </Typography>
         {booking.privateSession && !booking.aprroved ?  <Typography  fontSize='16px' paddingTop='0.1rem' fontWeight='500' color='#021b79'>Date &nbsp; : &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {booking.date} <span style={{color:'red',fontSize:'11px' ,fontWeight:'400'}}>**Please Check the Date and time (it may vary after approval)  **</span> </Typography> :  <Typography  fontSize='16px' paddingTop='0.1rem' fontWeight='500' color='#021b79'>Date &nbsp; : &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {booking.date} </Typography>}      
         {booking.privateSession && !booking.aprroved ?  <Typography  fontSize='16px' paddingTop='0.1rem' fontWeight='500' color='#021b79'>Time &nbsp; : &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {booking.time} <span style={{color:'red',fontSize:'11px' ,fontWeight:'400'}}>**Please Check the Date and time (it may vary after approval)  **</span> </Typography> :  <Typography  fontSize='16px' paddingTop='0.1rem' fontWeight='500' color='#021b79'>Time&nbsp;(24hrs) &nbsp; : &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {booking.time} </Typography>}  
-               
+   
                <Typography  fontSize='16px' paddingTop='0.1rem' fontWeight='500'  color='#021b79'>Zoom Meeting Link :{booking.aprroved == true   ? 
    booking?.link.map((link ,index)=>(
-    <Box key={index}>
+    <span key={index}>
 <a href={link}><span style={{ textDecoration: 'none', cursor: 'pointer', color: '#f05933',padding:"0 1rem" }}>
-     Click Here 
+     Click Here  <span style={{fontSize:'10px',color:'#000'}}>{index==0?'1st Meeting Link':'2nd Meeting Link'}</span>  
   </span> </a> 
-  </Box>
+  </span>
    ))
          : 
+
           "The link will reach to you shortly after admin approval"
         }  </Typography>
                <Typography  fontSize='13px' paddingTop='0.1rem' fontWeight='500' align='right'  color='#021b79'>For any queries contact our <Link style={{fontSize:"13px",padding:"0px",textDecoration:"underline"}} href='/contact'>Customare Care</Link> </Typography>
@@ -109,8 +110,10 @@ console.log(booking,"vada kuttappa");
               
         </Box>
     </Container>
+    <Box>
      {language === 'english' ? <Footer/> :  <FooterArabic/> }
      {language === 'english' ? <BottomBar/> :  <BottomBarArabic/> }
+     </Box>
     </Box>
   )
 }

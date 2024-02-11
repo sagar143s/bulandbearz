@@ -121,7 +121,16 @@ const EnglishHeader = () => {
             </ListItemButton>
           </ListItem>
           </Link>
-
+          
+          <Link href='/privatesessions'>
+          <ListItem  disablePadding>
+            <ListItemButton sx={{color:'#fff',fontSize:'15px',fontWeight:'500'}}>
+       {language == 'english' ? 'Private Bookings' : 'حجوزات خاصة'}     
+              <ListItemText  />
+            </ListItemButton>
+          </ListItem>
+          </Link>
+          {subscribed && (
           <Link href='/news'>
           <ListItem  disablePadding>
             <ListItemButton sx={{color:'#fff',fontSize:'15px',fontWeight:'500'}}>
@@ -131,7 +140,7 @@ const EnglishHeader = () => {
             </ListItemButton>
           </ListItem>
           </Link>
-
+          )}
            <Link href='/subscription'>
           <ListItem  disablePadding>
             <ListItemButton sx={{color:'#fff',fontSize:'15px',fontWeight:'500'}}>

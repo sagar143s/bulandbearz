@@ -19,7 +19,7 @@ const PaymentSuccess = () => {
   };
 
   return (
-    <Box sx={{height: '90vh',overflow:"auto"}}>
+    <Box sx={{height: '90vh',overflow:"auto",display:'flex',flexDirection:'column',justifyContent:'space-between'}}>
     <Container sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center',height:"70dvh"  }}>
       <Paper elevation={6} sx={{ p: 4, textAlign: 'center', maxWidth: 600, borderRadius: 12, background: '#f0f0f0',paddingTop:"4rem",paddingBottom:"5rem",border:"1px solid #32385a",boxShadow:' rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px' }}>
 
@@ -41,8 +41,11 @@ const PaymentSuccess = () => {
         </Button>
       </Paper>
     </Container>
+      
+       <Box>
        {language === 'english' ? <Footer /> : <FooterArabic />}
        {language === 'english' ? <BottomBar /> : <BottomBarArabic />}
+       </Box>
      </Box>
   );
 };

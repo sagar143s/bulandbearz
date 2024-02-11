@@ -190,81 +190,91 @@ try {
 
 <Grid container spacing={3} justifyContent="center">
 <Grid item xs={12} sm={6} md={4} >
-<Card raised sx={{ backgroundColor: '#3b4371', boxShadow: '0 4px 8px rgba(0,0,0,0.1)',borderRadius:"15px",padding:"25px 10px",color:"#fff",height:'65dvh',position:'relative',maxHeight:"450px"}}>
+               <Card raised sx={{ backgroundColor: '#3b4371', boxShadow: '0 4px 8px rgba(0,0,0,0.1)',borderRadius:"15px",padding:"25px 10px",color:"#fff",height:'500px',position:'relative',}}>
                 <CardContent>
                   <Typography variant="h5" component="h2" color="#fff" gutterBottom>
-                 Current-Plan :   {userDetails.package}
+                 Current-Plan :   {userDetails?.package}
                   </Typography>
                   <Typography variant="h6" color="#009e61" gutterBottom>
-                AED    {userDetails.price} / {userDetails.subscriptionType == 'month' ? 'Monthly' :'Yearly'}
+                  AED {userDetails?.price} / {userDetails?.subscriptionType == 'month' ? 'Monthly' :'Yearly'}
                   </Typography>
                    
-                  {userDetails.subscriptionType=='month' && userDetails.package=='Basic NewsLetter'? feature1.map((feature, idx) => (
-                    <Box key={idx} display="flex" alignItems="center" marginBottom={1}>
-                      {feature === 'No telegram Access' ? (
-                        <Box component="span" style={{ display: 'flex', alignItems: 'center', marginRight: 8 }}>
-                          <ClearIcon fontSize="small" color="error" />
+                  {userDetails.subscriptionType=='month' && userDetails.package=='Weekly NewsLetter'? 
+                  
+                  
+                    <Box   marginTop={3}>
+                     
+                        <Box component="span" style={{ display: 'flex', alignItems: 'center',gap:'1rem', marginTop: '1rem' }}>
+                          <ClearIcon fontSize="small" style={{width:'20px'}} color="error" />
+                          <Typography fontSize='15px' fontWeight='bold'>No telegram Access</Typography>
                         </Box>
-                      ) : (
-                        <CheckCircleIcon fontSize="small" style={{ marginRight: 8, color: 'green' }} />
-                      )}
-                      <Typography variant="body2">{feature}</Typography>
-                    </Box>
-                  )): userDetails.subscriptionType=='month' && userDetails.package=='Basic Telegram'?
-                feature3.map((feature, idx) => (
-                    <Box key={idx} display="flex" alignItems="center" marginBottom={1}>
-                      {feature === 'No telegram Access' ? (
-                        <Box component="span" style={{ display: 'flex', alignItems: 'center', marginRight: 8 }}>
-                          <ClearIcon fontSize="small" color="error" />
+                       
+                       <Box component="span" style={{ display: 'flex', alignItems: 'center', marginTop: '1rem' }}>
+                        <CheckCircleIcon fontSize="small" style={{width:'20px', marginRight: 15, color: 'green' }} />
+                        <Typography fontSize='15px' fontWeight='bold'>Weekly Newsletter Access</Typography>
                         </Box>
-                      ) : (
-                        <CheckCircleIcon fontSize="small" style={{ marginRight: 8, color: 'green' }} />
-                      )}
-                      <Typography variant="body2">{feature}</Typography>
+
+                        
                     </Box>
-                  )) :
+
+                  : userDetails.subscriptionType=='month' &&  userDetails.package == 'Basic Telegram'?
+                
+                    <Box  marginTop={3}>
+                     
+                        <Box component="span" style={{ display: 'flex', alignItems: 'center',gap:'1rem', marginTop: '1rem' }}>
+                        <CheckCircleIcon fontSize="small" style={{width:'20px', marginRight: 15, color: 'green' }} />
+                          <Typography fontSize='15px' fontWeight='bold'>Telegram Access</Typography>
+                        </Box>
+
+                        <Box component="span" style={{ display: 'flex', alignItems: 'center', marginTop: '1rem' }}>
+                        <CheckCircleIcon fontSize="small" style={{width:'20px', marginRight: 28, color: 'green' }} />
+                        <Typography fontSize='15px' fontWeight='bold'>Weekly Newsletter Access</Typography>
+                        </Box>
+                    </Box>
+                   :
                   userDetails.subscriptionType =='year' && userDetails.package=='Premium Telegram'?
-                feature4.map((feature, idx) => (
-                    <Box key={idx} display="flex" alignItems="center" marginBottom={1}>
-                      {feature === 'No telegram Access' ? (
+                
+                    <Box  marginTop={3}>
+                     
                         <Box component="span" style={{ display: 'flex', alignItems: 'center', marginRight: 8 }}>
-                          <ClearIcon fontSize="small" color="error" />
+                        <CheckCircleIcon fontSize="small" style={{width:'20px', marginRight: 28, color: 'green' }} />
+                        <Typography fontSize='15px' fontWeight='bold'>Telegram Group Access</Typography>
                         </Box>
-                      ) : (
-                        <CheckCircleIcon fontSize="small" style={{ marginRight: 8, color: 'green' }} />
-                      )}
-                      <Typography variant="body2">{feature}</Typography>
+                     
+                        <Box component="span" style={{ display: 'flex', alignItems: 'center', marginTop: '1rem' }}>
+                        <CheckCircleIcon fontSize="small" style={{width:'20px', marginRight: 28, color: 'green' }} />
+                        <Typography fontSize='15px' fontWeight='bold'>Weekly Newsletter Access</Typography>
+                        </Box>
+
+                        <Box component="span" style={{ display: 'flex', alignItems: 'center', marginTop: '1rem' }}>
+                        <CheckCircleIcon fontSize="small" style={{width:'20px', marginRight: 28, color: 'green' }} />
+                        <Typography fontSize='15px' fontWeight='bold'>Premium Telegram Group Access</Typography>
+                        </Box>
                     </Box>
-                  )) :
-                  userDetails.subscriptionType=='year' && userDetails.package=='Premium NewsLetter'?
-                feature2.map((feature, idx) => (
-                    <Box key={idx} display="flex" alignItems="center" marginBottom={1}>
-                      {feature === 'No telegram Access' ? (
+                   :
+                  userDetails.subscriptionType=='year' && userDetails.package=='Premium Weekly NewsLetter'?
+                
+                    <Box  marginTop={4}>
+                      
                         <Box component="span" style={{ display: 'flex', alignItems: 'center', marginRight: 8 }}>
-                          <ClearIcon fontSize="small" color="error" />
+                          <ClearIcon fontSize="small" style={{width:'20px',marginRight:'1.8rem'}} color="error" />
+                          <Typography fontSize='15px' fontWeight='bold'>No Telegram Access</Typography>
                         </Box>
-                      ) : (
-                        <CheckCircleIcon fontSize="small" style={{ marginRight: 8, color: 'green' }} />
-                      )}
-                      <Typography variant="body2">{feature}</Typography>
-                    </Box>
-                  )): feature4.map((feature, idx) => (
-                    <Box key={idx} display="flex" alignItems="center" marginBottom={1}>
-                      {feature === 'No telegram Access' ? (
-                        <Box component="span" style={{ display: 'flex', alignItems: 'center', marginRight: 8 }}>
-                          <ClearIcon fontSize="small" color="error" />
+                    
+
+
+                        <Box component="span" style={{ display: 'flex', alignItems: 'center', marginTop: '1rem' }}>
+                        <CheckCircleIcon fontSize="small" style={{width:'20px', marginRight: 28, color: 'green' }} />
+                        <Typography fontSize='15px' fontWeight='bold'>Weekly Newsletter Access</Typography>
                         </Box>
-                      ) : (
-                        <CheckCircleIcon fontSize="small" style={{ marginRight: 8, color: 'green' }} />
-                      )}
-                      <Typography variant="body2">{feature}</Typography>
                     </Box>
-                  ))
+                  : ''
                 }
                 </CardContent>
+
                 <Box   sx={{position:'absolute',bottom:30,width:'80%',right:35}}>
                 
-                  {userDetails?.package=='Premium Telegram'||userDetails.package=='Basic Telegram' && (
+                  {userDetails?.package=='Premium Telegram' ||userDetails.package=='Basic Telegram' ? (
                     <Button
                     fullWidth
                     variant="contained"
@@ -285,8 +295,9 @@ try {
                    Join Telegram Group 
                   </Button>
                   
-                  ) }
-                   {userDetails?.package=='Premium Telegram'||userDetails.package=='Basic Telegram' && (
+                  ) : '' }
+
+                   {userDetails?.package == 'Premium Telegram' ? (
                     <Button
                     fullWidth
                     variant="contained"
@@ -307,7 +318,7 @@ try {
                     <CircleNotificationsIcon sx={{color:'red'}}/>&nbsp; Join Telegram Group
                   </Button>
                   
-                  ) }
+                  ) : '' }
                     <Button
                     fullWidth
                     variant="contained"
@@ -353,67 +364,72 @@ try {
                 AED    {plan.price} / {plan.subscriptionType == 'month' ? 'Monthly' :'Yearly'}
                   </Typography>
                    
-                  {plan.subscriptionType=='month' && plan.name=='Basic NewsLetter'? feature1.map((feature, idx) => (
-                    <Box key={idx} display="flex" alignItems="center" marginBottom={1}>
-                      {feature === 'No telegram Access' ? (
-                        <Box component="span" style={{ display: 'flex', alignItems: 'center', marginRight: 8 }}>
-                          <ClearIcon fontSize="small" color="error" />
+                  {plan.subscriptionType=='month' && plan.name=='Weekly NewsLetter' ?
+                   <Box   marginTop={3}>
+                     
+                   <Box component="span" style={{ display: 'flex', alignItems: 'center',gap:'1rem', marginTop: '1rem' }}>
+                     <ClearIcon fontSize="small" style={{width:'20px'}} color="error" />
+                     <Typography fontSize='15px' fontWeight='bold'>No telegram Access</Typography>
+                   </Box>
+                  
+                  <Box component="span" style={{ display: 'flex', alignItems: 'center', marginTop: '1rem' }}>
+                   <CheckCircleIcon fontSize="small" style={{width:'20px', marginRight: 15, color: 'green' }} />
+                   <Typography fontSize='15px' fontWeight='bold'>Weekly Newsletter Access</Typography>
+                   </Box>
+
+                   
+               </Box>
+               :
+                plan.subscriptionType=='month' && plan.name=='Basic Telegram'?
+                <Box  marginTop={3}>
+                     
+                        <Box component="span" style={{ display: 'flex', alignItems: 'center',gap:'1rem', marginTop: '1rem' }}>
+                        <CheckCircleIcon fontSize="small" style={{width:'20px', marginRight: 15, color: 'green' }} />
+                          <Typography fontSize='15px' fontWeight='bold'>Telegram Access</Typography>
                         </Box>
-                      ) : (
-                        <CheckCircleIcon fontSize="small" style={{ marginRight: 8, color: 'green' }} />
-                      )}
-                      <Typography variant="body2">{feature}</Typography>
-                    </Box>
-                  )): plan.subscriptionType=='month' && plan.name=='Basic Telegram'?
-                feature3.map((feature, idx) => (
-                    <Box key={idx} display="flex" alignItems="center" marginBottom={1}>
-                      {feature === 'No telegram Access' ? (
-                        <Box component="span" style={{ display: 'flex', alignItems: 'center', marginRight: 8 }}>
-                          <ClearIcon fontSize="small" color="error" />
+
+                        <Box component="span" style={{ display: 'flex', alignItems: 'center', marginTop: '1rem' }}>
+                        <CheckCircleIcon fontSize="small" style={{width:'20px', marginRight: 28, color: 'green' }} />
+                        <Typography fontSize='15px' fontWeight='bold'>Weekly Newsletter Access</Typography>
                         </Box>
-                      ) : (
-                        <CheckCircleIcon fontSize="small" style={{ marginRight: 8, color: 'green' }} />
-                      )}
-                      <Typography variant="body2">{feature}</Typography>
                     </Box>
-                  )) :
+                     :
+
                   plan.subscriptionType=='year' && plan.name=='Premium Telegram'?
-                feature4.map((feature, idx) => (
-                    <Box key={idx} display="flex" alignItems="center" marginBottom={1}>
-                      {feature === 'No telegram Access' ? (
-                        <Box component="span" style={{ display: 'flex', alignItems: 'center', marginRight: 8 }}>
-                          <ClearIcon fontSize="small" color="error" />
-                        </Box>
-                      ) : (
-                        <CheckCircleIcon fontSize="small" style={{ marginRight: 8, color: 'green' }} />
-                      )}
-                      <Typography variant="body2">{feature}</Typography>
-                    </Box>
-                  )) :
-                  plan.subscriptionType=='year' && plan.name=='Premium NewsLetter'?
-                feature2.map((feature, idx) => (
-                    <Box key={idx} display="flex" alignItems="center" marginBottom={1}>
-                      {feature === 'No telegram Access' ? (
-                        <Box component="span" style={{ display: 'flex', alignItems: 'center', marginRight: 8 }}>
-                          <ClearIcon fontSize="small" color="error" />
-                        </Box>
-                      ) : (
-                        <CheckCircleIcon fontSize="small" style={{ marginRight: 8, color: 'green' }} />
-                      )}
-                      <Typography variant="body2">{feature}</Typography>
-                    </Box>
-                  )): feature4.map((feature, idx) => (
-                    <Box key={idx} display="flex" alignItems="center" marginBottom={1}>
-                      {feature === 'No telegram Access' ? (
-                        <Box component="span" style={{ display: 'flex', alignItems: 'center', marginRight: 8 }}>
-                          <ClearIcon fontSize="small" color="error" />
-                        </Box>
-                      ) : (
-                        <CheckCircleIcon fontSize="small" style={{ marginRight: 8, color: 'green' }} />
-                      )}
-                      <Typography variant="body2">{feature}</Typography>
-                    </Box>
-                  ))
+                  <Box  marginTop={3}>
+                     
+                  <Box component="span" style={{ display: 'flex', alignItems: 'center', marginRight: 8 }}>
+                  <CheckCircleIcon fontSize="small" style={{width:'20px', marginRight: 28, color: 'green' }} />
+                  <Typography fontSize='15px' fontWeight='bold'>Telegram Group Access</Typography>
+                  </Box>
+               
+                  <Box component="span" style={{ display: 'flex', alignItems: 'center', marginTop: '1rem' }}>
+                  <CheckCircleIcon fontSize="small" style={{width:'20px', marginRight: 28, color: 'green' }} />
+                  <Typography fontSize='15px' fontWeight='bold'>Weekly Newsletter Access</Typography>
+                  </Box>
+
+                  <Box component="span" style={{ display: 'flex', alignItems: 'center', marginTop: '1rem' }}>
+                  <CheckCircleIcon fontSize="small" style={{width:'20px', marginRight: 28, color: 'green' }} />
+                  <Typography fontSize='15px' fontWeight='bold'>Premium Telegram Group Access</Typography>
+                  </Box>
+              </Box>
+               :
+                  plan.subscriptionType=='year' && plan.name=='Premium Weekly NewsLetter'?
+                  <Box  marginTop={4}>
+                      
+                  <Box component="span" style={{ display: 'flex', alignItems: 'center', marginRight: 8 }}>
+                    <ClearIcon fontSize="small" style={{width:'20px',marginRight:'1.8rem'}} color="error" />
+                    <Typography fontSize='15px' fontWeight='bold'>No Telegram Access</Typography>
+                  </Box>
+              
+
+
+                  <Box component="span" style={{ display: 'flex', alignItems: 'center', marginTop: '1rem' }}>
+                  <CheckCircleIcon fontSize="small" style={{width:'20px', marginRight: 28, color: 'green' }} />
+                  <Typography fontSize='15px' fontWeight='bold'>Weekly Newsletter Access</Typography>
+                  </Box>
+              </Box>
+            : ''
                 }
                 </CardContent>
                 <Box   sx={{position:'absolute',bottom:20,width:'80%',right:35}}>
