@@ -211,7 +211,7 @@ try {
                        
                        <Box component="span" style={{ display: 'flex', alignItems: 'center', marginTop: '1rem' }}>
                         <CheckCircleIcon fontSize="small" style={{width:'20px', marginRight: 15, color: 'green' }} />
-                        <Typography fontSize='15px' fontWeight='bold'>Weekly Newsletter Access</Typography>
+                        <Typography fontSize='15px' fontWeight='bold'>Weekly Newsletters </Typography>
                         </Box>
 
                         
@@ -228,7 +228,7 @@ try {
 
                         <Box component="span" style={{ display: 'flex', alignItems: 'center', marginTop: '1rem' }}>
                         <CheckCircleIcon fontSize="small" style={{width:'20px', marginRight: 28, color: 'green' }} />
-                        <Typography fontSize='15px' fontWeight='bold'>Weekly Newsletter Access</Typography>
+                        <Typography fontSize='15px' fontWeight='bold'>Weekly Newsletters </Typography>
                         </Box>
                     </Box>
                    :
@@ -238,18 +238,14 @@ try {
                      
                         <Box component="span" style={{ display: 'flex', alignItems: 'center', marginRight: 8 }}>
                         <CheckCircleIcon fontSize="small" style={{width:'20px', marginRight: 28, color: 'green' }} />
-                        <Typography fontSize='15px' fontWeight='bold'>Telegram Group Access</Typography>
+                        <Typography fontSize='15px' fontWeight='bold'>Telegram  Access</Typography>
                         </Box>
                      
                         <Box component="span" style={{ display: 'flex', alignItems: 'center', marginTop: '1rem' }}>
                         <CheckCircleIcon fontSize="small" style={{width:'20px', marginRight: 28, color: 'green' }} />
-                        <Typography fontSize='15px' fontWeight='bold'>Weekly Newsletter Access</Typography>
+                        <Typography fontSize='15px' fontWeight='bold'>Weekly Newsletters</Typography>
                         </Box>
 
-                        <Box component="span" style={{ display: 'flex', alignItems: 'center', marginTop: '1rem' }}>
-                        <CheckCircleIcon fontSize="small" style={{width:'20px', marginRight: 28, color: 'green' }} />
-                        <Typography fontSize='15px' fontWeight='bold'>Premium Telegram Group Access</Typography>
-                        </Box>
                     </Box>
                    :
                   userDetails.subscriptionType=='year' && userDetails.package=='Premium Weekly NewsLetter'?
@@ -265,7 +261,7 @@ try {
 
                         <Box component="span" style={{ display: 'flex', alignItems: 'center', marginTop: '1rem' }}>
                         <CheckCircleIcon fontSize="small" style={{width:'20px', marginRight: 28, color: 'green' }} />
-                        <Typography fontSize='15px' fontWeight='bold'>Weekly Newsletter Access</Typography>
+                        <Typography fontSize='15px' fontWeight='bold'>Weekly Newsletters </Typography>
                         </Box>
                     </Box>
                   : ''
@@ -374,7 +370,7 @@ try {
                   
                   <Box component="span" style={{ display: 'flex', alignItems: 'center', marginTop: '1rem' }}>
                    <CheckCircleIcon fontSize="small" style={{width:'20px', marginRight: 15, color: 'green' }} />
-                   <Typography fontSize='15px' fontWeight='bold'>Weekly Newsletter Access</Typography>
+                   <Typography fontSize='15px' fontWeight='bold'>Weekly Newsletters </Typography>
                    </Box>
 
                    
@@ -390,7 +386,7 @@ try {
 
                         <Box component="span" style={{ display: 'flex', alignItems: 'center', marginTop: '1rem' }}>
                         <CheckCircleIcon fontSize="small" style={{width:'20px', marginRight: 28, color: 'green' }} />
-                        <Typography fontSize='15px' fontWeight='bold'>Weekly Newsletter Access</Typography>
+                        <Typography fontSize='15px' fontWeight='bold'>Weekly Newsletters</Typography>
                         </Box>
                     </Box>
                      :
@@ -400,18 +396,15 @@ try {
                      
                   <Box component="span" style={{ display: 'flex', alignItems: 'center', marginRight: 8 }}>
                   <CheckCircleIcon fontSize="small" style={{width:'20px', marginRight: 28, color: 'green' }} />
-                  <Typography fontSize='15px' fontWeight='bold'>Telegram Group Access</Typography>
+                  <Typography fontSize='15px' fontWeight='bold'>Telegram  Access</Typography>
                   </Box>
                
                   <Box component="span" style={{ display: 'flex', alignItems: 'center', marginTop: '1rem' }}>
                   <CheckCircleIcon fontSize="small" style={{width:'20px', marginRight: 28, color: 'green' }} />
-                  <Typography fontSize='15px' fontWeight='bold'>Weekly Newsletter Access</Typography>
+                  <Typography fontSize='15px' fontWeight='bold'>Weekly Newsletters</Typography>
                   </Box>
 
-                  <Box component="span" style={{ display: 'flex', alignItems: 'center', marginTop: '1rem' }}>
-                  <CheckCircleIcon fontSize="small" style={{width:'20px', marginRight: 28, color: 'green' }} />
-                  <Typography fontSize='15px' fontWeight='bold'>Premium Telegram Group Access</Typography>
-                  </Box>
+               
               </Box>
                :
                   plan.subscriptionType=='year' && plan.name=='Premium Weekly NewsLetter'?
@@ -426,7 +419,7 @@ try {
 
                   <Box component="span" style={{ display: 'flex', alignItems: 'center', marginTop: '1rem' }}>
                   <CheckCircleIcon fontSize="small" style={{width:'20px', marginRight: 28, color: 'green' }} />
-                  <Typography fontSize='15px' fontWeight='bold'>Weekly Newsletter Access</Typography>
+                  <Typography fontSize='15px' fontWeight='bold'>Weekly Newsletters</Typography>
                   </Box>
               </Box>
             : ''
