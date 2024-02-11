@@ -13,11 +13,12 @@ import BottomBarArabic from '@/components/Arabic/bottombar/bottom'
 import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
 import LinkIcon from '@mui/icons-material/Link';
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
 const Cart = () => {
   const { language } = useLanguage();
  const [bookings,setBookings] = useState([])
- 
+ const router = useRouter()
 
  useEffect(()=>{
   const userId = localStorage.getItem('userId');

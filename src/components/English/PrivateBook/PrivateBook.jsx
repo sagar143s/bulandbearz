@@ -10,6 +10,7 @@ import { useLanguage } from '@/context/LanguageContext'
 import BottomBar from '@/components/English/bottombar/bottom'
 import BottomBarArabic from '@/components/Arabic/bottombar/bottom'
 import { loadStripe } from '@stripe/stripe-js'
+import { useRouter } from 'next/navigation'
 
 const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
@@ -29,10 +30,11 @@ const PrivateBook = () => {
     const [price,setPrice] = useState('')
     const [question,setQuestion]=useState('')
     const [dateError, setDateError] = useState('');
-  const [timeError, setTimeError] = useState('');
-  const [subtitle,setSubtitle]=useState('')
-  const [descPoints,setDescPoints]=useState([])
-  const [sessionNumbers,setSessionNumbers]=useState([])
+    const [timeError, setTimeError] = useState('');
+    const [subtitle,setSubtitle]=useState('')
+    const [descPoints,setDescPoints]=useState([])
+    const [sessionNumbers,setSessionNumbers]=useState([])
+    const router = useRouter()
     
     const params = useParams()
     const { language } = useLanguage();
@@ -86,6 +88,9 @@ const PrivateBook = () => {
 
     useEffect(()=>{
         const userId = localStorage.getItem('userId')
+        if(!userId){
+          router.push('/login')
+        }
         const fetchUser = async()=>{
             const res = await fetch(`/api/fetchUser/${userId}`,{
                 method:'GET',
