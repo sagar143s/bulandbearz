@@ -153,7 +153,7 @@ const EnglishHeader = () => {
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const isSubscribed = localStorage.getItem('subscribed') === 'true';
-      console.log(isSubscribed, 'subscribed');
+    
       setSubscribed(isSubscribed)
     }
   }, [loginuser]);

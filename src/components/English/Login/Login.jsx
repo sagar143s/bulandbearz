@@ -36,7 +36,7 @@ const Login = () => {
       }
     }
 
-    console.log(guser,'guser');
+    
 
     const handleSignout= async()=>{
   try {
@@ -130,7 +130,7 @@ if(res.ok){
             
            }
            else{
-            console.log(response,'log resp');
+          
             setError(response)
            }
         }

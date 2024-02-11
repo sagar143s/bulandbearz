@@ -64,7 +64,7 @@ const Profile = () => {
         )
 
         const userresponse = await user.json()
-        console.log(userresponse);
+      
         setName(userresponse.name)
         setOriginalName(userresponse.name);
         setImage(userresponse.image)
@@ -138,7 +138,7 @@ const Profile = () => {
     }
 
 
-    console.log(image);
+   
 
     
   return (

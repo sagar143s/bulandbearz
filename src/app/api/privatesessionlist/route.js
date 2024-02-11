@@ -7,7 +7,7 @@ export const dynamic = 'force-dynamic';
 export const GET = async (request) => {
     try {
         await connect();
-        console.log("Database connected");
+       
 
         const courses = await Privatesession.find();
       

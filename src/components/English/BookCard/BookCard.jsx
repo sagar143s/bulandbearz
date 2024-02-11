@@ -34,7 +34,7 @@ export default function MediaCard({title,description,price,image,id,maxUsers,ses
     return progressPercentage;
   };
 
-console.log(maxUsers,'users');
+
   const handleBook = ()=>{
 
     if(maxUsers<=0){

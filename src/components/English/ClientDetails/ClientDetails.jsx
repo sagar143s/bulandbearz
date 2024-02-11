@@ -74,7 +74,7 @@ const Checkout = () => {
 
 
 
-console.log(bookingDetail,courseDetails,'det');
+
 
     const handleCheckout = async()=>{
         try {

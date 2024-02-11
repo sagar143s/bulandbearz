@@ -35,7 +35,7 @@ const [news,setNews]= useState([])
         }
       })
       const response = await res.json()
-      console.log(response,'news');
+     
       if(res.ok){
         setNews(response)
       }

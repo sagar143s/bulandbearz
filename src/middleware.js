@@ -37,7 +37,7 @@ export async function middleware(request) {
   const bookingId = pathParts[pathParts.length - 1]; // Assuming booking ID is the last segment
 
   // Use params as needed:
-  console.log('Confirming booking with ID:', bookingId);
+
 
   return NextResponse.next();
 

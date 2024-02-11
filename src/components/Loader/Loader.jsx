@@ -8,7 +8,7 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
 const Loader = ({dialog,onClose} ) => {
-    console.log('call is here');
+    
     const [open, setOpen] = React.useState(false);
     
 

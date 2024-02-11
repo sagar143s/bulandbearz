@@ -67,7 +67,7 @@ const EnglishHeader = () => {
   });
 
   const toggleDrawer = (open) => (event) => {
-    console.log('calsl');
+    
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
       return;
     }
@@ -167,7 +167,7 @@ const EnglishHeader = () => {
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const isSubscribed = localStorage.getItem('subscribed') === 'true';
-      console.log(isSubscribed, 'subscribed');
+     
       setSubscribed(isSubscribed)
     }
   }, [loginuser]);

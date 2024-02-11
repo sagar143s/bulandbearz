@@ -29,7 +29,7 @@ export default function PrivateCard({id,title,description,image,price,sessionNum
 
     
 
-console.log(sessionNumbers,'hi');
+
   
 
 

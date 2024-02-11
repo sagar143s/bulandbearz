@@ -18,7 +18,7 @@ const NewsSelected = () => {
  const params = useParams()
  const [news , setNews] = useState([])
 
-console.log(params.id);
+
 
 
  useEffect(()=>{
@@ -30,7 +30,7 @@ console.log(params.id);
               }
               })
 const response = await res.json()
-     console.log(response,'newsResponse');
+    
      setNews(response.news)
               }
 

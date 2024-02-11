@@ -6,11 +6,11 @@ import Bookings from "@/models/Bookings";
 
 export const dynamic = 'force-dynamic';
 export const GET = async(request,{params})=>{
-console.log(params);
+
         try{
             await connect()
             const bookings = await Bookings.find({userId:params.id});
-   console.log(bookings);
+   
             if(bookings){
                 return new NextResponse(JSON.stringify(bookings),{
                     status:200

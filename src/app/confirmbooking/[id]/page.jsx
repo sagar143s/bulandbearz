@@ -14,7 +14,7 @@ import { Box } from '@mui/material'
 const ConfirmBooking = () => {
   const { language } = useLanguage();
   const params = useParams()
-  console.log(params.id,"param");
+  
   const [courseData,setCourseData]=useState({})
   const [dates,setDates] = useState([])
 

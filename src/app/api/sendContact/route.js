@@ -8,7 +8,7 @@ export const POST = async(request)=>{
 
 try {
     const {name,email,message}= await request.json()
-      console.log(name,email,message,'me');
+     
 
     try{
         const courier = new CourierClient(

@@ -292,13 +292,13 @@ export const POST = async(request)=>{
         return new NextResponse(`Webhook Error: ${err.message}`, { status: 400 });
       }
     
-      console.log(event.type,"eventtype");
+     
 
       if (event.type === 'checkout.session.completed') {
         const session = event.data.object;
         const metadata = session.metadata;
         const customerId = session.customer;
-        console.log(session,'sessionDetails');
+        
         if (metadata.courseId) {
           const newBooking = new Bookings({
             name: metadata.username,
@@ -339,7 +339,7 @@ export const POST = async(request)=>{
     
           if (existingSubscription.data.length > 0) {
             
-            console.log("Existing subscription found:", existingSubscription.data[0].id);
+            
 
             const userUpdate = await User.findOneAndUpdate(
               { _id: metadata.userId },
@@ -373,7 +373,7 @@ export const POST = async(request)=>{
           expand: ['latest_invoice.payment_intent'],
         });
 
-        console.log('Subscription created:', subscription);
+        
         const newSubscriber = new NewSubscribers({
           name: metadata.name,
           email: metadata.email,

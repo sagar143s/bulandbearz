@@ -67,7 +67,7 @@ const Home = () => {
     }
 
     // If all validations pass, you can proceed with form submission logic
-    console.log('Form submitted:', { name, email, message });
+   
   };
 
   return (

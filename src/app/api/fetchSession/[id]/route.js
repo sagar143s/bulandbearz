@@ -7,7 +7,7 @@ try {
     await connect()
 
     const course = await Privatesession.findOne({_id:params.id})
-    console.log(course);
+   
     if(course){
         return new NextResponse(JSON.stringify(course),{status:200})
     }else{

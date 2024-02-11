@@ -17,6 +17,32 @@ import Link from 'next/link'
 const Cart = () => {
   const { language } = useLanguage();
  const [bookings,setBookings] = useState([])
+ 
+
+ useEffect(()=>{
+  const userId = localStorage.getItem('userId');
+  if(!userId){
+    router.push('/login', { shallow: true });
+  }
+  const fetchUser = async () => {
+    try {
+      const res = await fetch(`/api/fetchUser/${userId}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (!res.ok) {
+        router.push('/login', { shallow: true });
+      }
+    }
+    catch(error){
+      alert(error.message)
+    }
+  }
+  fetchUser();
+ },[])
 
 
  useEffect(()=>{
@@ -31,7 +57,7 @@ const res = await fetch(`/api/getMyBookings/${userId}`,{
 
 const booking = await res.json()
 setBookings(booking)
-console.log(booking,"vada kuttappa");
+
   }
 
 
@@ -39,11 +65,11 @@ console.log(booking,"vada kuttappa");
  },[])
 
 
- console.log(bookings,"Bookings");
 
 
 
-  const telLink = 'https://t.me/+Z5agUe32NKw0NTFl'
+
+ 
   return (
     <Box sx={{height:'90dvh',overflow:'auto',display:'flex',flexDirection:'column',justifyContent:'space-between'}}>
     <Container sx={{padding:"1rem 0 5rem"}}>

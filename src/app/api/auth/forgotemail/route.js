@@ -25,13 +25,13 @@ export const POST = async(request)=>{
     try {
         await connect()
        const {email}= await request.json()
-        console.log(email);
+
        const isEmail = await User.findOne({email:email})
 
        if(isEmail){
 
 
-console.log(isEmail);
+
 const newPassword = generateRandomPassword();
 const hashedPassword = await bcrypt.hash(newPassword, 10);
 try{

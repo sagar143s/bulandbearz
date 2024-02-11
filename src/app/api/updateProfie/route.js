@@ -59,7 +59,7 @@ export const POST = async (request) => {
                     return new Promise((resolve, reject) => {
                         cloudinary.uploader.upload(fileUri, { invalidate: true })
                             .then((result) => {
-                                console.log(result);
+                               
                                 resolve(result);
                             })
                             .catch((error) => {
@@ -78,12 +78,12 @@ export const POST = async (request) => {
             const oldImageUrl = user.image; 
             const publicId = oldImageUrl.split('/').slice(-1)[0].replace(/\.[^/.]+$/, '');
 
-            console.log(publicId,'old');
+            
       if (oldImageUrl) {
         try {
          const deleteImg = await cloudinary.uploader.destroy(publicId);
          if(deleteImg){
-            console.log(deleteImg,'success');
+            
          }
 
         } catch (error) {

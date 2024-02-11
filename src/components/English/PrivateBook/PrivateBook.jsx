@@ -73,7 +73,7 @@ const PrivateBook = () => {
     },[])
 
     const parsedDates = dates
-console.log(parsedDates,'paer');
+
     useEffect(() => {
       const found = parsedDates.find(d => d.date === selectedDate);
       if (found) {
@@ -82,7 +82,7 @@ console.log(parsedDates,'paer');
   }, [selectedDate]);
 
 
-  console.log(availableTimes);
+ 
 
     useEffect(()=>{
         const userId = localStorage.getItem('userId')
@@ -164,7 +164,7 @@ console.log(parsedDates,'paer');
       const userId = localStorage.getItem('userId')
       try {
         if (validateForm()) {
-          console.log('Form is valid, submitting...');
+          
           const stripe = await stripePromise;
            const payload = {
             bookingDetails:{
@@ -196,7 +196,7 @@ console.log(parsedDates,'paer');
                 sessionId,
               });
         } else {
-          console.log('Form is not valid, please check the errors');
+         
         }
       } catch (error) {
         alert(error.message)

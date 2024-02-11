@@ -28,7 +28,7 @@ const res = await fetch('api/privatesessionlist',{
 
 const response = await res.json()
   setSessions(response)
-console.log(response,'sessions');
+
 
 
     }

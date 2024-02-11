@@ -45,7 +45,7 @@ const LoginPopup = ({ open, onClose }) => {
        })
 
 
-       console.log(res,"response");
+    
        if(res.status==201){
         onClose();
         router.push('/bookings')

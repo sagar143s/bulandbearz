@@ -10,14 +10,14 @@ export const DELETE = async (req) => {
   
     try {
       await connect()
-      console.log(subscriptionId);
+     
       const canceledSubscription = await stripe.subscriptions.cancel(subscriptionId);
     //   const canceledSubscription  = await stripe.subscriptions.update(
     //     subscriptionId,
     //     {
     //       cancel_at_period_end: true,
     //     })
-    console.log(canceledSubscription,'canceled');
+    
 
       // Update user model to reflect cancellation
       await User.findOneAndUpdate(

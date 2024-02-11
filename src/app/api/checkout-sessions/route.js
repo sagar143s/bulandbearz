@@ -6,10 +6,10 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 export async function POST(req) {
   const body = await req.json();
-  console.log(body,'body');
+
   const {userDetails,planDetails} = body;
   const origin = req.headers.get("origin") || "http://localhost:3000";
-  console.log(origin);
+
  
 
   try {
@@ -36,7 +36,7 @@ export async function POST(req) {
       }
   });
 
-  console.log(session,'session');
+ 
    
   return new NextResponse(JSON.stringify({ sessionId: session.id }), {
     status: 200,

@@ -26,7 +26,7 @@ const [loading, setLoading] = useState(true);
   const courseId = courseDetails?._id
   
   const parsedDates =dates
-  console.log(parsedDates,"par");
+  
 
   const router = useRouter()
     const [expanded, setExpanded] = useState(false);
@@ -92,7 +92,7 @@ const [loading, setLoading] = useState(true);
       setExpanded(isExpanded ? panel : false);
     };
 
-    console.log(selectedDate,selectedTime);
+    
     
    const handleBook = ()=>{
      

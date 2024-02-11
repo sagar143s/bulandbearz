@@ -67,7 +67,7 @@ if(userId){
                  }) 
                  
                  const response = await res.json()
-                 console.log(response,'Subscription');
+                
                  setSubscriptionPlan(response)
            }
 
@@ -102,7 +102,7 @@ if(userId){
 
   const filteredPlans = suscriptionPlan.filter((plan) => plan.subscriptionType === billingPeriod);
 
-  console.log(filteredPlans,'');
+ 
 
   const handleClose = () => {
     setOpen(false);
@@ -126,7 +126,7 @@ if(userId){
   }
 
   const handleSubscribe = async(plan)=>{
-    console.log('new');
+    
      if(userDetails==null){
       Swal.fire({
         icon: "error",
@@ -136,7 +136,7 @@ if(userId){
       });
       return ;
      }
-    console.log(plan,userDetails,'hi');
+  
 
      const payload = {
       userDetails:userDetails,
@@ -173,7 +173,7 @@ try {
 }
   }
 
-  console.log(userDetails?.subscriptionId,'use');
+ 
   return (
     <div style={{ overflow:"auto",height:"90dvh",display:'flex',flexDirection:'column',justifyContent:'space-between'}}>
       <Container maxWidth="lg" style={{ paddingTop: '5vh', paddingBottom: '9vh'}}>

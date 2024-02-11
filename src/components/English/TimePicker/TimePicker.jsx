@@ -2,7 +2,7 @@
 import React from 'react';
 import { Space, TimePicker } from 'antd';
 const onChange = (time, timeString) => {
-  console.log(time, timeString);
+
 };
 const TimeRange = () => (
   <Space wrap>

@@ -63,7 +63,7 @@ const Booking = () => {
      router.push('/privatesessions')
   }
  
-console.log(courseData,"c");
+
 
   const Categories = ["Investment Advisory","Market Research","Market Trends Analysis","Risk Management","Technical Analysis","Financial Planning","Trading Strategies" ]
 

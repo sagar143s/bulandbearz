@@ -10,8 +10,7 @@ customInitApp();
 
 
 export const POST =async(request)=>{
-    console.log('hi');
-    console.log(request);
+   
     const authorization = headers().get("Authorization");
     if (authorization?.startsWith("Bearer ")) {
         const idToken = authorization.split("Bearer ")[1];
@@ -20,7 +19,7 @@ export const POST =async(request)=>{
         if (decodedToken) {
           //Generate session cookie
           //const existingUser = await User.findOne({ email: decodedToken.email });
-          console.log(decodedToken.email);
+         
 
           const expiresIn = 60 * 60 * 24 * 5 * 1000;
           const sessionCookie = await auth().createSessionCookie(idToken, {

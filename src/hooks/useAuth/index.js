@@ -7,14 +7,14 @@ import { verifyJwtToken } from "@/libs/auth";
 export function useAuth() {
   const [auth, setAuth] = React.useState(null);
   const cookies = useCookies();
-  console.log(cookies.get('userToken'),'token');
+  
   const getVerifiedToken = async () => {
     
     const cookies = new Cookies();
     const token = cookies.get("userToken") ?? null;
-    console.log(token,'tok');
+    
     const verifiedToken = await verifyJwtToken(token);
-    console.log(verifiedToken,'login');
+  
     setAuth(verifiedToken);
   };
 

@@ -27,7 +27,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 const Home = () => {
   const { language } = useLanguage();
 
-  console.log(language,"lang");
+ 
   return (
     <div style={{overflow:'auto',height:'90dvh'}}>
      

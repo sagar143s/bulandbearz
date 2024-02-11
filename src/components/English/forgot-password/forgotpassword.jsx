@@ -49,7 +49,7 @@ const ForgotPassword = () => {
       if(res.status==404){
         setEmailError('Email not found! Signup')
       }else if(res.ok){
-        console.log(response);
+        
         Swal.fire({
           icon: "success",
           title: "Password sent to Email sent",
@@ -66,18 +66,18 @@ const ForgotPassword = () => {
       }
 
   
-      console.log('Email Submitted:', email);
+     
       // setShowOtpInput(true);
     };
   
     const handleSubmitOtp = () => {
-      console.log('Submitted OTP:', otp);
+    
       setShowOtpInput(false);
       setShowCreateNewPassword(true);
     };
   
     const handleResendOtp = () => {
-      console.log('OTP resent to:', email);
+      
       // You can add logic to resend the OTP
     };
   
@@ -90,8 +90,7 @@ const ForgotPassword = () => {
     };
   
     const handleResetPassword = () => {
-      console.log('New Password:', newPassword);
-      console.log('Confirm Password:', confirmPassword);
+      
       // Add logic to handle password reset
     };
   

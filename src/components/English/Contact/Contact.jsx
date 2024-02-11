@@ -42,7 +42,7 @@ const Contact = () => {
     setFormErrors(errors);
 
     if (!Object.values(errors).some((error) => error !== '')) {
-      console.log('Form submitted successfully');
+     
       Swal.fire({
         position: "center",
         icon: "success",
