@@ -24,7 +24,7 @@ const SubscriptionPage = () => {
     const [userDetails ,setUserDetails] = useState(null)
     const [suscriptionPlan,setSubscriptionPlan] = useState([])
     const [open, setOpen] = useState(false);
-    const [isLoading,setIsLoading] = useState(false)
+    const [isLoading, setIsLoading] = useState({});
     const [trigger,setTrigger] = useState(false)
     const telLink = 'https://t.me/+EZ7Y_oa7-1IyYzU0'   
     const telLink1 = 'https://t.me/+k5y9H2QZQgg1ZTU0'   
@@ -127,7 +127,10 @@ if(userId){
   }
 
   const handleSubscribe = async(plan)=>{
-    setIsLoading(true)
+    setIsLoading(prevState => ({
+      ...prevState,
+      [plan.name]: true 
+  }));
      if(userDetails==null){
       Swal.fire({
         icon: "error",
@@ -135,7 +138,12 @@ if(userId){
         text: "Please login in to subscribe",
         footer: '<a href="/login">Login?</a>'
       });
+      setIsLoading(prevState => ({
+        ...prevState,
+        [plan.name]: false 
+    }));
       return ;
+      
      }
   
 
@@ -163,15 +171,24 @@ try {
   });
 
   if (error) {
-    setIsLoading(false)
+    setIsLoading(prevState => ({
+      ...prevState,
+      [plan.name]: false // Set loading state for this plan back to false
+  }));
     router.push("/error");
   }
   else{
-    setIsLoading(false)
+    setIsLoading(prevState => ({
+      ...prevState,
+      [plan.name]: false // Set loading state for this plan back to false
+  }));
     router.push('/paymentsuccess')
 }
 } catch (error) {
-  setIsLoading(false)
+  setIsLoading(prevState => ({
+    ...prevState,
+    [plan.name]: false // Set loading state for this plan back to false
+}));
   console.error("Error in creating checkout session:", error.message);
             router.push("/error");
 }
@@ -433,7 +450,7 @@ try {
                   <Button
                     fullWidth
                     variant="contained"
-                    disabled={isLoading}
+                    disabled={isLoading[plan.name]}
                     onClick={() => handleSubscribe(plan)}
                     sx={{
                       width:'100%',
@@ -448,7 +465,7 @@ try {
                       },
                     }}
                   >
-              {isLoading ? <LoaderSub /> : 'Select Plan'}  
+               {isLoading[plan.name] ? <LoaderSub /> : 'Select Plan'}  
                   </Button>
                 </Box>
               </Card>
