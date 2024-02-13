@@ -13,15 +13,16 @@ export const POST = async (request) => {
       
       await connect();
       
-   
-      const user = await User.findOne({ email:email })
+      const lowercasedEmail = email.toLowerCase();
+      const user = await User.findOne({ email:lowercasedEmail })
+
       if (!user) {
      
         const hashedPassword = await bcrypt.hash(password, 10);
 
         const newUser = new User({
           name: username,
-          email: email,
+          email: lowercasedEmail,
           password: hashedPassword, 
         });
         try {

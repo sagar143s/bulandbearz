@@ -10,8 +10,9 @@ export const POST = async(request)=>{
     try{
         const {email , password } = await request.json();
          
+        const lowercasedEmail = email.toLowerCase();
         await connect();
-        const user = await User.findOne({email : email})
+        const user = await User.findOne({email : lowercasedEmail})
         if(user){
             const isPasswordCorrect = await bcrypt.compare(password , user.password)
             if(isPasswordCorrect){

@@ -8,6 +8,7 @@ import FooterArabic from '@/components/Arabic/Footer/Footer'
 import { useLanguage } from '@/context/LanguageContext'
 import BottomBar from '@/components/English/bottombar/bottom'
 import BottomBarArabic from '@/components/Arabic/bottombar/bottom'
+import Swal from 'sweetalert2'
 
 
 
@@ -19,6 +20,7 @@ const Register = () => {
     const [error,setError] = useState('')
     const router = useRouter()
     const { language } = useLanguage();
+    var logerr = ''
 
     const isSpecialChar = (str) => /[!@#$%^&*(),.?":{}|<>]/.test(str);
 
@@ -55,22 +57,37 @@ if (password.length < 8 || isSpecialChar(password)) {
 
 
 else{
-    const res = await fetch("/api/auth/register",{
-        method:'POST',
-        headers:{
-          "Content-Type": "application/json",
+  try {
+    const res = await fetch("/api/auth/register", {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json",
         },
         body: JSON.stringify({
             username,
             email,
-          password
+            password
         }),
-      })
-
-      const response = await res.json()
-      if(res.ok){
- router.push('/login')
-      }
+    });
+    if (res.ok) {
+        router.push('/login');
+    } else {
+        // Get the error response as text
+        const errorText = await res.text();
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: errorText, // Display the error response directly
+        });
+    }
+} catch (error) {
+    Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: error.message,
+    });
+}
+      
 }
     }
 
