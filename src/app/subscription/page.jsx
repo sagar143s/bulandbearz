@@ -16,7 +16,7 @@ import { useRouter } from 'next/navigation'
 import Swal from 'sweetalert2';
 import CircleNotificationsIcon from '@mui/icons-material/CircleNotifications';
 import Loader from '@/components/Loader/Loader';
-
+import LoaderSub from './Loader/Loader';
 
 const SubscriptionPage = () => {
   const { language } = useLanguage();
@@ -24,6 +24,7 @@ const SubscriptionPage = () => {
     const [userDetails ,setUserDetails] = useState(null)
     const [suscriptionPlan,setSubscriptionPlan] = useState([])
     const [open, setOpen] = useState(false);
+    const [isLoading,setIsLoading] = useState(false)
     const [trigger,setTrigger] = useState(false)
     const telLink = 'https://t.me/+EZ7Y_oa7-1IyYzU0'   
     const telLink1 = 'https://t.me/+k5y9H2QZQgg1ZTU0'   
@@ -126,7 +127,7 @@ if(userId){
   }
 
   const handleSubscribe = async(plan)=>{
-    
+    setIsLoading(true)
      if(userDetails==null){
       Swal.fire({
         icon: "error",
@@ -162,12 +163,15 @@ try {
   });
 
   if (error) {
+    setIsLoading(false)
     router.push("/error");
   }
   else{
+    setIsLoading(false)
     router.push('/paymentsuccess')
 }
 } catch (error) {
+  setIsLoading(false)
   console.error("Error in creating checkout session:", error.message);
             router.push("/error");
 }
@@ -429,9 +433,11 @@ try {
                   <Button
                     fullWidth
                     variant="contained"
+                    disabled={isLoading}
                     onClick={() => handleSubscribe(plan)}
                     sx={{
                       width:'100%',
+                      height:'45px',
                       fontWeight: 'bold',
                       background:"#fff",
                       color:"#000",
@@ -442,7 +448,7 @@ try {
                       },
                     }}
                   >
-                    Select Plan
+              {isLoading ? <LoaderSub /> : 'Select Plan'}  
                   </Button>
                 </Box>
               </Card>

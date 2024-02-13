@@ -11,6 +11,7 @@ import BottomBar from '@/components/English/bottombar/bottom'
 import BottomBarArabic from '@/components/Arabic/bottombar/bottom'
 import { loadStripe } from '@stripe/stripe-js'
 import { useRouter } from 'next/navigation'
+import Loader from './Loader/Loader'
 
 const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
@@ -34,6 +35,8 @@ const PrivateBook = () => {
     const [subtitle,setSubtitle]=useState('')
     const [descPoints,setDescPoints]=useState([])
     const [sessionNumbers,setSessionNumbers]=useState([])
+    const [isLoading,setIsLoading] =useState(false)
+
     const router = useRouter()
     
     const params = useParams()
@@ -168,6 +171,7 @@ const PrivateBook = () => {
     const handleFormSubmit = async() => {
       const userId = localStorage.getItem('userId')
       try {
+        setIsLoading(true)
         if (validateForm()) {
           
           const stripe = await stripePromise;
@@ -201,12 +205,13 @@ const PrivateBook = () => {
                 sessionId,
               });
         } else {
-         
+          setIsLoading(false)
         }
       } catch (error) {
+        setIsLoading(false)
         alert(error.message)
       }
-      
+      setIsLoading(false)
     };
 
     
@@ -382,7 +387,9 @@ const PrivateBook = () => {
     </Grid>
      
     <Grid item xs={12} sm={12} md={12} lg={12} sx={{pb:'1rem'}}>
-     <Button onClick={handleFormSubmit} fullWidth variant='outlined' sx={{mt:'1rem',background:'#32385a',color:'#fff','&:hover':{background:'#32385a',color:'#fff'},textTransform:'none'}} >Book Now</Button>
+     <Button disabled={isLoading} onClick={handleFormSubmit}  fullWidth variant='outlined' sx={{mt:'1rem',height:'40px',background:'#32385a',color:'#fff','&:hover':{background:'#32385a',color:'#fff'},textTransform:'none'}} >
+     {isLoading ? <Loader /> : ' Book Now'}
+      </Button>
     </Grid>      
 
     </Grid>

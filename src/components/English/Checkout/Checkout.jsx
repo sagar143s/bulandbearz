@@ -1,11 +1,12 @@
 "use client"
-import React from 'react'
+import React, { useState } from 'react'
 import { Box,Typography,Button, Container, TextField } from '@mui/material'
 import Stock from '../../../../public/stockImg.jpeg'
 import Stock1 from '../../../../public/stockImg1.jpeg'
 import Image from 'next/image'
 import { loadStripe } from '@stripe/stripe-js'
 import { useRouter } from 'next/navigation'
+import Loader from './Loader/Loader'
 
 
 const stripePromise = loadStripe(
@@ -14,8 +15,11 @@ const stripePromise = loadStripe(
 
 
 const Checkout = () => {
+  const [isLoading,setIsLoading] = useState(false)
 const router = useRouter();
+
     const handleCheckout = async()=>{
+      setIsLoading(true)
         try {
             const stripe = await stripePromise;
             const response = await fetch("/api/checkoutsession", {
@@ -31,12 +35,15 @@ const router = useRouter();
             });
       
             if (error) {
+              setIsLoading(false)
               router.push("/error");
             }
             else{
+               setIsLoading(false)
                 router.push('/paymentsuccess')
             }
           } catch (err) {
+            setIsLoading(false)
             console.error("Error in creating checkout session:", err);
             router.push("/error");
           }
@@ -115,7 +122,10 @@ const router = useRouter();
 
         </Box>
            <Box sx={{display:'flex',justifyContent:'center'}}>
-        <Button variant='contained' onClick={handleCheckout}  sx={{ background: 'linear-gradient(to right, #f3904f, #3b4371)', borderRadius: '8px', height: '45px', textTransform: 'none', fontFamily: "Rubik", fontSize: '12px', width: '50%', marginTop: '3rem' }}>Pay Now</Button>
+        <Button disabled={isLoading} variant='contained' onClick={handleCheckout}  sx={{ background: 'linear-gradient(to right, #f3904f, #3b4371)', borderRadius: '8px', height: '45px', textTransform: 'none', fontFamily: "Rubik", fontSize: '12px', width: '50%', marginTop: '3rem' }}>
+          {isLoading ? <Loader /> : 'Pay Now'}
+          Pay Now
+          </Button>
 
            </Box>
     </Container>
