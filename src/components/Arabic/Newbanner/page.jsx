@@ -65,7 +65,7 @@ const Banner = () => {
   return (
     <div style={{
       background: 'linear-gradient(to right, #f3904f, #3b4371)',
-      backgroundImage: `url('${'https://res.cloudinary.com/dxtzm8lcq/image/upload/v1707224037/banner001_xfxb7t.png'}')`,
+      backgroundImage: `url('/banner.png')`,
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       color: '#fff',

@@ -39,7 +39,9 @@ const Home = () => {
 
      {language === 'english' ? <BannerNew /> : <BannerArabic />}
      {/* {language === 'english' ? <Columns/> : <ColumnArabic/>  } */}
-     {language === 'english' &&  window.innerWidth > 600 ? <Video /> : null}
+     <Box sx={{display:{xs:'none',sm:'none',md:'block',lg:'block',xl:'block'}}}>
+     {language === 'english'  ? <Video /> : <Video/>}
+     </Box>
      {/* {language === 'english' ? <Counter/> : <CounterArabic/>  } */}
      {/* {language === 'english' ? <ProjectItems/> : <ProjectItemsArabic/>  } */}
      {language === 'english' ? <Form/> : <FormArabic/>  }
