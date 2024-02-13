@@ -9,6 +9,7 @@ import { useLanguage } from '@/context/LanguageContext'
 import BottomBar from '@/components/English/bottombar/bottom'
 import BottomBarArabic from '@/components/Arabic/bottombar/bottom'
 import Swal from 'sweetalert2'
+import Loader from './Loader/Loader'
 
 
 
@@ -19,6 +20,7 @@ const Register = () => {
     const [confirmPassword,setConfirmPassword] = useState('')
     const [error,setError] = useState('')
     const router = useRouter()
+    const [isLoading,setIsLoading]=useState(false)
     const { language } = useLanguage();
     var logerr = ''
 
@@ -58,6 +60,7 @@ if (password.length < 8 || isSpecialChar(password)) {
 
 else{
   try {
+    setIsLoading(true)
     const res = await fetch("/api/auth/register", {
         method: 'POST',
         headers: {
@@ -70,9 +73,11 @@ else{
         }),
     });
     if (res.ok) {
+       setIsLoading(false)
         router.push('/login');
     } else {
         // Get the error response as text
+        setIsLoading(false)
         const errorText = await res.text();
         Swal.fire({
             icon: "error",
@@ -81,6 +86,7 @@ else{
         });
     }
 } catch (error) {
+  setIsLoading(false)
     Swal.fire({
         icon: "error",
         title: "Oops...",
@@ -137,7 +143,10 @@ else{
                )}
                </Box>
 
-               <Button onClick={handleSignup}  sx={{background:'#32385a',color:'#fff',width:'75%',borderRadius:'5px',margin:'2rem 0rem 0rem','&:hover':{background:'#32385a',color:'#fff'}}}>Register</Button>
+               <Button disabled={isLoading}  onClick={handleSignup}  sx={{background:'#32385a',height:'40px',color:'#fff',width:'75%',borderRadius:'5px',margin:'2rem 0rem 0rem','&:hover':{background:'#32385a',color:'#fff'}}}>
+                {isLoading ? <Loader /> : 'Register'}
+           
+                </Button>
                <Typography component={Link} href='./login' sx={{ padding: "0 0 3rem", color: '#32385a' }}>
   Already Have an Account?
 </Typography>         </Box>

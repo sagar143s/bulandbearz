@@ -14,6 +14,7 @@ import BottomBar from '@/components/English/bottombar/bottom'
 import BottomBarArabic from '@/components/Arabic/bottombar/bottom' 
 import { UserAuth } from '@/context/AuthContext'
 import Swal from 'sweetalert2'
+import Loader from './Loader/Loader'
 
 const Login = () => {
     const [email,setEmail] = useState('')
@@ -25,7 +26,7 @@ const Login = () => {
     const {login} = useUser()
     const { language } = useLanguage();
     const {guser,googleSignIn,logOut} = UserAuth()
-
+    const [isLoading,setIsLoading]=useState(false)
      
     const handleGoogle = async()=>{
       try{
@@ -53,34 +54,45 @@ const email=guser.email
 
 
     const saveUser = async()=>{
-const res = await fetch('/api/saveGoogleUser',{
-  method:'POST',
-  body:JSON.stringify({
-    name,email
-  }),
-})
-const response = await res.json()
-if(res.ok){
-  Swal.fire({
-    icon: "success",
-    title: "Login Success",
-    
-    
-  });
-  const userId = response._id;
-  const subscribed = response.subscribed
+      try {
+        const res = await fetch('/api/saveGoogleUser',{
+          method:'POST',
+          body:JSON.stringify({
+            name,email
+          }),
+        })
+        const response = await res.json()
+        if(res.ok){
+          Swal.fire({
+            icon: "success",
+            title: "Login Success",
+        
+          });
+          const userId = response._id;
+          const subscribed = response.subscribed
+        
+          if (userId) {
+            localStorage.setItem('userId', userId);
+            localStorage.setItem('subscribed', subscribed);
+            login(response);
+            router.push('/bookings', { shallow: true })
+          }
+         }else{
+          const errorText = await res.text();
+          Swal.fire({
+            icon: "success",
+            title: "Login Success",
+            text:errorText
+          });
+         }
+      } catch (error) {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: error.message,
+      });
+      }
 
-  if (userId) {
-    localStorage.setItem('userId', userId);
-    localStorage.setItem('subscribed', subscribed);
-    login(response);
-    router.push('/bookings', { shallow: true })
-  }
-
-
-
-  
- }
     }
 
     saveUser()
@@ -96,49 +108,59 @@ if(res.ok){
 
     const handleLogin = async(e) => {
       e.preventDefault();
-
+  
       if (!email || !password) {
-        console.error('Please provide both email and password');
-        setError('Please provide both email and password')
-        return;
+          console.error('Please provide both email and password');
+          setError('Please provide both email and password')
+          return;
       }
-    
-
-        try{
-          const res = await fetch('/api/auth/login',{
-            method:'POST',
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              email,
-              password,
-            }),
-           })
-           const response = await res.json()
-       
-           if(res.ok){
-            const userId = response._id;
-            const subscribed = response.subscribed
-
-            if (userId) {
-              localStorage.setItem('userId', userId);
-              localStorage.setItem('subscribed', subscribed);
-            }
-            login(response);
-            router.push('/bookings')
-            
-           }
-           else{
-          
-            setError(response)
-           }
-        }
-        catch(err){
+  
+      try {
+          setIsLoading(true)
+          const res = await fetch('/api/auth/login', {
+              method: 'POST',
+              headers: {
+                  "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                  email,
+                  password,
+              }),
+          })
+          const response = await res.json()
+  
+          if (res.ok) {
+              setIsLoading(false)
+              const userId = response._id;
+              const subscribed = response.subscribed
+  
+              if (userId) {
+                  localStorage.setItem('userId', userId);
+                  localStorage.setItem('subscribed', subscribed);
+              }
+              login(response);
+              router.push('/bookings')
+  
+          } else {
+              setIsLoading(false)
+              setError(response)
+              Swal.fire({
+                  icon: "error",
+                  title: "Oops...",
+                  text: response, // Display the error response directly
+              });
+          }
+      } catch (err) {
+          setIsLoading(false)
           console.log(err.message);
-
-        }       
-      };
+          Swal.fire({
+              icon: "error",
+              title: "Oops...",
+              text: err.message,
+          });
+  
+      }
+  };
 
       const handleRegister=()=>{
         router.push('/register')
@@ -205,7 +227,9 @@ if(res.ok){
             
 
 
-                <Button type="submit" onClick={handleLogin} sx={{background:'#32385a',color:'#fff',width:'75%',padding:'10px 0',borderRadius:'5px',margin:'2rem 0rem 2rem ','&:hover':{background:'#32385a',color:'#fff'}}}>Login</Button>
+                <Button disabled={isLoading} type="submit" onClick={handleLogin} sx={{background:'#32385a',color:'#fff',width:'75%',height:'40px',padding:'10px 0',borderRadius:'5px',margin:'2rem 0rem 2rem ','&:hover':{background:'#32385a',color:'#fff'}}}>
+                {isLoading ? <Loader /> : 'Login'}
+                  </Button>
               
 
                <Button

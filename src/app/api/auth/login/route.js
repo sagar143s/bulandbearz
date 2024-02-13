@@ -39,7 +39,7 @@ export const POST = async(request)=>{
             }
             
             
-            return new NextResponse("User Und kutta", { status:200 });
+           
         }
         else
         {
