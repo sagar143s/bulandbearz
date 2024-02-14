@@ -16,15 +16,58 @@ import BottomBarArabic from '@/components/Arabic/bottombar/bottom'
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import Swal from 'sweetalert2'
+import SkeletonColor from '../Skelton/Skelton'
+
 
 
 const NewsComponent = () => {
   const { language } = useLanguage();
-  const [sortby, setSortBy] = React.useState('none');
-const [news,setNews]= useState([])
+  const router = useRouter()
+  const [sortby, setSortBy] = useState('none');
+  const [loading,setLoading] = useState(true)
+  const [news,setNews]= useState([])
+
+
   const handleChange = (event) => {
     setSortBy(event.target.value);
   };
+
+
+
+  useEffect(()=>{
+    const userId = localStorage.getItem('userId')
+    if(!userId){
+      router.push('/login')
+    }
+    
+    const fetchUser = async()=>{
+        const res = await fetch(`/api/fetchUser/${userId}`,{
+            method:'GET',
+            headers:{
+                'Content-Type':'application/json'
+            }
+        })
+        const response = await res.json()
+        if(!response.subscribed){
+          Swal.fire({
+            icon: "error",
+            title: "Not Subscribed",
+            text: "Please Subscribe to Access the news!",
+          }).then((result)=>{
+            if(result.isConfirmed){
+              router.push('/subscription')
+            }else if (result.isDenied) {
+                 router.push('/')
+            }
+
+          })
+          
+        }
+    }
+          fetchUser()
+     },[])
+
 
   useEffect(()=>{
     const fetchNews = async()=>{
@@ -34,6 +77,16 @@ const [news,setNews]= useState([])
           'Content-Type':'application/json'
         }
       })
+      if(res.ok){
+        setLoading(false)
+      }else{
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Error in network",
+         
+        }); 
+      }
       const response = await res.json()
      
       if(res.ok){
@@ -98,6 +151,8 @@ const [news,setNews]= useState([])
     return today.getMonth() === newsDate.getMonth() && today.getFullYear() === newsDate.getFullYear();
   };
 
+
+  
   return (
     <Box sx={{height:'90dvh',overflow:'auto',display:'flex',flexDirection:'column',justifyContent:'space-between'}}>
     <Container  >
@@ -138,17 +193,24 @@ const [news,setNews]= useState([])
 
 
 <Container sx={{display:'grid',placeItems:'center'}}>
+  {loading ? (
+                   <SkeletonColor/>
+  ) 
+:
+(
   <Grid container spacing={{ xs: 5, md: 3 }} columns={{ xs: 3, sm: 8, md: 12 }} sx={{paddingBottom:'2rem',marginTop:'1rem'}} >
-  {news.map((item) => (
-          
-            <Grid key={item.id} item xs={12} sm={12} md={4}>
+  {sortedNews().map((item,index) => (
+            <Grid key={index} item xs={12} sm={12} md={4}>
               {/* <Box onClick={handleView(item.id)}> */}
-              
               <NewsCard item={item} />
               {/* </Box> */}
             </Grid>
           ))}
   </Grid>
+)
+}
+ 
+
   </Container>
   
 

@@ -4,7 +4,6 @@ import PrivateBook from '@/components/English/PrivateBook/PrivateBook'
 const page = () => {
   return (
     <>
-    
     <PrivateBook/>
     </>
   )

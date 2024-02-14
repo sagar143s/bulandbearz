@@ -9,7 +9,7 @@ import Stripe from "stripe";
 import ClearIcon from '@mui/icons-material/CancelRounded';
 import FooterArabic from '@/components/Arabic/Footer/Footer';
 import Footer from '@/components/English/Footer/Footer';
-import { useLanguage } from '@/context/LanguageContext'
+import { useLanguage } from '@/context/LanguageContext';
 import BottomBar from '@/components/English/bottombar/bottom';
 import BottomBarAarabic from '@/components/Arabic/bottombar/bottom';
 import { useRouter } from 'next/navigation'
@@ -17,6 +17,7 @@ import Swal from 'sweetalert2';
 import CircleNotificationsIcon from '@mui/icons-material/CircleNotifications';
 import Loader from '@/components/Loader/Loader';
 import LoaderSub from './Loader/Loader';
+import SkeletonColor from '@/components/English/Skelton/Skelton';
 
 const SubscriptionPage = () => {
   const { language } = useLanguage();
@@ -26,6 +27,7 @@ const SubscriptionPage = () => {
     const [open, setOpen] = useState(false);
     const [isLoading, setIsLoading] = useState({});
     const [trigger,setTrigger] = useState(false)
+    const [loadSub,setLoadSub]=useState(true)
     const telLink = 'https://t.me/+EZ7Y_oa7-1IyYzU0'   
     const telLink1 = 'https://t.me/+k5y9H2QZQgg1ZTU0'   
     const router = useRouter();
@@ -59,6 +61,7 @@ if(userId){
 
 
     useEffect(()=>{
+    
         const fetchSubscription = async()=>{
                  const res = await fetch('/api/fetchSubscriptions',{
                   method:'GET',
@@ -66,7 +69,15 @@ if(userId){
                     'Content-Type':'application/json'
                   }
                  }) 
-                 
+                 if(res.ok){
+                  setLoadSub(false)
+                 }else{
+                  Swal.fire({
+                    icon:'error',
+                    title:'Error',
+                    text:'Error in Loading'
+                  })
+                 }
                  const response = await res.json()
                 
                  setSubscriptionPlan(response)
@@ -368,7 +379,7 @@ try {
 
 
 
-:  (
+: loadSub ? (<><SkeletonColor/></> ) : (
         <Grid container spacing={3} justifyContent="center">
           {suscriptionPlan.map((plan, index) => (
             <Grid item xs={12} sm={6} md={4} key={index}>

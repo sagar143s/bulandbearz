@@ -22,7 +22,10 @@ export const DELETE = async (req) => {
       // Update user model to reflect cancellation
       await User.findOneAndUpdate(
         { subscriptionId },
-        { $set: { subscribed: false , subscriptionId: null } },
+        { $set: { subscribed: false , subscriptionId: null,subscriptionType:'',
+        price:'',package:'',customerId:'',
+        planId:''  
+        } },
         { new: true }
       );
   
