@@ -31,6 +31,8 @@ const [loading, setLoading] = useState(true);
   const router = useRouter()
     const [expanded, setExpanded] = useState(false);
     const [selectedDate, setSelectedDate] = useState('');
+    const [selectedDate2, setSelectedDate2] = useState('');
+
     const [availableTimes, setAvailableTimes] = useState([]);
     const [selectedTime, setSelectedTime] = useState('');
     const [username,setUserName]= useState('')
@@ -75,12 +77,29 @@ const [loading, setLoading] = useState(true);
         }
     }, [selectedDate]);
 
+
+
     // Handle change in date select
     const handleDateChange = (event) => {
-      setSelectedDate(event.target.value);
-      setDateError(event.target.value ? '' : 'Please select a date');
+      const selected = event.target.value;
+      setSelectedDate(selected);
+      setDateError(selected ? '' : 'Please select a date');
       setSelectedTime('');
-  };
+    
+      // Find the index of the selected date
+      let nextDate = ''; // Variable to hold the next date
+
+// Parse the selectedDate to a Date object
+const parsedDate = new Date(selected);
+
+// Increment the parsedDate by 1 day to get the next date
+parsedDate.setDate(parsedDate.getDate() + 1);
+
+// Format the nextDate to 'YYYY-MM-DD' format
+nextDate = parsedDate.toISOString().split('T')[0];
+
+setSelectedDate2(nextDate)
+    };
 
 
   const handleTimeChange = (event) => {
@@ -140,7 +159,7 @@ const handlePhoneChange = (e) => {
     setPhoneError(/^\d{10}$/.test(e.target.value) ? '' : 'Phone number must be 10 digits');
 };
 
-
+console.log(selectedDate2,selectedDate,'sel');
 
   return (
     <Container  >
@@ -231,6 +250,21 @@ const handlePhoneChange = (e) => {
                     <Typography fontSize='16px' fontWeight='500' color='#2c3e50' sx={{ mt: 2 }}>Number of sessions*</Typography>
                       <TextField  value={courseDetails.sessionNumbers}  error={Boolean(emailError)}  helperText={emailError}  sx={{width:'50%'}} type='email' InputProps={{ style: { borderRadius: '8px', height: '40px',  fontSize: '12px',marginTop:'.5rem' } }} />
                       </Box>
+
+                      <Box sx={{display:'flex',alignItems:'center',mt:'1.5rem',gap:'1rem'}}>
+                               <Typography fontWeight='bold'>Session 1 :  {selectedDate &&   ( <> Date  : <span style={{ fontSize:'14px',color:'#fff'  , padding:'0.5rem',borderRadius:'17px',background:'linear-gradient(to right, #141e30, #243b55)'}}>{selectedDate}</span> </>) }  </Typography>
+                                <Typography fontWeight='bold'> {selectedTime && (<>Time : <span style={{ fontSize:'14px',color:'#fff'  , padding:'0.5rem',borderRadius:'17px',background:'linear-gradient(to right, #141e30, #243b55)'}}>{selectedTime}</span> </>)} </Typography>
+                      </Box>
+                     {
+                      courseDetails.sessionNumbers == 2 && 
+                      ( 
+                          <Box sx={{display:'flex',alignItems:'center',mt:'1.5rem',gap:'1rem'}}>
+                               <Typography fontWeight='bold'>Session 2 :  {selectedDate2 &&   ( <> Date  : <span style={{ fontSize:'14px',color:'#fff'  , padding:'0.5rem',borderRadius:'17px',background:'linear-gradient(to right, #141e30, #243b55)'}}>{selectedDate2}</span> </>) }  </Typography>
+                               <Typography fontWeight='bold'> {selectedTime && (<>Time : <span style={{ fontSize:'14px',color:'#fff'  , padding:'0.5rem',borderRadius:'17px',background:'linear-gradient(to right, #141e30, #243b55)'}}>{selectedTime}</span> </>)} </Typography>
+                          </Box>
+                      )
+                     }
+                      
 
           
        

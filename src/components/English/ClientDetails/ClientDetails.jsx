@@ -189,7 +189,7 @@ const Checkout = () => {
            <Box sx={{display:'flex',justifyContent:'center',marginBottom:'1rem'}}>
            <Button disabled={isLoading} variant='contained' onClick={handleCheckout}  sx={{ background: 'linear-gradient(to right, #f3904f, #3b4371)', borderRadius: '8px', height: '45px', textTransform: 'none', fontFamily: "Rubik", fontSize: '12px', width: '50%', marginTop: '3rem' }}>
           {isLoading ? <Loader /> : 'Pay Now'}
-          Pay Now
+       
           </Button>
 
            </Box>
