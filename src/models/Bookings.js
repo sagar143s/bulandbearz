@@ -17,6 +17,13 @@ const BookingSchema = new Schema({
     time:{
         type:String,
     },
+    
+    date1:{
+        type:String,
+    },
+    time1:{
+        type:String
+    },
     package:{
         type:String, 
     },
@@ -32,6 +39,9 @@ const BookingSchema = new Schema({
    },
    userId:{
     type:String,
+   },
+   question:{
+    type:String
    },
    privateSession:{
     type:Boolean,

@@ -54,15 +54,8 @@ const NewsComponent = () => {
             icon: "error",
             title: "Not Subscribed",
             text: "Please Subscribe to Access the news!",
-          }).then((result)=>{
-            if(result.isConfirmed){
-              router.push('/subscription')
-            }else if (result.isDenied) {
-                 router.push('/')
-            }
-
           })
-          
+          router.push('/subscription')
         }
     }
           fetchUser()

@@ -37,20 +37,23 @@ export default function NewsCard({item}) {
           </div>
           </CardMedia>
         <CardContent>
-          <Typography gutterBottom fontSize='20px' fontWeight='600'>
+          <Typography gutterBottom fontSize='20px' height='50px' fontWeight='600'>
             {item?.news[0]?.title}
           </Typography>
           <Typography fontSize='14px' height='100px'  fontWeight='400'
           sx={{
-            maxHeight: '4rem', // Set the maximum height of the description
+            height: '2.8rem', // Set the maximum height of the description
             overflow: 'hidden', // Hide the overflow content
-            textOverflow: 'ellipsis', // Display ellipsis (...) for overflow
+            // textOverflow: 'ellipsis', // Display ellipsis (...) for overflow
             display: '-webkit-box',
-            // WebkitBoxOrient: 'vertical',
+             WebkitBoxOrient: 'vertical',
+             WebkitLineClamp: 2,
           }}
           >
             {item?.news[0]?.description}
           </Typography>
+
+
           <Box sx={{display:'flex',justifyContent:'space-between',flexDirection:"row",marginTop:'1rem'}}>
           <Typography fontSize='12px' marginTop='0.5rem' color='orangered' fontWeight='400' onClick={()=>handleView()} sx={{cursor:'pointer'}}>
             View More

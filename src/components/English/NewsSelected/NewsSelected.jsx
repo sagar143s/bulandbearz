@@ -11,14 +11,41 @@ import FooterArabic from '@/components/Arabic/Footer/Footer'
 import { useLanguage } from '@/context/LanguageContext'
 import BottomBar from '@/components/English/bottombar/bottom'
 import BottomBarArabic from '@/components/Arabic/bottombar/bottom'
+import Swal from 'sweetalert2';
+import { useRouter } from 'next/navigation';
 
 
 const NewsSelected = () => {
   const { language } = useLanguage();
  const params = useParams()
  const [news , setNews] = useState([])
+ const router = useRouter()
 
-
+ useEffect(()=>{
+  const userId = localStorage.getItem('userId')
+  if(!userId){
+    router.push('/login')
+  }
+  
+  const fetchUser = async()=>{
+      const res = await fetch(`/api/fetchUser/${userId}`,{
+          method:'GET',
+          headers:{
+              'Content-Type':'application/json'
+          }
+      })
+      const response = await res.json()
+      if(!response.subscribed){
+        Swal.fire({
+          icon: "error",
+          title: "Not Subscribed",
+          text: "Please Subscribe to Access the news!",
+        })
+        router.push('/subscription')
+      }
+  }
+        fetchUser()
+   },[])
 
 
  useEffect(()=>{
@@ -43,7 +70,7 @@ const response = await res.json()
 
 
   return (
-    <Box sx={{height: '90dvh', overflow: 'auto'}}>
+    <Box sx={{height: '90dvh', overflow: 'auto',display:'flex',flexDirection:'column',justifyContent:'space-between'}}>
       <Container>
       <Typography paddingTop='20px' color='#3b4371' fontWeight='600' fontSize='45px' sx={{textAlign:"center"}}>News</Typography>
       <Box sx={{marginTop:'.5rem',background:'#f3f6f9',height:'2px',marginBottom:'2rem'}}></Box>
@@ -75,6 +102,7 @@ const response = await res.json()
     
     </Container>
     ))}
+
     <Box sx={{mt:'5rem'}}>
     {language === 'english' ? <Footer/> :  <FooterArabic/> }
      {language === 'english' ? <BottomBar/> :  <BottomBarArabic/> }
