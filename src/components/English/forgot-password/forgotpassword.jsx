@@ -4,6 +4,7 @@ import { Box, Button, TextField, Typography, Paper } from '@mui/material';
 import Link from 'next/link'; 
 import { useRouter } from 'next/navigation';
 import Swal from 'sweetalert2';
+import Loader from '../Checkout/Loader/Loader';
 
 const ForgotPassword = () => {
     const [email, setEmail] = useState('');
@@ -13,6 +14,7 @@ const ForgotPassword = () => {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [showOtpInput, setShowOtpInput] = useState(false);
     const [showCreateNewPassword, setShowCreateNewPassword] = useState(false);
+    const [loading,setLoading] = useState(false)
     const router = useRouter()
     
     const handleEmailChange = (event) => {
@@ -33,40 +35,45 @@ const ForgotPassword = () => {
         return;
       }
 
-      
 
-      const res = await fetch('api/auth/forgotemail',{
-        method:'POST',
-        body:JSON.stringify({email}),
-        headers:{
-          'Content-Type':'application/json'
-        }
-      })
-
-      const response = await res.json()
-      
-
-      if(res.status==404){
-        setEmailError('Email not found! Signup')
-      }else if(res.ok){
-        
-        Swal.fire({
-          icon: "success",
-          title: "Password sent to Email sent",
-          text: "You can update the password in profile page",
-          footer: '<a href="/login">Login with password sent to the email</a>'
-        }).then((result) => {
-          if (result.isConfirmed) {
-            router.push('/login')
-          } else if (result.isDenied) {
-            router.push('/login')
+      try {
+        setLoading(true)
+        const res = await fetch('api/auth/forgotemail',{
+          method:'POST',
+          body:JSON.stringify({email}),
+          headers:{
+            'Content-Type':'application/json'
           }
-        });
-
-      }
-
+        })
   
-     
+        const response = await res.json()
+        if(res.status==404){
+          setEmailError('Email not found! Signup')
+          setLoading(false)
+        }else if(res.ok){
+          setLoading(false)
+          Swal.fire({
+            icon: "success",
+            title: "Password sent to Email sent",
+            text: "You can update the password in profile page",
+            footer: '<a href="/login">Login with password sent to the email</a>'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              router.push('/login')
+            } else if (result.isDenied) {
+              router.push('/login')
+            }
+          });
+  
+        }
+      } catch (error) {
+        setLoading(false)
+        Swal.fire({
+          icon: "error",
+          title: "Error",
+          text: "Network Error",
+        })
+      }
       // setShowOtpInput(true);
     };
   
@@ -116,8 +123,8 @@ const ForgotPassword = () => {
                     fullWidth
                     sx={{ mb: 2 }}
                   />
-                  <Button variant="contained" style={{ background: "#32385a" }} onClick={handleEmailSubmit} fullWidth>
-                    Send OTP
+                  <Button disabled={loading} variant="contained" style={{ background: "#32385a" ,height:'45px'}} onClick={handleEmailSubmit} fullWidth>
+                  {loading ? <Loader /> : 'Reset Password' } 
                   </Button>
                 </>
               ) : (
@@ -168,8 +175,8 @@ const ForgotPassword = () => {
                 fullWidth
                 sx={{ mb: 2 }}
               />
-              <Button variant="contained" style={{ background: "#32385a" }} onClick={handleResetPassword} fullWidth>
-                Reset Password
+              <Button disabled={loading} variant="contained" style={{ background: "#32385a" }} onClick={handleResetPassword} fullWidth>
+            {loading ? <Loader /> : 'Reset Password' }    
               </Button>
             </>
           )}

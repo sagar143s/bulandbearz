@@ -53,7 +53,7 @@ try{
           }
         }
       });
-
+       console.log("email send");
    const updatePassord = await User.updateOne({ _id: isEmail._id }, { $set: { password: hashedPassword } });
    if(updatePassord){
        return new NextResponse(JSON.stringify("Password send to email"),{status:200})
