@@ -5,7 +5,7 @@ import bcrypt from 'bcrypt'
 import { CourierClient } from "@trycourier/courier";
 
 
-
+export const dynamic = 'force-dynamic';
 function generateRandomPassword(length = 10) {
     const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
     let password = "";
