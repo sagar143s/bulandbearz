@@ -9,6 +9,12 @@ name :
     type : String,
     required : true
 },
+// rohith edit
+lastname: {
+    type: String,
+    required: true
+},
+
 email :
 {
    type:String,

@@ -15,6 +15,7 @@ import Loader from './Loader/Loader'
 
 const Register = () => {
     const [username,setUserName] = useState('')
+    const [userlastname, setUserLastName] = useState('');
     const [email,setEmail] = useState('')
     const [password,setPassword] = useState('')
     const [confirmPassword,setConfirmPassword] = useState('')
@@ -28,12 +29,16 @@ const Register = () => {
 
 
     const handleSignup = async()=>{
+   
+    //   if (!username || !userlastname || !email || !password || !confirmPassword) {
+    //     setError("All fields are required");
+    //     return;
+    // } 
 
-      if (!username || !email || !password || !confirmPassword) {
-        setError("All fields are required");
-        return;
-    }
-
+    if (!username || !userlastname || !email || !password || !confirmPassword) {
+      setError("All fields are required");
+      return;
+  }
 
 if(password !== confirmPassword){
   setError("Passwords do not match");
@@ -46,11 +51,19 @@ if (!usernameRegex.test(username)) {
   return;
 }
 
+const userLastnameRegex = /^[A-Za-z]+$/;
+if (!userLastnameRegex.test(userlastname)) {
+    setError('Lastname should contain only letters');
+    return;
+}
+
+
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 if (!emailRegex.test(email)) {
   setError('Invalid email format');
   return;
 }
+
 
 if (password.length < 8 || isSpecialChar(password)) {
   setError('Password must be at least 8 characters long and should not contain special characters');
@@ -67,9 +80,10 @@ else{
             "Content-Type": "application/json",
         },
         body: JSON.stringify({
-            username,
-            email,
-            password
+          username,
+          lastname: userlastname, 
+          email,
+          password,
         }),
     });
     if (res.ok) {
@@ -123,10 +137,18 @@ else{
     },
   }}
 >              <Typography fontSize='28px'  color='#32385a' fontWeight={600} sx={{padding:'2rem 0 1rem',textDecoration:'underline'}}>REGISTER  </Typography>
-               <Box sx={{width:'70%',}}>
-               <Typography marginTop='2rem' fontSize='16px' align='left' color='#32385a' fontWeight={500}>User Name*</Typography>
+               <Box sx={{width:'70%',display:'flex',gap:'5px'}}>
+                <Box>                
+               <Typography marginTop='2rem' fontSize='16px' align='left' color='#32385a' fontWeight={500}>First Name*</Typography>
                <TextField sx={{width:'100%',marginTop:'0.2rem'}}  InputProps={{style:{height:'40px'}}} onChange={(e)=>setUserName(e.target.value)}/>
                </Box>
+                <Box >
+                <Typography marginTop='2rem' fontSize='16px' align='left' color='#32385a' fontWeight={500}>Last Name*</Typography>
+               <TextField sx={{width:'100%',marginTop:'0.2rem'}}  InputProps={{style:{height:'40px'}}} onChange={(e)=>setUserLastName(e.target.value)}/>
+             
+                </Box>
+               </Box>
+            
                <Box sx={{width:'70%',}}>
                <Typography marginTop='1rem' fontSize='16px' align='left' color='#32385a' fontWeight={500}>Email*</Typography>
                <TextField sx={{width:'100%',marginTop:'0.2rem'}}  InputProps={{style:{height:'40px'}}} onChange={(e)=>setEmail(e.target.value)}/>
