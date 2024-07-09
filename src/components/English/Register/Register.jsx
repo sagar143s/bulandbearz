@@ -48,7 +48,7 @@ if(password !== confirmPassword){
 
 const usernameRegex = /^[A-Za-z]+$/;
 if (!usernameRegex.test(username)) {
-  setError('Username should contain only letters');
+  setError('Firstname should contain only letters');
   return;
 }
 
@@ -59,9 +59,9 @@ if (!userLastnameRegex.test(userlastname)) {
 }
 
 
-const usertelegramusernameRegex = /^[A-Za-z]+$/;
+const usertelegramusernameRegex = /^[A-Za-z0-9]+$/;
   if (!usertelegramusernameRegex.test(telegramusername)) {
-    setError("Telegram Username should contain only letters");
+    setError("Telegram Username should contain only letters and numbers");
     return;
   }
 
@@ -136,52 +136,54 @@ else{
     justifyContent: 'center',
     flexDirection: 'column',
     borderRadius: '20px',
-    height: '85vh',
+    height: '95vh',
     '@media screen and (max-width: 768px)': {
       width: '100%', 
       margin:'0 1rem',
-      height: '90vh',
+      height: '95vh',
       
     },
   }}
->              <Typography fontSize='28px'  color='#32385a' fontWeight={600} sx={{padding:'2rem 0 1rem',textDecoration:'none'}}>Sign Up  </Typography>
-               <Box sx={{width:'70%',display:'flex',gap:'5px'}}>
+>              <Typography fontSize='28px'  color='#32385a' fontWeight={600} sx={{padding:'3rem 0 .5rem',textDecoration:'none'}}>Sign Up  </Typography>
+               <Box sx={{width:'80%',display:'flex',gap:'5px'}}>
                 <Box>                
-               <Typography marginTop='2rem' fontSize='16px' align='left' color='#32385a' fontWeight={500}>First Name*</Typography>
+               <Typography marginTop='1rem' fontSize='16px' align='left' color='#32385a' fontWeight={500}>First Name*</Typography>
                <TextField sx={{width:'100%',marginTop:'0.2rem'}}  InputProps={{style:{height:'40px'}}} onChange={(e)=>setUserName(e.target.value)}/>
                </Box>
                 <Box >
-                <Typography marginTop='2rem' fontSize='16px' align='left' color='#32385a' fontWeight={500}>Last Name*</Typography>
+                <Typography marginTop='1rem' fontSize='16px' align='left' color='#32385a' fontWeight={500}>Last Name*</Typography>
                <TextField sx={{width:'100%',marginTop:'0.2rem'}}  InputProps={{style:{height:'40px'}}} onChange={(e)=>setUserLastName(e.target.value)}/>
              
                 </Box>
                </Box>
-               <Box sx={{width:'70%',}}>
-               <Typography marginTop='1rem' fontSize='16px' align='left' color='#32385a' fontWeight={500}>Telegram User Name </Typography>
+               <Box sx={{width:'80%',}}>
+               <Typography marginTop='.7rem' fontSize='16px' align='left' color='#32385a' fontWeight={500}>Telegram User Name </Typography>
                <TextField sx={{width:'100%',marginTop:'0.2rem'}}  InputProps={{style:{height:'40px'}}}  onChange={(e) => setTelegramUsername(e.target.value)}/>
                </Box>
               
-               <Box sx={{width:'70%',}}>
-               <Typography marginTop='1rem' fontSize='16px' align='left' color='#32385a' fontWeight={500}>Email*</Typography>
+               <Box sx={{width:'80%',}}>
+               <Typography marginTop='.7rem' fontSize='16px' align='left' color='#32385a' fontWeight={500}>Email*</Typography>
                <TextField sx={{width:'100%',marginTop:'0.2rem'}}  InputProps={{style:{height:'40px'}}} onChange={(e)=>setEmail(e.target.value)}/>
                </Box>
-
-              
-               <Box sx={{display:'flex',width:'70%',gap:'5px'}}>
-               <Box sx={{width:'50%'}}>
-               <Typography marginTop='1rem' fontSize='16px' align='left' color='#32385a' fontWeight={500}>Password*</Typography>
+               <Box sx={{width:'80%'}}>
+               {/* <Typography marginTop='1rem' fontSize='16px' align='left' color='#32385a' fontWeight={500}>Password*</Typography> */}
+               {/* <Typography  sx={{ marginTop: { xs: '2.5rem', md: '1rem' },    fontSize: '16px',textAlign: 'left',color: '#32385a',fontWeight: 500,}}>Password*</Typography> */}
+               <Typography marginTop='.7rem' fontSize='16px' align='left' color='#32385a' fontWeight={500}>Password*</Typography>
                <TextField type='password' sx={{width:'100%',marginTop:'0.2rem'}}  InputProps={{style:{height:'40px'}}} onChange={(e)=>setPassword(e.target.value)}/>
                </Box>
-               <Box sx={{width:'50%'}}>
-               <Typography marginTop='1rem' fontSize='16px' align='left' color='#32385a' fontWeight={500}>Confirm Password*</Typography>
+               <Box sx={{width:'80%'}}>
+               <Typography marginTop='.7rem' fontSize='16px' align='left' color='#32385a' fontWeight={500}>Confirm Password*</Typography>
                <TextField type='password' sx={{width:'100%',marginTop:'0.2rem'}}  InputProps={{style:{height:'40px'}}} onChange={(e)=>setConfirmPassword(e.target.value)}/>
                {error && (
                 <Typography  marginTop='0.2rem' fontSize='12px' align='left' color='red' fontWeight={400}>{error}</Typography>
                )}
                </Box>
+              
+               <Box sx={{display:'flex',width:'80%',gap:'5px'}}>
+              
                </Box>
 
-               <Button disabled={isLoading}  onClick={handleSignup}  sx={{background:'#32385a',height:'40px',color:'#fff',width:'75%',borderRadius:'5px',margin:'2rem 0rem 0rem','&:hover':{background:'#32385a',color:'#fff'}}}>
+               <Button disabled={isLoading}  onClick={handleSignup}  sx={{background:'#32385a',height:'40px',color:'#fff',width:'80%',borderRadius:'5px',margin:'2rem 0rem 0rem','&:hover':{background:'#32385a',color:'#fff'}}}>
                 {isLoading ? <Loader /> : 'Sign Up'}
            
                 </Button>
