@@ -9,7 +9,7 @@ import bcrypt from 'bcrypt'
 export const POST = async (request) => {
     try {
        console.log(request)
-      const { username,lastname, email , password } = await request.json();
+       const { username, lastname, telegramusername, email, password } = await request.json();
       
       await connect();
       
@@ -23,6 +23,7 @@ export const POST = async (request) => {
         const newUser = new User({
           name: username,
           lastname: lastname,
+          telegramusername: telegramusername,
           email: lowercasedEmail,
           password: hashedPassword, 
         });

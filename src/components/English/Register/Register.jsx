@@ -17,6 +17,7 @@ const Register = () => {
     const [username,setUserName] = useState('')
     const [userlastname, setUserLastName] = useState('');
     const [email,setEmail] = useState('')
+    const [telegramusername, setTelegramUsername] = useState("");
     const [password,setPassword] = useState('')
     const [confirmPassword,setConfirmPassword] = useState('')
     const [error,setError] = useState('')
@@ -35,7 +36,7 @@ const Register = () => {
     //     return;
     // } 
 
-    if (!username || !userlastname || !email || !password || !confirmPassword) {
+    if (!username || !userlastname  || !telegramusername || !email || !password || !confirmPassword) {
       setError("All fields are required");
       return;
   }
@@ -57,6 +58,12 @@ if (!userLastnameRegex.test(userlastname)) {
     return;
 }
 
+
+const usertelegramusernameRegex = /^[A-Za-z]+$/;
+  if (!usertelegramusernameRegex.test(telegramusername)) {
+    setError("Telegram Username should contain only letters");
+    return;
+  }
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 if (!emailRegex.test(email)) {
@@ -82,6 +89,7 @@ else{
         body: JSON.stringify({
           username,
           lastname: userlastname, 
+          telegramusername, 
           email,
           password,
         }),
@@ -136,7 +144,7 @@ else{
       
     },
   }}
->              <Typography fontSize='28px'  color='#32385a' fontWeight={600} sx={{padding:'2rem 0 1rem',textDecoration:'underline'}}>REGISTER  </Typography>
+>              <Typography fontSize='28px'  color='#32385a' fontWeight={600} sx={{padding:'2rem 0 1rem',textDecoration:'none'}}>Sign Up  </Typography>
                <Box sx={{width:'70%',display:'flex',gap:'5px'}}>
                 <Box>                
                <Typography marginTop='2rem' fontSize='16px' align='left' color='#32385a' fontWeight={500}>First Name*</Typography>
@@ -148,28 +156,36 @@ else{
              
                 </Box>
                </Box>
-            
+               <Box sx={{width:'70%',}}>
+               <Typography marginTop='1rem' fontSize='16px' align='left' color='#32385a' fontWeight={500}>Telegram User Name </Typography>
+               <TextField sx={{width:'100%',marginTop:'0.2rem'}}  InputProps={{style:{height:'40px'}}}  onChange={(e) => setTelegramUsername(e.target.value)}/>
+               </Box>
+              
                <Box sx={{width:'70%',}}>
                <Typography marginTop='1rem' fontSize='16px' align='left' color='#32385a' fontWeight={500}>Email*</Typography>
                <TextField sx={{width:'100%',marginTop:'0.2rem'}}  InputProps={{style:{height:'40px'}}} onChange={(e)=>setEmail(e.target.value)}/>
                </Box>
-               <Box sx={{width:'70%'}}>
+
+              
+               <Box sx={{display:'flex',width:'70%',gap:'5px'}}>
+               <Box sx={{width:'50%'}}>
                <Typography marginTop='1rem' fontSize='16px' align='left' color='#32385a' fontWeight={500}>Password*</Typography>
                <TextField type='password' sx={{width:'100%',marginTop:'0.2rem'}}  InputProps={{style:{height:'40px'}}} onChange={(e)=>setPassword(e.target.value)}/>
                </Box>
-               <Box sx={{width:'70%'}}>
+               <Box sx={{width:'50%'}}>
                <Typography marginTop='1rem' fontSize='16px' align='left' color='#32385a' fontWeight={500}>Confirm Password*</Typography>
                <TextField type='password' sx={{width:'100%',marginTop:'0.2rem'}}  InputProps={{style:{height:'40px'}}} onChange={(e)=>setConfirmPassword(e.target.value)}/>
                {error && (
                 <Typography  marginTop='0.2rem' fontSize='12px' align='left' color='red' fontWeight={400}>{error}</Typography>
                )}
                </Box>
+               </Box>
 
                <Button disabled={isLoading}  onClick={handleSignup}  sx={{background:'#32385a',height:'40px',color:'#fff',width:'75%',borderRadius:'5px',margin:'2rem 0rem 0rem','&:hover':{background:'#32385a',color:'#fff'}}}>
-                {isLoading ? <Loader /> : 'Register'}
+                {isLoading ? <Loader /> : 'Sign Up'}
            
                 </Button>
-               <Typography component={Link} href='./login' sx={{ padding: "0 0 3rem", color: '#32385a' }}>
+               <Typography component={Link} href='./login' sx={{ padding: "1rem 0 3rem", color: '#32385a',textDecoration:"underline" }}>
   Already Have an Account?
 </Typography>         </Box>
          </Box>

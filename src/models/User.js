@@ -15,6 +15,11 @@ lastname: {
     required: true
 },
 
+telegramusername: {
+    type: String,
+    
+},
+
 email :
 {
    type:String,
