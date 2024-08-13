@@ -28,8 +28,8 @@ const SubscriptionPage = () => {
     const [isLoading, setIsLoading] = useState({});
     const [trigger,setTrigger] = useState(false)
     const [loadSub,setLoadSub]=useState(true)
-    const telLink = 'https://t.me/+EZ7Y_oa7-1IyYzU0'   
-    const telLink1 = 'https://t.me/+k5y9H2QZQgg1ZTU0'   
+    const telLink = 'https://t.me/+wxyWEO6-yf01NTJk'   
+    const telLink1 = 'https://t.me/+Vr7-Uq44p4RhOTE8'   
     const router = useRouter();
 
     
@@ -227,7 +227,7 @@ try {
                   <Typography variant="h5" component="h2" color="#fff" gutterBottom>
                  Current-Plan :   {userDetails?.package}
                   </Typography>
-                  <Typography variant="h6" color="#009e61" gutterBottom>
+                  <Typography variant="h6" color="#009e61" style={{fontWeight:'bold',border:'2px solid #fff',textAlign:"center",background:"#fff",borderRadius:"5px"}} gutterBottom>
                   AED {userDetails?.price} / {userDetails?.subscriptionType == 'month' ? 'Monthly' :'Yearly'}
                   </Typography>
                    
@@ -336,14 +336,14 @@ try {
                       background:"#fff",
                       color:"#000",
                       mt:'1rem',
-                      padding:"10px 0",
+                      padding:"10px 10px",
                       '&:hover': {
                         backgroundColor: '#009e61',
                         color:"#fff"
                       },
                     }}
                   >
-                    <CircleNotificationsIcon sx={{color:'red'}}/>&nbsp; Telegram Alerts Group  (Alerts)
+                    <CircleNotificationsIcon sx={{color:'red'}}/>&nbsp; Telegram Alerts Group
                   </Button>
                   
                   ) : '' }
@@ -359,7 +359,7 @@ try {
                       mt:'1rem',
                       padding:"10px 0",
                       '&:hover': {
-                        backgroundColor: '#009e61',
+                        backgroundColor: '#B72929',
                         color:"#fff"
                       },
                     }}
