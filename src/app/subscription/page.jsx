@@ -441,7 +441,7 @@ try {
                :
                   plan.subscriptionType=='year' && plan.name=='Premium Weekly NewsLetter'?
                   <Box  marginTop={4}>
-                      
+                       
                   <Box component="span" style={{ display: 'flex', alignItems: 'center', marginRight: 8 }}>
                     <ClearIcon fontSize="small" style={{width:'20px',marginRight:'1.8rem'}} color="error" />
                     <Typography fontSize='15px' fontWeight='bold'>No Telegram Access</Typography>
