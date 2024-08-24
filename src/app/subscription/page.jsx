@@ -388,7 +388,7 @@ try {
                   <Typography variant="h5" component="h2" color="#fff" gutterBottom>
                     {plan.name}
                   </Typography>
-                  <Typography variant="h6" color="#009e61" gutterBottom>
+                  <Typography variant="h6" color="#009e61"  gutterBottom>
                 AED    {plan.price} / {plan.subscriptionType == 'month' ? 'Monthly' :'Yearly'}
                   </Typography>
                    
