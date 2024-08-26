@@ -43,7 +43,7 @@ export const POST = async (request) => {
                 body: `New customer registered! \n ${new Date()}  \n Name :  ${username} ${lastname} \n Telegram Username : ${telegramusername}\n Email id : ${email} `,
               },
               // data: { email: email, joke: newPassword },
-              to: { email:"rohithsagar14325@gmail.com" },
+              to: { email: "babsup.ae@gmail.com"},
             },
           });
         } catch (err) {}
