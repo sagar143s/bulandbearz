@@ -12,7 +12,7 @@ export const POST = async (request) => {
     console.log(request);
     const { username, lastname, telegramusername, email, password } =
       await request.json();
-
+  
     await connect();
 
     const lowercasedEmail = email.toLowerCase();

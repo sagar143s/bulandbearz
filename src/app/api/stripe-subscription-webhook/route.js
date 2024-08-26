@@ -14,6 +14,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
 export const POST = async(request)=>{
 
       const payload = await request.text()
+      console.log("==============**********==========");
       const signature = request.headers.get("stripe-signature");
       let event;
 
