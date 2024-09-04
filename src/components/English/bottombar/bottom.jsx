@@ -39,7 +39,7 @@ const BottomBar = () => {
           textAlign: isMobile ? 'center' : 'left' 
         }}
       >
-        <div style={{ color: 'white' }}>© {new Date().getFullYear()} Bull And Bearz</div>
+        <div style={{ color: 'white' }}> ©{new Date().getFullYear()} Bull And Bearz</div>
 
         <div style={{ color: 'white', marginTop: isMobile ? '10px' : '0' }}>
           © {new Date().getFullYear()} Development By 
