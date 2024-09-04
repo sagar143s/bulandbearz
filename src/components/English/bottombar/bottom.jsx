@@ -42,7 +42,7 @@ const BottomBar = () => {
         <div style={{ color: 'white' }}> ©{new Date().getFullYear()} Bull And Bearz</div>
 
         <div style={{ color: 'white', marginTop: isMobile ? '10px' : '0' }}>
-          © {new Date().getFullYear()} Development By 
+           Development By &nbsp;
           <a 
             href='https://www.nexura.ae' 
             target='_blank' 
@@ -50,7 +50,7 @@ const BottomBar = () => {
             onMouseEnter={(e) => e.target.style.color = '#fff'}
             onMouseLeave={(e) => e.target.style.color = 'white'}
           >
-            Nexura IT Technologies
+             Nexura IT Technologies
           </a>
         </div>
 
