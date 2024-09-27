@@ -104,7 +104,7 @@ else{
         Swal.fire({
             icon: "error",
             title: "Oops...",
-            text: errorText, // Display the error response directly
+            text: errorText, 
         });
     }
 } catch (error) {
