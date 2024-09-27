@@ -64,7 +64,6 @@ if (!usertelegramusernameRegex.test(telegramusername)) {
   return;
 }
 
-
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 if (!emailRegex.test(email)) {
   setError('Invalid email format');
