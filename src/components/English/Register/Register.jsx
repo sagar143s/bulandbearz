@@ -58,12 +58,12 @@ if (!userLastnameRegex.test(userlastname)) {
     return;
 }
 
+const usertelegramusernameRegex = /^.*$/;
+if (!usertelegramusernameRegex.test(telegramusername)) {
+  setError("Invalid Telegram Username.");
+  return;
+}
 
-const usertelegramusernameRegex = /^[A-Za-z0-9]+$/;
-  if (!usertelegramusernameRegex.test(telegramusername)) {
-    setError("Telegram Username should contain only letters and numbers");
-    return;
-  }
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 if (!emailRegex.test(email)) {
