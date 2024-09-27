@@ -98,7 +98,7 @@ else{
        setIsLoading(false)
         router.push('/login');
     } else {
-        // Get the error response as text
+        // Get the error response a
         setIsLoading(false)
         const errorText = await res.text();
         Swal.fire({
