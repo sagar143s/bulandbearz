@@ -60,7 +60,7 @@ if (!userLastnameRegex.test(userlastname)) {
 
 const usertelegramusernameRegex = /^.*$/;
 if (!usertelegramusernameRegex.test(telegramusername)) {
-  setError("Invalid Telegram Username.");
+  setError("Invalid Telegram Username");
   return;
 }
 
