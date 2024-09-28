@@ -120,9 +120,6 @@ else{
 }
     }
 
-
-
-
   return (
     <Box sx={{height:'90dvh',overflow:'auto'}}>
     <Box sx={{display:'flex',alignItems:'center',justifyContent:'center',marginTop:"3rem",marginBottom:"3rem"}}>
