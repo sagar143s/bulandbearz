@@ -12,7 +12,7 @@ import {
   IconButton,
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
-import GoogleIcon from '@mui/icons-material/Google';
+// import GoogleIcon from '@mui/icons-material/Google';
 
 const SignupPopup = ({ open, onClose }) => {
   const [credentials, setCredentials] = useState({
@@ -51,9 +51,9 @@ const SignupPopup = ({ open, onClose }) => {
 
   };
 
-  const handleGoogleSignup = () => {
+  // const handleGoogleSignup = () => {
 
-  };
+  // };
 
   
 
@@ -135,7 +135,7 @@ const SignupPopup = ({ open, onClose }) => {
               Sign Up
             </Button>
           </Grid>
-          <Grid item xs={12}>
+          {/* <Grid item xs={12}>
           <Button
               variant="outlined"
               color="secondary"
@@ -146,7 +146,7 @@ const SignupPopup = ({ open, onClose }) => {
             >
               Sign Up with Google
             </Button>
-          </Grid>
+          </Grid> */}
           <Grid item xs={12} style={{ textAlign: 'center' }}>
             <Typography variant="body2" color="textSecondary">
               Already have an account?{' '}
