@@ -48,6 +48,7 @@ const Home = () => {
      {language === 'english' ? <Footer/> :  <FooterArabic/> }
      {language === 'english' ? <BottomBar/> :  <BottomBarArabic/> }
      
+     
  
     </div>
   )
