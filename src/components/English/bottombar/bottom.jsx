@@ -42,7 +42,7 @@ const BottomBar = () => {
         <div style={{ color: 'white' }}> ©{new Date().getFullYear()} Bull And Bearz</div>
 
         <div style={{ color: 'white', marginTop: isMobile ? '10px' : '0' }}>
-           Development by&nbsp;
+           Development By &nbsp;
           <a 
             href='https://www.nexura.ae' 
             target='_blank' 
